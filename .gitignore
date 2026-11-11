@@ -1,11 +1,11 @@
-# ---------- Keil MDK 构建产物 ----------
+# ===== Keil MDK 构建产物（不入库） =====
 Objects/
 Listings/
 DebugConfig/
 *.uvguix.*
 *.build_log.htm
 
-# ---------- 编译中间文件 ----------
+# ===== 编译中间文件 =====
 *.o
 *.d
 *.crf
@@ -18,6 +18,12 @@ DebugConfig/
 *.lst
 *.iex
 *.sct
+*.Bak
 
-# ---------- VS Code 自动生成（内容是本机绝对路径，因人而异） ----------
+# ===== VS Code 本机配置（含绝对路径） =====
 .vscode/c_cpp_properties.json
+
+# ===== 系统垃圾 =====
+Thumbs.db
+desktop.ini
+.DS_Store
