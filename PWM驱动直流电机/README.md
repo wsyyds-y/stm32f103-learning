@@ -1,57 +1,35 @@
-# STM32F103 学习工程
+# STM32 工程模板（可直接复制）
 
-基于 **STM32F103C8T6** 与 **STM32 标准外设库（SPL）** 的嵌入式学习工程，使用 **Keil MDK 5 + ARM Compiler 5** 开发。
+基于 **STM32F103C8T6 + STM32F10x 标准外设库（SPL）+ Keil MDK 5（AC5）** 的空白工程骨架，复制一份即可开始新工程。
 
-当前版本实现：**按键每按一次，舵机角度 +10°（0~180° 循环），OLED 实时显示当前角度。**
+## 用法
 
-## 功能
+1. **复制** 整个 `STM32工程模板` 文件夹，重命名为你的工程名（例如 `PWM驱动直流电机`），放在本仓库根目录下；
+2. 用 **Keil** 打开 `one.uvprojx`；
+3. 在 `User/main.c` 里写代码（当前是空骨架：一个空的 `main()`）；
+4. 编译、下载到 STM32F103C8T6；
+5. 上传到 GitHub：
 
-| 模块 | 实现方式 |
-|---|---|
-| 舵机 | TIM2 通道 1 输出 50 Hz PWM，CCR 对应 0.5~2.5 ms 脉宽，线性映射到 0~180° |
-| 按键 | PB1 上拉输入 + 20 ms 软件消抖，松手时触发一次，角度 +10° |
-| 显示 | 0.96" OLED（SSD1306），软件 I²C 驱动，显示当前角度 |
-
-角度换算：`CCR = angle / 180 * 2000 + 500`，即 20 ms 周期内 0.5~2.5 ms 高电平。
-
-## 硬件接线
-
-| 功能 | STM32 引脚 | 外设 |
-|---|---|---|
-| 舵机信号（橙） | **PA0**（TIM2_CH1） | SG90 等 9 g 舵机 |
-| 按键 | **PB1** | 按键另一端接 GND |
-| OLED SCL | **PB8** | SSD1306 |
-| OLED SDA | **PB9** | SSD1306 |
-| 电源 | 5V / GND | 舵机用 5 V 供电，必须与开发板共地 |
+   ```bash
+   git add 你的工程目录
+   git commit -m "feat: 工程说明"
+   git push
+   ```
 
 ## 目录结构
 
-```
-├─ Start/        启动文件（startup_stm32f10x_md.s）与 CMSIS 内核文件
-├─ Library/      STM32F10x 标准外设库
-├─ User/         main.c、中断服务函数、库配置
-├─ System/       Delay（SysTick 延时）、PWM、定时器等系统级模块
-├─ Hardware/     OLED、按键、舵机、LED、编码器、对射红外、光敏等外设模块
-└─ one.uvprojx   Keil MDK 工程文件
-```
-
-除当前 `main.c` 启用的 OLED / 按键 / 舵机外，工程内还包含 LED、旋转编码器、对射式红外计次、光敏传感器、定时器中断等模块代码，可按需接入。
-
-## 编译与下载
-
-1. 安装 Keil MDK 5.x（需 ARM Compiler 5 / AC5）
-2. 打开 `one.uvprojx`
-3. `F7` 编译，`F8` 下载（ST-Link）
-
-构建产物（`Objects/`、`Listings/`、`DebugConfig/`）已通过 `.gitignore` 排除，克隆后重新编译即可。
-
-## 开发环境
-
-- MCU：STM32F103C8T6（Cortex-M3，64 KB Flash / 20 KB RAM）
-- 外设库：STM32F10x Standard Peripheral Library
-- IDE：Keil MDK 5.40 + ARMCC 5.06 update 5
-- 编辑器：VS Code + Keil Assistant 扩展
+| 目录 | 内容 |
+|---|---|
+| `User/` | `main.c`（入口）、`stm32f10x_conf.h`、中断服务函数 `stm32f10x_it.c/h` |
+| `System/` | 基础驱动：`Delay`（延时）、`PWM`、`tim`、`Timer` |
+| `Hardware/` | 外设驱动：`OLED`（SSD1306 软件 I²C）、`Key`、`LED`、`LightSensor`、`Guangmin`、`Count`、`Encoder`、`Servo` |
+| `Start/` | 启动文件（`startup_stm32f10x_md.s`）、内核文件、`system_stm32f10x.c` |
+| `Library/` | STM32F10x 标准外设库（SPL） |
 
 ## 说明
 
-本项目为学习实践，部分外设驱动参考江协科技（江科大）STM32 入门教程，仅用于学习与交流。
+- 模板**不含 `.git`**，复制后的新工程不会继承任何仓库历史；
+- 复制到本仓库根目录下，`git add` 即可纳入版本管理；
+- 工程文件名是 `one.uvprojx`（Keil 默认）。想改成工程名：重命名 `.uvprojx` 文件，再在 Keil 的 `Options for Target → Target` 标签里改 Target 名称即可；
+- 源文件编码为 **UTF-8**；编译器为 **ARMCC 5**，宏 `USE_STDPERIPH_DRIVER` 已配置好；
+- 编译产物（`Objects/`、`Listings/` 等）已在 `.gitignore` 中忽略，不会上传。
