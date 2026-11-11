@@ -19,6 +19,7 @@ DebugConfig/
 *.iex
 *.sct
 *.Bak
+*.log
 
 # ===== VS Code 本机配置（含绝对路径） =====
 .vscode/c_cpp_properties.json
