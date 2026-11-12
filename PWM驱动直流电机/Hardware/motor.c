@@ -34,6 +34,9 @@ void motor_speed(int8_t speed)
         GPIO_SetBits(GPIOA,GPIO_Pin_5);
         speed = -speed;
     }
-    // Deleted:PWM_SetCompare3(speed);
-    PWM_SetCompare3((uint16_t)speed * 10);   //百分比 × 10 → CCR（ARR=1000）
+    // PWM.c 里 ARR+1 = 2000（PSC=72-1 → 1 MHz，500 Hz），所以 1% = 20 个计数
+    PWM_SetCompare3((uint16_t)speed * 20);   //百分比 × 20 → CCR（ARR=2000）
 }
+
+
+
