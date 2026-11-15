@@ -43,7 +43,7 @@
   * @{
   */
 
-#define EXTI_LINENONE    ((uint32_t)0x00000)  /* No interrupt selected */  /* 未选择任何中断线 */
+#define EXTI_LINENONE    ((uint32_t)0x00000) /* 未选择任何中断线 */ /* No interrupt selected */
 
 /**
   * @}

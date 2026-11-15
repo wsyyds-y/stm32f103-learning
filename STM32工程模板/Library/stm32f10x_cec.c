@@ -70,8 +70,8 @@
 #define TEOM_BitNumber              0x01  /* TEOM位在CSR寄存器中的位号 */
 #define CSR_TEOM_BB                 (PERIPH_BB_BASE + (CSR_OFFSET * 32) + (TEOM_BitNumber * 4))  /* TEOM位的位带别名地址 */
   
-#define CFGR_CLEAR_Mask            (uint8_t)(0xF3)        /* CFGR register Mask */  /* CFGR寄存器BTEM/BPEM位掩码 */
-#define FLAG_Mask                  ((uint32_t)0x00FFFFFF) /* CEC FLAG mask */  /* CEC标志位掩码 */
+#define CFGR_CLEAR_Mask            (uint8_t)(0xF3) /* CFGR寄存器BTEM/BPEM位掩码 */ /* CFGR register Mask */
+#define FLAG_Mask                  ((uint32_t)0x00FFFFFF) /* CEC标志位掩码 */ /* CEC FLAG mask */
  
 /**
   * @}

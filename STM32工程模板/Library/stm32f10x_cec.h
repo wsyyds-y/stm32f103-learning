@@ -49,12 +49,12 @@
   */ 
 typedef struct
 {
+  /* CEC位时序错误模式 */
   uint16_t CEC_BitTimingMode; /*!< Configures the CEC Bit Timing Error Mode. 
                                This parameter can be a value of @ref CEC_BitTiming_Mode */
-  /* CEC位时序错误模式 */
+  /* CEC位周期错误模式 */
   uint16_t CEC_BitPeriodMode; /*!< Configures the CEC Bit Period Error Mode. 
                                This parameter can be a value of @ref CEC_BitPeriod_Mode */
-  /* CEC位周期错误模式 */
 }CEC_InitTypeDef;
 
 /**
@@ -68,8 +68,8 @@ typedef struct
 /** @defgroup CEC_BitTiming_Mode 
   * @{
   */ 
-#define CEC_BitTimingStdMode                    ((uint16_t)0x00) /*!< Bit timing error Standard Mode */  /* 位时序错误标准模式 */
-#define CEC_BitTimingErrFreeMode                CEC_CFGR_BTEM   /*!< Bit timing error Free Mode */  /* 位时序错误自由模式 */
+#define CEC_BitTimingStdMode                    ((uint16_t)0x00) /* 位时序错误标准模式 */ /*!< Bit timing error Standard Mode */
+#define CEC_BitTimingErrFreeMode                CEC_CFGR_BTEM /* 位时序错误自由模式 */ /*!< Bit timing error Free Mode */
 
 #define IS_CEC_BIT_TIMING_ERROR_MODE(MODE) (((MODE) == CEC_BitTimingStdMode) || \
                                             ((MODE) == CEC_BitTimingErrFreeMode))
@@ -80,8 +80,8 @@ typedef struct
 /** @defgroup CEC_BitPeriod_Mode 
   * @{
   */ 
-#define CEC_BitPeriodStdMode                    ((uint16_t)0x00) /*!< Bit period error Standard Mode */  /* 位周期错误标准模式 */
-#define CEC_BitPeriodFlexibleMode                CEC_CFGR_BPEM   /*!< Bit period error Flexible Mode */  /* 位周期错误灵活模式 */
+#define CEC_BitPeriodStdMode                    ((uint16_t)0x00) /* 位周期错误标准模式 */ /*!< Bit period error Standard Mode */
+#define CEC_BitPeriodFlexibleMode                CEC_CFGR_BPEM /* 位周期错误灵活模式 */ /*!< Bit period error Flexible Mode */
 
 #define IS_CEC_BIT_PERIOD_ERROR_MODE(MODE) (((MODE) == CEC_BitPeriodStdMode) || \
                                             ((MODE) == CEC_BitPeriodFlexibleMode))

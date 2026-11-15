@@ -49,36 +49,36 @@
   
 typedef struct
 {
+  /* 配置USART通信波特率 */
   uint32_t USART_BaudRate;            /*!< This member configures the USART communication baud rate.
                                            The baud rate is computed using the following formula:
                                             - IntegerDivider = ((PCLKx) / (16 * (USART_InitStruct->USART_BaudRate)))
                                             - FractionalDivider = ((IntegerDivider - ((u32) IntegerDivider)) * 16) + 0.5 */
-  /* 配置USART通信波特率 */
 
+  /* 一帧中的数据位长度(8位或9位) */
   uint16_t USART_WordLength;          /*!< Specifies the number of data bits transmitted or received in a frame.
                                            This parameter can be a value of @ref USART_Word_Length */
-  /* 一帧中的数据位长度(8位或9位) */
 
+  /* 停止位个数 */
   uint16_t USART_StopBits;            /*!< Specifies the number of stop bits transmitted.
                                            This parameter can be a value of @ref USART_Stop_Bits */
-  /* 停止位个数 */
 
+  /* 校验模式(无/奇/偶校验) */
   uint16_t USART_Parity;              /*!< Specifies the parity mode.
                                            This parameter can be a value of @ref USART_Parity
                                            @note When parity is enabled, the computed parity is inserted
                                                  at the MSB position of the transmitted data (9th bit when
                                                  the word length is set to 9 data bits; 8th bit when the
                                                   word length is set to 8 data bits). */
-  /* 校验模式(无/奇/偶校验) */
  
+  /* 接收或发送模式 */
   uint16_t USART_Mode;                /*!< Specifies wether the Receive or Transmit mode is enabled or disabled.
                                            This parameter can be a value of @ref USART_Mode */
-  /* 接收或发送模式 */
 
+  /* 硬件流控制模式 */
   uint16_t USART_HardwareFlowControl; /*!< Specifies wether the hardware flow control mode is enabled
                                            or disabled.
                                            This parameter can be a value of @ref USART_Hardware_Flow_Control */
-  /* 硬件流控制模式 */
 } USART_InitTypeDef;
 
 /** 
@@ -88,22 +88,22 @@ typedef struct
 typedef struct
 {
 
+  /* 同步时钟使能或关闭 */
   uint16_t USART_Clock;   /*!< Specifies whether the USART clock is enabled or disabled.
                                This parameter can be a value of @ref USART_Clock */
-  /* 同步时钟使能或关闭 */
 
+  /* 串行时钟极性 */
   uint16_t USART_CPOL;    /*!< Specifies the steady state value of the serial clock.
                                This parameter can be a value of @ref USART_Clock_Polarity */
-  /* 串行时钟极性 */
 
+  /* 数据采样对应的时钟边沿 */
   uint16_t USART_CPHA;    /*!< Specifies the clock transition on which the bit capture is made.
                                This parameter can be a value of @ref USART_Clock_Phase */
-  /* 数据采样对应的时钟边沿 */
 
+  /* 末位是否在SCLK上输出时钟脉冲 */
   uint16_t USART_LastBit; /*!< Specifies whether the clock pulse corresponding to the last transmitted
                                data bit (MSB) has to be output on the SCLK pin in synchronous mode.
                                This parameter can be a value of @ref USART_Last_Bit */
-  /* 末位是否在SCLK上输出时钟脉冲 */
 } USART_ClockInitTypeDef;
 
 /**

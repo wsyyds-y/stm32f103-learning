@@ -49,34 +49,34 @@
 
 typedef struct
 {
+  /* ADC工作模式 */
   uint32_t ADC_Mode;                      /*!< Configures the ADC to operate in independent or
                                                dual mode. 
                                                This parameter can be a value of @ref ADC_mode */
-  /* ADC工作模式 */
 
+  /* 扫描/单次转换模式 */
   FunctionalState ADC_ScanConvMode;       /*!< Specifies whether the conversion is performed in
                                                Scan (multichannels) or Single (one channel) mode.
                                                This parameter can be set to ENABLE or DISABLE */
-  /* 扫描/单次转换模式 */
 
+  /* 连续/单次转换模式 */
   FunctionalState ADC_ContinuousConvMode; /*!< Specifies whether the conversion is performed in
                                                Continuous or Single mode.
                                                This parameter can be set to ENABLE or DISABLE. */
-  /* 连续/单次转换模式 */
 
+  /* 规则通道外部触发源 */
   uint32_t ADC_ExternalTrigConv;          /*!< Defines the external trigger used to start the analog
                                                to digital conversion of regular channels. This parameter
                                                can be a value of @ref ADC_external_trigger_sources_for_regular_channels_conversion */
-  /* 规则通道外部触发源 */
 
+  /* 数据对齐方式 */
   uint32_t ADC_DataAlign;                 /*!< Specifies whether the ADC data alignment is left or right.
                                                This parameter can be a value of @ref ADC_data_align */
-  /* 数据对齐方式 */
 
+  /* 规则转换通道数 */
   uint8_t ADC_NbrOfChannel;               /*!< Specifies the number of ADC channels that will be converted
                                                using the sequencer for regular channel group.
                                                This parameter must range from 1 to 16. */
-  /* 规则转换通道数 */
 }ADC_InitTypeDef;
 /**
   * @}
@@ -126,22 +126,22 @@ typedef struct
   * @{
   */
 
-#define ADC_ExternalTrigConv_T1_CC1                ((uint32_t)0x00000000) /*!< For ADC1 and ADC2 */  /* 定时器1 CC1触发 */
-#define ADC_ExternalTrigConv_T1_CC2                ((uint32_t)0x00020000) /*!< For ADC1 and ADC2 */  /* 定时器1 CC2触发 */
-#define ADC_ExternalTrigConv_T2_CC2                ((uint32_t)0x00060000) /*!< For ADC1 and ADC2 */  /* 定时器2 CC2触发 */
-#define ADC_ExternalTrigConv_T3_TRGO               ((uint32_t)0x00080000) /*!< For ADC1 and ADC2 */  /* 定时器3 TRGO触发 */
-#define ADC_ExternalTrigConv_T4_CC4                ((uint32_t)0x000A0000) /*!< For ADC1 and ADC2 */  /* 定时器4 CC4触发 */
-#define ADC_ExternalTrigConv_Ext_IT11_TIM8_TRGO    ((uint32_t)0x000C0000) /*!< For ADC1 and ADC2 */  /* 外部中断线11/定时器8 TRGO触发 */
+#define ADC_ExternalTrigConv_T1_CC1                ((uint32_t)0x00000000) /* 定时器1 CC1触发 */ /*!< For ADC1 and ADC2 */
+#define ADC_ExternalTrigConv_T1_CC2                ((uint32_t)0x00020000) /* 定时器1 CC2触发 */ /*!< For ADC1 and ADC2 */
+#define ADC_ExternalTrigConv_T2_CC2                ((uint32_t)0x00060000) /* 定时器2 CC2触发 */ /*!< For ADC1 and ADC2 */
+#define ADC_ExternalTrigConv_T3_TRGO               ((uint32_t)0x00080000) /* 定时器3 TRGO触发 */ /*!< For ADC1 and ADC2 */
+#define ADC_ExternalTrigConv_T4_CC4                ((uint32_t)0x000A0000) /* 定时器4 CC4触发 */ /*!< For ADC1 and ADC2 */
+#define ADC_ExternalTrigConv_Ext_IT11_TIM8_TRGO    ((uint32_t)0x000C0000) /* 外部中断线11/定时器8 TRGO触发 */ /*!< For ADC1 and ADC2 */
 
-#define ADC_ExternalTrigConv_T1_CC3                ((uint32_t)0x00040000) /*!< For ADC1, ADC2 and ADC3 */  /* 定时器1 CC3触发 */
-#define ADC_ExternalTrigConv_None                  ((uint32_t)0x000E0000) /*!< For ADC1, ADC2 and ADC3 */  /* 不使用外部触发 */
+#define ADC_ExternalTrigConv_T1_CC3                ((uint32_t)0x00040000) /* 定时器1 CC3触发 */ /*!< For ADC1, ADC2 and ADC3 */
+#define ADC_ExternalTrigConv_None                  ((uint32_t)0x000E0000) /* 不使用外部触发 */ /*!< For ADC1, ADC2 and ADC3 */
 
-#define ADC_ExternalTrigConv_T3_CC1                ((uint32_t)0x00000000) /*!< For ADC3 only */  /* 定时器3 CC1触发 */
-#define ADC_ExternalTrigConv_T2_CC3                ((uint32_t)0x00020000) /*!< For ADC3 only */  /* 定时器2 CC3触发 */
-#define ADC_ExternalTrigConv_T8_CC1                ((uint32_t)0x00060000) /*!< For ADC3 only */  /* 定时器8 CC1触发 */
-#define ADC_ExternalTrigConv_T8_TRGO               ((uint32_t)0x00080000) /*!< For ADC3 only */  /* 定时器8 TRGO触发 */
-#define ADC_ExternalTrigConv_T5_CC1                ((uint32_t)0x000A0000) /*!< For ADC3 only */  /* 定时器5 CC1触发 */
-#define ADC_ExternalTrigConv_T5_CC3                ((uint32_t)0x000C0000) /*!< For ADC3 only */  /* 定时器5 CC3触发 */
+#define ADC_ExternalTrigConv_T3_CC1                ((uint32_t)0x00000000) /* 定时器3 CC1触发 */ /*!< For ADC3 only */
+#define ADC_ExternalTrigConv_T2_CC3                ((uint32_t)0x00020000) /* 定时器2 CC3触发 */ /*!< For ADC3 only */
+#define ADC_ExternalTrigConv_T8_CC1                ((uint32_t)0x00060000) /* 定时器8 CC1触发 */ /*!< For ADC3 only */
+#define ADC_ExternalTrigConv_T8_TRGO               ((uint32_t)0x00080000) /* 定时器8 TRGO触发 */ /*!< For ADC3 only */
+#define ADC_ExternalTrigConv_T5_CC1                ((uint32_t)0x000A0000) /* 定时器5 CC1触发 */ /*!< For ADC3 only */
+#define ADC_ExternalTrigConv_T5_CC3                ((uint32_t)0x000C0000) /* 定时器5 CC3触发 */ /*!< For ADC3 only */
 
 #define IS_ADC_EXT_TRIG(REGTRIG) (((REGTRIG) == ADC_ExternalTrigConv_T1_CC1) || \
                                   ((REGTRIG) == ADC_ExternalTrigConv_T1_CC2) || \
@@ -240,21 +240,21 @@ typedef struct
   * @{
   */
 
-#define ADC_ExternalTrigInjecConv_T2_TRGO           ((uint32_t)0x00002000) /*!< For ADC1 and ADC2 */  /* 定时器2 TRGO触发 */
-#define ADC_ExternalTrigInjecConv_T2_CC1            ((uint32_t)0x00003000) /*!< For ADC1 and ADC2 */  /* 定时器2 CC1触发 */
-#define ADC_ExternalTrigInjecConv_T3_CC4            ((uint32_t)0x00004000) /*!< For ADC1 and ADC2 */  /* 定时器3 CC4触发 */
-#define ADC_ExternalTrigInjecConv_T4_TRGO           ((uint32_t)0x00005000) /*!< For ADC1 and ADC2 */  /* 定时器4 TRGO触发 */
-#define ADC_ExternalTrigInjecConv_Ext_IT15_TIM8_CC4 ((uint32_t)0x00006000) /*!< For ADC1 and ADC2 */  /* 外部中断线15/定时器8 CC4触发 */
+#define ADC_ExternalTrigInjecConv_T2_TRGO           ((uint32_t)0x00002000) /* 定时器2 TRGO触发 */ /*!< For ADC1 and ADC2 */
+#define ADC_ExternalTrigInjecConv_T2_CC1            ((uint32_t)0x00003000) /* 定时器2 CC1触发 */ /*!< For ADC1 and ADC2 */
+#define ADC_ExternalTrigInjecConv_T3_CC4            ((uint32_t)0x00004000) /* 定时器3 CC4触发 */ /*!< For ADC1 and ADC2 */
+#define ADC_ExternalTrigInjecConv_T4_TRGO           ((uint32_t)0x00005000) /* 定时器4 TRGO触发 */ /*!< For ADC1 and ADC2 */
+#define ADC_ExternalTrigInjecConv_Ext_IT15_TIM8_CC4 ((uint32_t)0x00006000) /* 外部中断线15/定时器8 CC4触发 */ /*!< For ADC1 and ADC2 */
 
-#define ADC_ExternalTrigInjecConv_T1_TRGO           ((uint32_t)0x00000000) /*!< For ADC1, ADC2 and ADC3 */  /* 定时器1 TRGO触发 */
-#define ADC_ExternalTrigInjecConv_T1_CC4            ((uint32_t)0x00001000) /*!< For ADC1, ADC2 and ADC3 */  /* 定时器1 CC4触发 */
-#define ADC_ExternalTrigInjecConv_None              ((uint32_t)0x00007000) /*!< For ADC1, ADC2 and ADC3 */  /* 不使用外部触发 */
+#define ADC_ExternalTrigInjecConv_T1_TRGO           ((uint32_t)0x00000000) /* 定时器1 TRGO触发 */ /*!< For ADC1, ADC2 and ADC3 */
+#define ADC_ExternalTrigInjecConv_T1_CC4            ((uint32_t)0x00001000) /* 定时器1 CC4触发 */ /*!< For ADC1, ADC2 and ADC3 */
+#define ADC_ExternalTrigInjecConv_None              ((uint32_t)0x00007000) /* 不使用外部触发 */ /*!< For ADC1, ADC2 and ADC3 */
 
-#define ADC_ExternalTrigInjecConv_T4_CC3            ((uint32_t)0x00002000) /*!< For ADC3 only */  /* 定时器4 CC3触发 */
-#define ADC_ExternalTrigInjecConv_T8_CC2            ((uint32_t)0x00003000) /*!< For ADC3 only */  /* 定时器8 CC2触发 */
-#define ADC_ExternalTrigInjecConv_T8_CC4            ((uint32_t)0x00004000) /*!< For ADC3 only */  /* 定时器8 CC4触发 */
-#define ADC_ExternalTrigInjecConv_T5_TRGO           ((uint32_t)0x00005000) /*!< For ADC3 only */  /* 定时器5 TRGO触发 */
-#define ADC_ExternalTrigInjecConv_T5_CC4            ((uint32_t)0x00006000) /*!< For ADC3 only */  /* 定时器5 CC4触发 */
+#define ADC_ExternalTrigInjecConv_T4_CC3            ((uint32_t)0x00002000) /* 定时器4 CC3触发 */ /*!< For ADC3 only */
+#define ADC_ExternalTrigInjecConv_T8_CC2            ((uint32_t)0x00003000) /* 定时器8 CC2触发 */ /*!< For ADC3 only */
+#define ADC_ExternalTrigInjecConv_T8_CC4            ((uint32_t)0x00004000) /* 定时器8 CC4触发 */ /*!< For ADC3 only */
+#define ADC_ExternalTrigInjecConv_T5_TRGO           ((uint32_t)0x00005000) /* 定时器5 TRGO触发 */ /*!< For ADC3 only */
+#define ADC_ExternalTrigInjecConv_T5_CC4            ((uint32_t)0x00006000) /* 定时器5 CC4触发 */ /*!< For ADC3 only */
 
 #define IS_ADC_EXT_INJEC_TRIG(INJTRIG) (((INJTRIG) == ADC_ExternalTrigInjecConv_T1_TRGO) || \
                                         ((INJTRIG) == ADC_ExternalTrigInjecConv_T1_CC4) || \

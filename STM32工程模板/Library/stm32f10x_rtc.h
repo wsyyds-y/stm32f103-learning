@@ -55,9 +55,9 @@
   * @{
   */
 
-#define RTC_IT_OW            ((uint16_t)0x0004)  /*!< Overflow interrupt */  /* 溢出中断 */
-#define RTC_IT_ALR           ((uint16_t)0x0002)  /*!< Alarm interrupt */  /* 闹钟中断 */
-#define RTC_IT_SEC           ((uint16_t)0x0001)  /*!< Second interrupt */  /* 秒中断 */
+#define RTC_IT_OW            ((uint16_t)0x0004) /* 溢出中断 */ /*!< Overflow interrupt */
+#define RTC_IT_ALR           ((uint16_t)0x0002) /* 闹钟中断 */ /*!< Alarm interrupt */
+#define RTC_IT_SEC           ((uint16_t)0x0001) /* 秒中断 */ /*!< Second interrupt */
 #define IS_RTC_IT(IT) ((((IT) & (uint16_t)0xFFF8) == 0x00) && ((IT) != 0x00))
 #define IS_RTC_GET_IT(IT) (((IT) == RTC_IT_OW) || ((IT) == RTC_IT_ALR) || \
                            ((IT) == RTC_IT_SEC))
@@ -69,11 +69,11 @@
   * @{
   */
 
-#define RTC_FLAG_RTOFF       ((uint16_t)0x0020)  /*!< RTC Operation OFF flag */  /* RTC操作完成标志 */
-#define RTC_FLAG_RSF         ((uint16_t)0x0008)  /*!< Registers Synchronized flag */  /* 寄存器同步标志 */
-#define RTC_FLAG_OW          ((uint16_t)0x0004)  /*!< Overflow flag */  /* 溢出标志 */
-#define RTC_FLAG_ALR         ((uint16_t)0x0002)  /*!< Alarm flag */  /* 闹钟标志 */
-#define RTC_FLAG_SEC         ((uint16_t)0x0001)  /*!< Second flag */  /* 秒标志 */
+#define RTC_FLAG_RTOFF       ((uint16_t)0x0020) /* RTC操作完成标志 */ /*!< RTC Operation OFF flag */
+#define RTC_FLAG_RSF         ((uint16_t)0x0008) /* 寄存器同步标志 */ /*!< Registers Synchronized flag */
+#define RTC_FLAG_OW          ((uint16_t)0x0004) /* 溢出标志 */ /*!< Overflow flag */
+#define RTC_FLAG_ALR         ((uint16_t)0x0002) /* 闹钟标志 */ /*!< Alarm flag */
+#define RTC_FLAG_SEC         ((uint16_t)0x0001) /* 秒标志 */ /*!< Second flag */
 #define IS_RTC_CLEAR_FLAG(FLAG) ((((FLAG) & (uint16_t)0xFFF0) == 0x00) && ((FLAG) != 0x00))
 #define IS_RTC_GET_FLAG(FLAG) (((FLAG) == RTC_FLAG_RTOFF) || ((FLAG) == RTC_FLAG_RSF) || \
                                ((FLAG) == RTC_FLAG_OW) || ((FLAG) == RTC_FLAG_ALR) || \

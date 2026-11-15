@@ -41,8 +41,8 @@
 /** @defgroup RTC_Private_Defines
   * @{
   */
-#define RTC_LSB_MASK     ((uint32_t)0x0000FFFF)  /*!< RTC LSB Mask */  /* RTC计数值低16位掩码 */
-#define PRLH_MSB_MASK    ((uint32_t)0x000F0000)  /*!< RTC Prescaler MSB Mask */  /* RTC预分频值高位掩码 */
+#define RTC_LSB_MASK     ((uint32_t)0x0000FFFF) /* RTC计数值低16位掩码 */ /*!< RTC LSB Mask */
+#define PRLH_MSB_MASK    ((uint32_t)0x000F0000) /* RTC预分频值高位掩码 */ /*!< RTC Prescaler MSB Mask */
 
 /**
   * @}

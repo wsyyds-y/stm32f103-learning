@@ -45,81 +45,81 @@
 
 typedef struct
 {
+  /* 采样时钟边沿选择 */
   uint32_t SDIO_ClockEdge;            /*!< Specifies the clock transition on which the bit capture is made.
                                            This parameter can be a value of @ref SDIO_Clock_Edge */
-  /* 采样时钟边沿选择 */
 
+  /* 时钟分频旁路使能 */
   uint32_t SDIO_ClockBypass;          /*!< Specifies whether the SDIO Clock divider bypass is
                                            enabled or disabled.
                                            This parameter can be a value of @ref SDIO_Clock_Bypass */
-  /* 时钟分频旁路使能 */
 
+  /* 空闲时时钟输出节能 */
   uint32_t SDIO_ClockPowerSave;       /*!< Specifies whether SDIO Clock output is enabled or
                                            disabled when the bus is idle.
                                            This parameter can be a value of @ref SDIO_Clock_Power_Save */
-  /* 空闲时时钟输出节能 */
 
+  /* SDIO总线宽度 */
   uint32_t SDIO_BusWide;              /*!< Specifies the SDIO bus width.
                                            This parameter can be a value of @ref SDIO_Bus_Wide */
-  /* SDIO总线宽度 */
 
+  /* 硬件流控制使能 */
   uint32_t SDIO_HardwareFlowControl;  /*!< Specifies whether the SDIO hardware flow control is enabled or disabled.
                                            This parameter can be a value of @ref SDIO_Hardware_Flow_Control */
-  /* 硬件流控制使能 */
 
+  /* 时钟分频系数 */
   uint8_t SDIO_ClockDiv;              /*!< Specifies the clock frequency of the SDIO controller.
                                            This parameter can be a value between 0x00 and 0xFF. */
-  /* 时钟分频系数 */
                                            
 } SDIO_InitTypeDef;
 
 typedef struct
 {
+  /* 命令参数 */
   uint32_t SDIO_Argument;  /*!< Specifies the SDIO command argument which is sent
                                 to a card as part of a command message. If a command
                                 contains an argument, it must be loaded into this register
                                 before writing the command to the command register */
-  /* 命令参数 */
 
-  uint32_t SDIO_CmdIndex;  /*!< Specifies the SDIO command index. It must be lower than 0x40. */  /* 命令索引 */
+  uint32_t SDIO_CmdIndex; /* 命令索引 */ /*!< Specifies the SDIO command index. It must be lower than 0x40. */
 
+  /* 响应类型 */
   uint32_t SDIO_Response;  /*!< Specifies the SDIO response type.
                                 This parameter can be a value of @ref SDIO_Response_Type */
-  /* 响应类型 */
 
+  /* 等待中断或结束请求 */
   uint32_t SDIO_Wait;      /*!< Specifies whether SDIO wait-for-interrupt request is enabled or disabled.
                                 This parameter can be a value of @ref SDIO_Wait_Interrupt_State */
-  /* 等待中断或结束请求 */
 
+  /* 命令路径状态机使能 */
   uint32_t SDIO_CPSM;      /*!< Specifies whether SDIO Command path state machine (CPSM)
                                 is enabled or disabled.
                                 This parameter can be a value of @ref SDIO_CPSM_State */
-  /* 命令路径状态机使能 */
 } SDIO_CmdInitTypeDef;
 
 typedef struct
 {
-  uint32_t SDIO_DataTimeOut;    /*!< Specifies the data timeout period in card bus clock periods. */  /* 数据超时时间 */
+  uint32_t SDIO_DataTimeOut; /* 数据超时时间 */ /*!< Specifies the data timeout period in card bus clock periods. */
 
-  uint32_t SDIO_DataLength;     /*!< Specifies the number of data bytes to be transferred. */  /* 传输数据字节数 */
+  uint32_t SDIO_DataLength; /* 传输数据字节数 */ /*!< Specifies the number of data bytes to be transferred. */
  
+  /* 数据块大小 */
   uint32_t SDIO_DataBlockSize;  /*!< Specifies the data block size for block transfer.
                                      This parameter can be a value of @ref SDIO_Data_Block_Size */
-  /* 数据块大小 */
  
+  /* 数据传输方向 */
   uint32_t SDIO_TransferDir;    /*!< Specifies the data transfer direction, whether the transfer
                                      is a read or write.
                                      This parameter can be a value of @ref SDIO_Transfer_Direction */
-  /* 数据传输方向 */
  
+  /* 流或块传输模式 */
   uint32_t SDIO_TransferMode;   /*!< Specifies whether data transfer is in stream or block mode.
                                      This parameter can be a value of @ref SDIO_Transfer_Type */
-  /* 流或块传输模式 */
  
+  /* 数据路径状态机使能 */
   uint32_t SDIO_DPSM;           /*!< Specifies whether SDIO Data path state machine (DPSM)
                                      is enabled or disabled.
                                      This parameter can be a value of @ref SDIO_DPSM_State */
-  /* 数据路径状态机使能 */
 } SDIO_DataInitTypeDef;
 
 /**
@@ -264,9 +264,9 @@ typedef struct
   * @{
   */
 
-#define SDIO_Wait_No                        ((uint32_t)0x00000000) /*!< SDIO No Wait, TimeOut is enabled */  /* 无等待 */
-#define SDIO_Wait_IT                        ((uint32_t)0x00000100) /*!< SDIO Wait Interrupt Request */  /* 等待中断请求 */
-#define SDIO_Wait_Pend                      ((uint32_t)0x00000200) /*!< SDIO Wait End of transfer */  /* 等待传输结束 */
+#define SDIO_Wait_No                        ((uint32_t)0x00000000) /* 无等待 */ /*!< SDIO No Wait, TimeOut is enabled */
+#define SDIO_Wait_IT                        ((uint32_t)0x00000100) /* 等待中断请求 */ /*!< SDIO Wait Interrupt Request */
+#define SDIO_Wait_Pend                      ((uint32_t)0x00000200) /* 等待传输结束 */ /*!< SDIO Wait End of transfer */
 #define IS_SDIO_WAIT(WAIT) (((WAIT) == SDIO_Wait_No) || ((WAIT) == SDIO_Wait_IT) || \
                             ((WAIT) == SDIO_Wait_Pend))
 /**

@@ -49,35 +49,36 @@
 
 typedef struct
 {
+  /* 地址建立时间（HCLK周期数） */
   uint32_t FSMC_AddressSetupTime;       /*!< Defines the number of HCLK cycles to configure
                                              the duration of the address setup time. 
                                              This parameter can be a value between 0 and 0xF.
                                              @note: It is not used with synchronous NOR Flash memories. */
-  /* 地址建立时间（HCLK周期数） */
 
+  /* 地址保持时间（HCLK周期数） */
   uint32_t FSMC_AddressHoldTime;        /*!< Defines the number of HCLK cycles to configure
                                              the duration of the address hold time.
                                              This parameter can be a value between 0 and 0xF. 
                                              @note: It is not used with synchronous NOR Flash memories.*/
-  /* 地址保持时间（HCLK周期数） */
 
+  /* 数据建立时间（HCLK周期数） */
   uint32_t FSMC_DataSetupTime;          /*!< Defines the number of HCLK cycles to configure
                                              the duration of the data setup time.
                                              This parameter can be a value between 0 and 0xFF.
                                              @note: It is used for SRAMs, ROMs and asynchronous multiplexed NOR Flash memories. */
-  /* 数据建立时间（HCLK周期数） */
 
+  /* 总线周转时间（HCLK周期数） */
   uint32_t FSMC_BusTurnAroundDuration;  /*!< Defines the number of HCLK cycles to configure
                                              the duration of the bus turnaround.
                                              This parameter can be a value between 0 and 0xF.
                                              @note: It is only used for multiplexed NOR Flash memories. */
-  /* 总线周转时间（HCLK周期数） */
 
+  /* CLK时钟输出分频系数 */
   uint32_t FSMC_CLKDivision;            /*!< Defines the period of CLK clock output signal, expressed in number of HCLK cycles.
                                              This parameter can be a value between 1 and 0xF.
                                              @note: This parameter is not used for asynchronous NOR Flash, SRAM or ROM accesses. */
-  /* CLK时钟输出分频系数 */
 
+  /* 数据延迟（存储器时钟周期数） */
   uint32_t FSMC_DataLatency;            /*!< Defines the number of memory clock cycles to issue
                                              to the memory before getting the first data.
                                              The value of this parameter depends on the memory type as shown below:
@@ -85,11 +86,10 @@ typedef struct
                                               - It is don't care in asynchronous NOR, SRAM or ROM accesses
                                               - It may assume a value between 0 and 0xF in NOR Flash memories
                                                 with synchronous burst mode enable */
-  /* 数据延迟（存储器时钟周期数） */
 
+  /* 异步访问模式 */
   uint32_t FSMC_AccessMode;             /*!< Specifies the asynchronous access mode. 
                                              This parameter can be a value of @ref FSMC_Access_Mode */
-  /* 异步访问模式 */
 }FSMC_NORSRAMTimingInitTypeDef;
 
 /** 
@@ -98,70 +98,70 @@ typedef struct
 
 typedef struct
 {
+  /* 要使用的NOR/SRAM存储块 */
   uint32_t FSMC_Bank;                /*!< Specifies the NOR/SRAM memory bank that will be used.
                                           This parameter can be a value of @ref FSMC_NORSRAM_Bank */
-  /* 要使用的NOR/SRAM存储块 */
 
+  /* 地址/数据总线复用使能 */
   uint32_t FSMC_DataAddressMux;      /*!< Specifies whether the address and data values are
                                           multiplexed on the databus or not. 
                                           This parameter can be a value of @ref FSMC_Data_Address_Bus_Multiplexing */
-  /* 地址/数据总线复用使能 */
 
+  /* 外部存储器类型 */
   uint32_t FSMC_MemoryType;          /*!< Specifies the type of external memory attached to
                                           the corresponding memory bank.
                                           This parameter can be a value of @ref FSMC_Memory_Type */
-  /* 外部存储器类型 */
 
+  /* 外部存储器数据宽度 */
   uint32_t FSMC_MemoryDataWidth;     /*!< Specifies the external memory device width.
                                           This parameter can be a value of @ref FSMC_Data_Width */
-  /* 外部存储器数据宽度 */
 
+  /* 突发访问模式使能 */
   uint32_t FSMC_BurstAccessMode;     /*!< Enables or disables the burst access mode for Flash memory,
                                           valid only with synchronous burst Flash memories.
                                           This parameter can be a value of @ref FSMC_Burst_Access_Mode */
-  /* 突发访问模式使能 */
                                        
+  /* 异步传输等待信号使能 */
   uint32_t FSMC_AsynchronousWait;     /*!< Enables or disables wait signal during asynchronous transfers,
                                           valid only with asynchronous Flash memories.
                                           This parameter can be a value of @ref FSMC_AsynchronousWait */
-  /* 异步传输等待信号使能 */
 
+  /* 等待信号极性 */
   uint32_t FSMC_WaitSignalPolarity;  /*!< Specifies the wait signal polarity, valid only when accessing
                                           the Flash memory in burst mode.
                                           This parameter can be a value of @ref FSMC_Wait_Signal_Polarity */
-  /* 等待信号极性 */
 
+  /* 回卷突发模式使能 */
   uint32_t FSMC_WrapMode;            /*!< Enables or disables the Wrapped burst access mode for Flash
                                           memory, valid only when accessing Flash memories in burst mode.
                                           This parameter can be a value of @ref FSMC_Wrap_Mode */
-  /* 回卷突发模式使能 */
 
+  /* 等待信号有效时机 */
   uint32_t FSMC_WaitSignalActive;    /*!< Specifies if the wait signal is asserted by the memory one
                                           clock cycle before the wait state or during the wait state,
                                           valid only when accessing memories in burst mode. 
                                           This parameter can be a value of @ref FSMC_Wait_Timing */
-  /* 等待信号有效时机 */
 
+  /* 写操作使能 */
   uint32_t FSMC_WriteOperation;      /*!< Enables or disables the write operation in the selected bank by the FSMC. 
                                           This parameter can be a value of @ref FSMC_Write_Operation */
-  /* 写操作使能 */
 
+  /* 等待信号使能 */
   uint32_t FSMC_WaitSignal;          /*!< Enables or disables the wait-state insertion via wait
                                           signal, valid for Flash memory access in burst mode. 
                                           This parameter can be a value of @ref FSMC_Wait_Signal */
-  /* 等待信号使能 */
 
+  /* 扩展模式使能 */
   uint32_t FSMC_ExtendedMode;        /*!< Enables or disables the extended mode.
                                           This parameter can be a value of @ref FSMC_Extended_Mode */
-  /* 扩展模式使能 */
 
+  /* 写突发使能 */
   uint32_t FSMC_WriteBurst;          /*!< Enables or disables the write burst operation.
                                           This parameter can be a value of @ref FSMC_Write_Burst */
-  /* 写突发使能 */ 
 
-  FSMC_NORSRAMTimingInitTypeDef* FSMC_ReadWriteTimingStruct; /*!< Timing Parameters for write and read access if the  ExtendedMode is not used*/  /* 读写共用的时序参数指针 */  
+  FSMC_NORSRAMTimingInitTypeDef* FSMC_ReadWriteTimingStruct; /* 读写共用的时序参数指针 */ /*!< Timing Parameters for write and read access if the  ExtendedMode is not used*/
 
-  FSMC_NORSRAMTimingInitTypeDef* FSMC_WriteTimingStruct;     /*!< Timing Parameters for write access if the  ExtendedMode is used*/  /* 扩展模式下的写时序参数指针 */      
+  FSMC_NORSRAMTimingInitTypeDef* FSMC_WriteTimingStruct; /* 扩展模式下的写时序参数指针 */ /*!< Timing Parameters for write access if the  ExtendedMode is used*/
 }FSMC_NORSRAMInitTypeDef;
 
 /** 
@@ -170,34 +170,34 @@ typedef struct
 
 typedef struct
 {
+  /* 命令前的地址建立时间 */
   uint32_t FSMC_SetupTime;      /*!< Defines the number of HCLK cycles to setup address before
                                      the command assertion for NAND-Flash read or write access
                                      to common/Attribute or I/O memory space (depending on
                                      the memory space timing to be configured).
                                      This parameter can be a value between 0 and 0xFF.*/
-  /* 命令前的地址建立时间 */
 
+  /* 命令保持时间 */
   uint32_t FSMC_WaitSetupTime;  /*!< Defines the minimum number of HCLK cycles to assert the
                                      command for NAND-Flash read or write access to
                                      common/Attribute or I/O memory space (depending on the
                                      memory space timing to be configured). 
                                      This parameter can be a number between 0x00 and 0xFF */
-  /* 命令保持时间 */
 
+  /* 命令撤销后地址/数据保持时间 */
   uint32_t FSMC_HoldSetupTime;  /*!< Defines the number of HCLK clock cycles to hold address
                                      (and data for write access) after the command deassertion
                                      for NAND-Flash read or write access to common/Attribute
                                      or I/O memory space (depending on the memory space timing
                                      to be configured).
                                      This parameter can be a number between 0x00 and 0xFF */
-  /* 命令撤销后地址/数据保持时间 */
 
+  /* 写操作开始后数据总线高阻时间 */
   uint32_t FSMC_HiZSetupTime;   /*!< Defines the number of HCLK clock cycles during which the
                                      databus is kept in HiZ after the start of a NAND-Flash
                                      write access to common/Attribute or I/O memory space (depending
                                      on the memory space timing to be configured).
                                      This parameter can be a number between 0x00 and 0xFF */
-  /* 写操作开始后数据总线高阻时间 */
 }FSMC_NAND_PCCARDTimingInitTypeDef;
 
 /** 
@@ -206,39 +206,39 @@ typedef struct
 
 typedef struct
 {
+  /* 要使用的NAND存储块 */
   uint32_t FSMC_Bank;              /*!< Specifies the NAND memory bank that will be used.
                                       This parameter can be a value of @ref FSMC_NAND_Bank */
-  /* 要使用的NAND存储块 */
 
+  /* 等待特性使能 */
   uint32_t FSMC_Waitfeature;      /*!< Enables or disables the Wait feature for the NAND Memory Bank.
                                        This parameter can be any value of @ref FSMC_Wait_feature */
-  /* 等待特性使能 */
 
+  /* 外部存储器数据宽度 */
   uint32_t FSMC_MemoryDataWidth;  /*!< Specifies the external memory device width.
                                        This parameter can be any value of @ref FSMC_Data_Width */
-  /* 外部存储器数据宽度 */
 
+  /* ECC计算使能 */
   uint32_t FSMC_ECC;              /*!< Enables or disables the ECC computation.
                                        This parameter can be any value of @ref FSMC_ECC */
-  /* ECC计算使能 */
 
+  /* 扩展ECC页大小 */
   uint32_t FSMC_ECCPageSize;      /*!< Defines the page size for the extended ECC.
                                        This parameter can be any value of @ref FSMC_ECC_Page_Size */
-  /* 扩展ECC页大小 */
 
+  /* CLE低到RE低延时（HCLK周期数） */
   uint32_t FSMC_TCLRSetupTime;    /*!< Defines the number of HCLK cycles to configure the
                                        delay between CLE low and RE low.
                                        This parameter can be a value between 0 and 0xFF. */
-  /* CLE低到RE低延时（HCLK周期数） */
 
+  /* ALE低到RE低延时（HCLK周期数） */
   uint32_t FSMC_TARSetupTime;     /*!< Defines the number of HCLK cycles to configure the
                                        delay between ALE low and RE low.
                                        This parameter can be a number between 0x0 and 0xFF */
-  /* ALE低到RE低延时（HCLK周期数） */ 
 
-  FSMC_NAND_PCCARDTimingInitTypeDef*  FSMC_CommonSpaceTimingStruct;   /*!< FSMC Common Space Timing */  /* 公共空间时序参数指针 */ 
+  FSMC_NAND_PCCARDTimingInitTypeDef*  FSMC_CommonSpaceTimingStruct; /* 公共空间时序参数指针 */ /*!< FSMC Common Space Timing */
 
-  FSMC_NAND_PCCARDTimingInitTypeDef*  FSMC_AttributeSpaceTimingStruct; /*!< FSMC Attribute Space Timing */  /* 属性空间时序参数指针 */
+  FSMC_NAND_PCCARDTimingInitTypeDef*  FSMC_AttributeSpaceTimingStruct; /* 属性空间时序参数指针 */ /*!< FSMC Attribute Space Timing */
 }FSMC_NANDInitTypeDef;
 
 /** 
@@ -247,26 +247,26 @@ typedef struct
 
 typedef struct
 {
+  /* 等待特性使能 */
   uint32_t FSMC_Waitfeature;    /*!< Enables or disables the Wait feature for the Memory Bank.
                                     This parameter can be any value of @ref FSMC_Wait_feature */
-  /* 等待特性使能 */
 
+  /* CLE低到RE低延时（HCLK周期数） */
   uint32_t FSMC_TCLRSetupTime;  /*!< Defines the number of HCLK cycles to configure the
                                      delay between CLE low and RE low.
                                      This parameter can be a value between 0 and 0xFF. */
-  /* CLE低到RE低延时（HCLK周期数） */
 
+  /* ALE低到RE低延时（HCLK周期数） */
   uint32_t FSMC_TARSetupTime;   /*!< Defines the number of HCLK cycles to configure the
                                      delay between ALE low and RE low.
                                      This parameter can be a number between 0x0 and 0xFF */
-  /* ALE低到RE低延时（HCLK周期数） */ 
 
   
-  FSMC_NAND_PCCARDTimingInitTypeDef*  FSMC_CommonSpaceTimingStruct; /*!< FSMC Common Space Timing */  /* 公共空间时序参数指针 */
+  FSMC_NAND_PCCARDTimingInitTypeDef*  FSMC_CommonSpaceTimingStruct; /* 公共空间时序参数指针 */ /*!< FSMC Common Space Timing */
 
-  FSMC_NAND_PCCARDTimingInitTypeDef*  FSMC_AttributeSpaceTimingStruct;  /*!< FSMC Attribute Space Timing */  /* 属性空间时序参数指针 */ 
+  FSMC_NAND_PCCARDTimingInitTypeDef*  FSMC_AttributeSpaceTimingStruct; /* 属性空间时序参数指针 */ /*!< FSMC Attribute Space Timing */
   
-  FSMC_NAND_PCCARDTimingInitTypeDef*  FSMC_IOSpaceTimingStruct; /*!< FSMC IO Space Timing */  /* IO空间时序参数指针 */  
+  FSMC_NAND_PCCARDTimingInitTypeDef*  FSMC_IOSpaceTimingStruct; /* IO空间时序参数指针 */ /*!< FSMC IO Space Timing */
 }FSMC_PCCARDInitTypeDef;
 
 /**

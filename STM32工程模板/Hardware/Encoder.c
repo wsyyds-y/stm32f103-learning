@@ -156,14 +156,13 @@ int16_t Encoder_Get(void)
 {
 
 	int16_t one;              // 临时变量，用来保存"取走"的数值
-	one = Encoder_Count;      // 先取出当前累计的增量
-	Encoder_Count = 0;        // 立刻清零，下一次从 0 重新累计
-	return one; 
-
 	/* 小提示：这两行如果是"取出后、清零前"刚好来了一个中断，
 	 * 那一格就会丢。严格的做法是关中断再操作：
 	 *   __disable_irq(); one = Encoder_Count; Encoder_Count = 0; __enable_irq();
 	 * 现在的写法实验基本看不出问题，先了解有这回事即可 */
+	one = Encoder_Count;      // 先取出当前累计的增量
+	Encoder_Count = 0;        // 立刻清零，下一次从 0 重新累计
+	return one;
 }
 
 

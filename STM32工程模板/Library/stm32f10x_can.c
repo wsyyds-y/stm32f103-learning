@@ -46,13 +46,13 @@
 
 /* CAN Master Control Register bits */
 
-#define MCR_DBF      ((uint32_t)0x00010000) /* software master reset */  /* 软件主复位位 */
+#define MCR_DBF      ((uint32_t)0x00010000) /* 软件主复位位 */ /* software master reset */
 
 /* CAN Mailbox Transmit Request */
-#define TMIDxR_TXRQ  ((uint32_t)0x00000001) /* Transmit mailbox request */  /* 发送邮箱请求位 */
+#define TMIDxR_TXRQ  ((uint32_t)0x00000001) /* 发送邮箱请求位 */ /* Transmit mailbox request */
 
 /* CAN Filter Master Register bits */
-#define FMR_FINIT    ((uint32_t)0x00000001) /* Filter init mode */  /* 过滤器初始化模式位 */
+#define FMR_FINIT    ((uint32_t)0x00000001) /* 过滤器初始化模式位 */ /* Filter init mode */
 
 /* Time out for INAK bit */
 #define INAK_TIMEOUT        ((uint32_t)0x0000FFFF)  /* INAK位等待超时值 */

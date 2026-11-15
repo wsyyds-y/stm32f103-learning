@@ -49,23 +49,23 @@
 
 typedef struct
 {
+  /* 外部触发源选择 */
   uint32_t DAC_Trigger;                      /*!< Specifies the external trigger for the selected DAC channel.
                                                   This parameter can be a value of @ref DAC_trigger_selection */
-  /* 外部触发源选择 */
 
+  /* 波形发生方式选择 */
   uint32_t DAC_WaveGeneration;               /*!< Specifies whether DAC channel noise waves or triangle waves
                                                   are generated, or whether no wave is generated.
                                                   This parameter can be a value of @ref DAC_wave_generation */
-  /* 波形发生方式选择 */
 
+  /* 噪声LFSR掩码或三角波幅度 */
   uint32_t DAC_LFSRUnmask_TriangleAmplitude; /*!< Specifies the LFSR mask for noise wave generation or
                                                   the maximum amplitude triangle generation for the DAC channel. 
                                                   This parameter can be a value of @ref DAC_lfsrunmask_triangleamplitude */
-  /* 噪声LFSR掩码或三角波幅度 */
 
+  /* 输出缓冲器使能或禁用 */
   uint32_t DAC_OutputBuffer;                 /*!< Specifies whether the DAC channel output buffer is enabled or disabled.
                                                   This parameter can be a value of @ref DAC_output_buffer */
-  /* 输出缓冲器使能或禁用 */
 }DAC_InitTypeDef;
 
 /**
@@ -80,21 +80,25 @@ typedef struct
   * @{
   */
 
+/* 无外部触发，写入后自动转换 */
 #define DAC_Trigger_None                   ((uint32_t)0x00000000) /*!< Conversion is automatic once the DAC1_DHRxxxx register 
-                                                                       has been loaded, and not by external trigger */  /* 无外部触发，写入后自动转换 */
-#define DAC_Trigger_T6_TRGO                ((uint32_t)0x00000004) /*!< TIM6 TRGO selected as external conversion trigger for DAC channel */  /* TIM6 TRGO触发 */
+                                                                       has been loaded, and not by external trigger */
+#define DAC_Trigger_T6_TRGO                ((uint32_t)0x00000004) /* TIM6 TRGO触发 */ /*!< TIM6 TRGO selected as external conversion trigger for DAC channel */
+/* TIM8 TRGO触发 */
 #define DAC_Trigger_T8_TRGO                ((uint32_t)0x0000000C) /*!< TIM8 TRGO selected as external conversion trigger for DAC channel
-                                                                       only in High-density devices*/  /* TIM8 TRGO触发 */
+                                                                       only in High-density devices*/
+/* TIM3/TIM8 TRGO触发 */
 #define DAC_Trigger_T3_TRGO                ((uint32_t)0x0000000C) /*!< TIM8 TRGO selected as external conversion trigger for DAC channel
-                                                                       only in Connectivity line, Medium-density and Low-density Value Line devices */  /* TIM3/TIM8 TRGO触发 */
-#define DAC_Trigger_T7_TRGO                ((uint32_t)0x00000014) /*!< TIM7 TRGO selected as external conversion trigger for DAC channel */  /* TIM7 TRGO触发 */
-#define DAC_Trigger_T5_TRGO                ((uint32_t)0x0000001C) /*!< TIM5 TRGO selected as external conversion trigger for DAC channel */  /* TIM5 TRGO触发 */
+                                                                       only in Connectivity line, Medium-density and Low-density Value Line devices */
+#define DAC_Trigger_T7_TRGO                ((uint32_t)0x00000014) /* TIM7 TRGO触发 */ /*!< TIM7 TRGO selected as external conversion trigger for DAC channel */
+#define DAC_Trigger_T5_TRGO                ((uint32_t)0x0000001C) /* TIM5 TRGO触发 */ /*!< TIM5 TRGO selected as external conversion trigger for DAC channel */
+/* TIM15 TRGO触发 */
 #define DAC_Trigger_T15_TRGO               ((uint32_t)0x0000001C) /*!< TIM15 TRGO selected as external conversion trigger for DAC channel 
-                                                                       only in Medium-density and Low-density Value Line devices*/  /* TIM15 TRGO触发 */
-#define DAC_Trigger_T2_TRGO                ((uint32_t)0x00000024) /*!< TIM2 TRGO selected as external conversion trigger for DAC channel */  /* TIM2 TRGO触发 */
-#define DAC_Trigger_T4_TRGO                ((uint32_t)0x0000002C) /*!< TIM4 TRGO selected as external conversion trigger for DAC channel */  /* TIM4 TRGO触发 */
-#define DAC_Trigger_Ext_IT9                ((uint32_t)0x00000034) /*!< EXTI Line9 event selected as external conversion trigger for DAC channel */  /* EXTI线9事件触发 */
-#define DAC_Trigger_Software               ((uint32_t)0x0000003C) /*!< Conversion started by software trigger for DAC channel */  /* 软件触发转换 */
+                                                                       only in Medium-density and Low-density Value Line devices*/
+#define DAC_Trigger_T2_TRGO                ((uint32_t)0x00000024) /* TIM2 TRGO触发 */ /*!< TIM2 TRGO selected as external conversion trigger for DAC channel */
+#define DAC_Trigger_T4_TRGO                ((uint32_t)0x0000002C) /* TIM4 TRGO触发 */ /*!< TIM4 TRGO selected as external conversion trigger for DAC channel */
+#define DAC_Trigger_Ext_IT9                ((uint32_t)0x00000034) /* EXTI线9事件触发 */ /*!< EXTI Line9 event selected as external conversion trigger for DAC channel */
+#define DAC_Trigger_Software               ((uint32_t)0x0000003C) /* 软件触发转换 */ /*!< Conversion started by software trigger for DAC channel */
 
 #define IS_DAC_TRIGGER(TRIGGER) (((TRIGGER) == DAC_Trigger_None) || \
                                  ((TRIGGER) == DAC_Trigger_T6_TRGO) || \
@@ -128,30 +132,30 @@ typedef struct
   * @{
   */
 
-#define DAC_LFSRUnmask_Bit0                ((uint32_t)0x00000000) /*!< Unmask DAC channel LFSR bit0 for noise wave generation */  /* 噪声波LFSR位0不屏蔽 */
-#define DAC_LFSRUnmask_Bits1_0             ((uint32_t)0x00000100) /*!< Unmask DAC channel LFSR bit[1:0] for noise wave generation */  /* 噪声波LFSR位[1:0]不屏蔽 */
-#define DAC_LFSRUnmask_Bits2_0             ((uint32_t)0x00000200) /*!< Unmask DAC channel LFSR bit[2:0] for noise wave generation */  /* 噪声波LFSR位[2:0]不屏蔽 */
-#define DAC_LFSRUnmask_Bits3_0             ((uint32_t)0x00000300) /*!< Unmask DAC channel LFSR bit[3:0] for noise wave generation */  /* 噪声波LFSR位[3:0]不屏蔽 */
-#define DAC_LFSRUnmask_Bits4_0             ((uint32_t)0x00000400) /*!< Unmask DAC channel LFSR bit[4:0] for noise wave generation */  /* 噪声波LFSR位[4:0]不屏蔽 */
-#define DAC_LFSRUnmask_Bits5_0             ((uint32_t)0x00000500) /*!< Unmask DAC channel LFSR bit[5:0] for noise wave generation */  /* 噪声波LFSR位[5:0]不屏蔽 */
-#define DAC_LFSRUnmask_Bits6_0             ((uint32_t)0x00000600) /*!< Unmask DAC channel LFSR bit[6:0] for noise wave generation */  /* 噪声波LFSR位[6:0]不屏蔽 */
-#define DAC_LFSRUnmask_Bits7_0             ((uint32_t)0x00000700) /*!< Unmask DAC channel LFSR bit[7:0] for noise wave generation */  /* 噪声波LFSR位[7:0]不屏蔽 */
-#define DAC_LFSRUnmask_Bits8_0             ((uint32_t)0x00000800) /*!< Unmask DAC channel LFSR bit[8:0] for noise wave generation */  /* 噪声波LFSR位[8:0]不屏蔽 */
-#define DAC_LFSRUnmask_Bits9_0             ((uint32_t)0x00000900) /*!< Unmask DAC channel LFSR bit[9:0] for noise wave generation */  /* 噪声波LFSR位[9:0]不屏蔽 */
-#define DAC_LFSRUnmask_Bits10_0            ((uint32_t)0x00000A00) /*!< Unmask DAC channel LFSR bit[10:0] for noise wave generation */  /* 噪声波LFSR位[10:0]不屏蔽 */
-#define DAC_LFSRUnmask_Bits11_0            ((uint32_t)0x00000B00) /*!< Unmask DAC channel LFSR bit[11:0] for noise wave generation */  /* 噪声波LFSR位[11:0]不屏蔽 */
-#define DAC_TriangleAmplitude_1            ((uint32_t)0x00000000) /*!< Select max triangle amplitude of 1 */  /* 三角波最大幅度1 */
-#define DAC_TriangleAmplitude_3            ((uint32_t)0x00000100) /*!< Select max triangle amplitude of 3 */  /* 三角波最大幅度3 */
-#define DAC_TriangleAmplitude_7            ((uint32_t)0x00000200) /*!< Select max triangle amplitude of 7 */  /* 三角波最大幅度7 */
-#define DAC_TriangleAmplitude_15           ((uint32_t)0x00000300) /*!< Select max triangle amplitude of 15 */  /* 三角波最大幅度15 */
-#define DAC_TriangleAmplitude_31           ((uint32_t)0x00000400) /*!< Select max triangle amplitude of 31 */  /* 三角波最大幅度31 */
-#define DAC_TriangleAmplitude_63           ((uint32_t)0x00000500) /*!< Select max triangle amplitude of 63 */  /* 三角波最大幅度63 */
-#define DAC_TriangleAmplitude_127          ((uint32_t)0x00000600) /*!< Select max triangle amplitude of 127 */  /* 三角波最大幅度127 */
-#define DAC_TriangleAmplitude_255          ((uint32_t)0x00000700) /*!< Select max triangle amplitude of 255 */  /* 三角波最大幅度255 */
-#define DAC_TriangleAmplitude_511          ((uint32_t)0x00000800) /*!< Select max triangle amplitude of 511 */  /* 三角波最大幅度511 */
-#define DAC_TriangleAmplitude_1023         ((uint32_t)0x00000900) /*!< Select max triangle amplitude of 1023 */  /* 三角波最大幅度1023 */
-#define DAC_TriangleAmplitude_2047         ((uint32_t)0x00000A00) /*!< Select max triangle amplitude of 2047 */  /* 三角波最大幅度2047 */
-#define DAC_TriangleAmplitude_4095         ((uint32_t)0x00000B00) /*!< Select max triangle amplitude of 4095 */  /* 三角波最大幅度4095 */
+#define DAC_LFSRUnmask_Bit0                ((uint32_t)0x00000000) /* 噪声波LFSR位0不屏蔽 */ /*!< Unmask DAC channel LFSR bit0 for noise wave generation */
+#define DAC_LFSRUnmask_Bits1_0             ((uint32_t)0x00000100) /* 噪声波LFSR位[1:0]不屏蔽 */ /*!< Unmask DAC channel LFSR bit[1:0] for noise wave generation */
+#define DAC_LFSRUnmask_Bits2_0             ((uint32_t)0x00000200) /* 噪声波LFSR位[2:0]不屏蔽 */ /*!< Unmask DAC channel LFSR bit[2:0] for noise wave generation */
+#define DAC_LFSRUnmask_Bits3_0             ((uint32_t)0x00000300) /* 噪声波LFSR位[3:0]不屏蔽 */ /*!< Unmask DAC channel LFSR bit[3:0] for noise wave generation */
+#define DAC_LFSRUnmask_Bits4_0             ((uint32_t)0x00000400) /* 噪声波LFSR位[4:0]不屏蔽 */ /*!< Unmask DAC channel LFSR bit[4:0] for noise wave generation */
+#define DAC_LFSRUnmask_Bits5_0             ((uint32_t)0x00000500) /* 噪声波LFSR位[5:0]不屏蔽 */ /*!< Unmask DAC channel LFSR bit[5:0] for noise wave generation */
+#define DAC_LFSRUnmask_Bits6_0             ((uint32_t)0x00000600) /* 噪声波LFSR位[6:0]不屏蔽 */ /*!< Unmask DAC channel LFSR bit[6:0] for noise wave generation */
+#define DAC_LFSRUnmask_Bits7_0             ((uint32_t)0x00000700) /* 噪声波LFSR位[7:0]不屏蔽 */ /*!< Unmask DAC channel LFSR bit[7:0] for noise wave generation */
+#define DAC_LFSRUnmask_Bits8_0             ((uint32_t)0x00000800) /* 噪声波LFSR位[8:0]不屏蔽 */ /*!< Unmask DAC channel LFSR bit[8:0] for noise wave generation */
+#define DAC_LFSRUnmask_Bits9_0             ((uint32_t)0x00000900) /* 噪声波LFSR位[9:0]不屏蔽 */ /*!< Unmask DAC channel LFSR bit[9:0] for noise wave generation */
+#define DAC_LFSRUnmask_Bits10_0            ((uint32_t)0x00000A00) /* 噪声波LFSR位[10:0]不屏蔽 */ /*!< Unmask DAC channel LFSR bit[10:0] for noise wave generation */
+#define DAC_LFSRUnmask_Bits11_0            ((uint32_t)0x00000B00) /* 噪声波LFSR位[11:0]不屏蔽 */ /*!< Unmask DAC channel LFSR bit[11:0] for noise wave generation */
+#define DAC_TriangleAmplitude_1            ((uint32_t)0x00000000) /* 三角波最大幅度1 */ /*!< Select max triangle amplitude of 1 */
+#define DAC_TriangleAmplitude_3            ((uint32_t)0x00000100) /* 三角波最大幅度3 */ /*!< Select max triangle amplitude of 3 */
+#define DAC_TriangleAmplitude_7            ((uint32_t)0x00000200) /* 三角波最大幅度7 */ /*!< Select max triangle amplitude of 7 */
+#define DAC_TriangleAmplitude_15           ((uint32_t)0x00000300) /* 三角波最大幅度15 */ /*!< Select max triangle amplitude of 15 */
+#define DAC_TriangleAmplitude_31           ((uint32_t)0x00000400) /* 三角波最大幅度31 */ /*!< Select max triangle amplitude of 31 */
+#define DAC_TriangleAmplitude_63           ((uint32_t)0x00000500) /* 三角波最大幅度63 */ /*!< Select max triangle amplitude of 63 */
+#define DAC_TriangleAmplitude_127          ((uint32_t)0x00000600) /* 三角波最大幅度127 */ /*!< Select max triangle amplitude of 127 */
+#define DAC_TriangleAmplitude_255          ((uint32_t)0x00000700) /* 三角波最大幅度255 */ /*!< Select max triangle amplitude of 255 */
+#define DAC_TriangleAmplitude_511          ((uint32_t)0x00000800) /* 三角波最大幅度511 */ /*!< Select max triangle amplitude of 511 */
+#define DAC_TriangleAmplitude_1023         ((uint32_t)0x00000900) /* 三角波最大幅度1023 */ /*!< Select max triangle amplitude of 1023 */
+#define DAC_TriangleAmplitude_2047         ((uint32_t)0x00000A00) /* 三角波最大幅度2047 */ /*!< Select max triangle amplitude of 2047 */
+#define DAC_TriangleAmplitude_4095         ((uint32_t)0x00000B00) /* 三角波最大幅度4095 */ /*!< Select max triangle amplitude of 4095 */
 
 #define IS_DAC_LFSR_UNMASK_TRIANGLE_AMPLITUDE(VALUE) (((VALUE) == DAC_LFSRUnmask_Bit0) || \
                                                       ((VALUE) == DAC_LFSRUnmask_Bits1_0) || \

@@ -49,48 +49,48 @@
 
 typedef struct
 {
-  uint32_t DMA_PeripheralBaseAddr; /*!< Specifies the peripheral base address for DMAy Channelx. */  /* 外设基地址 */
+  uint32_t DMA_PeripheralBaseAddr; /* 外设基地址 */ /*!< Specifies the peripheral base address for DMAy Channelx. */
 
-  uint32_t DMA_MemoryBaseAddr;     /*!< Specifies the memory base address for DMAy Channelx. */  /* 存储器基地址 */
+  uint32_t DMA_MemoryBaseAddr; /* 存储器基地址 */ /*!< Specifies the memory base address for DMAy Channelx. */
 
+  /* 数据传输方向 */
   uint32_t DMA_DIR;                /*!< Specifies if the peripheral is the source or destination.
                                         This parameter can be a value of @ref DMA_data_transfer_direction */
-  /* 数据传输方向 */
 
+  /* 缓冲区数据量（单位为数据单元） */
   uint32_t DMA_BufferSize;         /*!< Specifies the buffer size, in data unit, of the specified Channel. 
                                         The data unit is equal to the configuration set in DMA_PeripheralDataSize
                                         or DMA_MemoryDataSize members depending in the transfer direction. */
-  /* 缓冲区数据量（单位为数据单元） */
 
+  /* 外设地址是否自增 */
   uint32_t DMA_PeripheralInc;      /*!< Specifies whether the Peripheral address register is incremented or not.
                                         This parameter can be a value of @ref DMA_peripheral_incremented_mode */
-  /* 外设地址是否自增 */
 
+  /* 存储器地址是否自增 */
   uint32_t DMA_MemoryInc;          /*!< Specifies whether the memory address register is incremented or not.
                                         This parameter can be a value of @ref DMA_memory_incremented_mode */
-  /* 存储器地址是否自增 */
 
+  /* 外设数据宽度 */
   uint32_t DMA_PeripheralDataSize; /*!< Specifies the Peripheral data width.
                                         This parameter can be a value of @ref DMA_peripheral_data_size */
-  /* 外设数据宽度 */
 
+  /* 存储器数据宽度 */
   uint32_t DMA_MemoryDataSize;     /*!< Specifies the Memory data width.
                                         This parameter can be a value of @ref DMA_memory_data_size */
-  /* 存储器数据宽度 */
 
+  /* 工作模式：循环或普通 */
   uint32_t DMA_Mode;               /*!< Specifies the operation mode of the DMAy Channelx.
                                         This parameter can be a value of @ref DMA_circular_normal_mode.
                                         @note: The circular buffer mode cannot be used if the memory-to-memory
                                               data transfer is configured on the selected Channel */
-  /* 工作模式：循环或普通 */
 
+  /* 软件优先级 */
   uint32_t DMA_Priority;           /*!< Specifies the software priority for the DMAy Channelx.
                                         This parameter can be a value of @ref DMA_priority_level */
-  /* 软件优先级 */
 
+  /* 存储器到存储器模式 */
   uint32_t DMA_M2M;                /*!< Specifies if the DMAy Channelx will be used in memory-to-memory transfer.
                                         This parameter can be a value of @ref DMA_memory_to_memory */
-  /* 存储器到存储器模式 */
 }DMA_InitTypeDef;
 
 /**

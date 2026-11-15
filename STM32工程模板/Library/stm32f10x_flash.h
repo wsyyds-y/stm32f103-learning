@@ -68,9 +68,9 @@ typedef enum
   * @{
   */
 
-#define FLASH_Latency_0                ((uint32_t)0x00000000)  /*!< FLASH Zero Latency cycle */  /* FLASH零等待周期 */
-#define FLASH_Latency_1                ((uint32_t)0x00000001)  /*!< FLASH One Latency cycle */  /* FLASH一个等待周期 */
-#define FLASH_Latency_2                ((uint32_t)0x00000002)  /*!< FLASH Two Latency cycles */  /* FLASH两个等待周期 */
+#define FLASH_Latency_0                ((uint32_t)0x00000000) /* FLASH零等待周期 */ /*!< FLASH Zero Latency cycle */
+#define FLASH_Latency_1                ((uint32_t)0x00000001) /* FLASH一个等待周期 */ /*!< FLASH One Latency cycle */
+#define FLASH_Latency_2                ((uint32_t)0x00000002) /* FLASH两个等待周期 */ /*!< FLASH Two Latency cycles */
 #define IS_FLASH_LATENCY(LATENCY) (((LATENCY) == FLASH_Latency_0) || \
                                    ((LATENCY) == FLASH_Latency_1) || \
                                    ((LATENCY) == FLASH_Latency_2))
@@ -82,8 +82,8 @@ typedef enum
   * @{
   */
 
-#define FLASH_HalfCycleAccess_Enable   ((uint32_t)0x00000008)  /*!< FLASH Half Cycle Enable */  /* 使能FLASH半周期访问 */
-#define FLASH_HalfCycleAccess_Disable  ((uint32_t)0x00000000)  /*!< FLASH Half Cycle Disable */  /* 禁止FLASH半周期访问 */
+#define FLASH_HalfCycleAccess_Enable   ((uint32_t)0x00000008) /* 使能FLASH半周期访问 */ /*!< FLASH Half Cycle Enable */
+#define FLASH_HalfCycleAccess_Disable  ((uint32_t)0x00000000) /* 禁止FLASH半周期访问 */ /*!< FLASH Half Cycle Disable */
 #define IS_FLASH_HALFCYCLEACCESS_STATE(STATE) (((STATE) == FLASH_HalfCycleAccess_Enable) || \
                                                ((STATE) == FLASH_HalfCycleAccess_Disable)) 
 /**
@@ -94,8 +94,8 @@ typedef enum
   * @{
   */
 
-#define FLASH_PrefetchBuffer_Enable    ((uint32_t)0x00000010)  /*!< FLASH Prefetch Buffer Enable */  /* 使能FLASH预取缓冲区 */
-#define FLASH_PrefetchBuffer_Disable   ((uint32_t)0x00000000)  /*!< FLASH Prefetch Buffer Disable */  /* 禁止FLASH预取缓冲区 */
+#define FLASH_PrefetchBuffer_Enable    ((uint32_t)0x00000010) /* 使能FLASH预取缓冲区 */ /*!< FLASH Prefetch Buffer Enable */
+#define FLASH_PrefetchBuffer_Disable   ((uint32_t)0x00000000) /* 禁止FLASH预取缓冲区 */ /*!< FLASH Prefetch Buffer Disable */
 #define IS_FLASH_PREFETCHBUFFER_STATE(STATE) (((STATE) == FLASH_PrefetchBuffer_Enable) || \
                                               ((STATE) == FLASH_PrefetchBuffer_Disable)) 
 /**
@@ -107,109 +107,140 @@ typedef enum
   */
 
 /* Values to be used with STM32 Low and Medium density devices */
-#define FLASH_WRProt_Pages0to3         ((uint32_t)0x00000001) /*!< STM32 Low and Medium density devices: Write protection of page 0 to 3 */  /* 写保护第0~3页 */
-#define FLASH_WRProt_Pages4to7         ((uint32_t)0x00000002) /*!< STM32 Low and Medium density devices: Write protection of page 4 to 7 */  /* 写保护第4~7页 */
-#define FLASH_WRProt_Pages8to11        ((uint32_t)0x00000004) /*!< STM32 Low and Medium density devices: Write protection of page 8 to 11 */  /* 写保护第8~11页 */
-#define FLASH_WRProt_Pages12to15       ((uint32_t)0x00000008) /*!< STM32 Low and Medium density devices: Write protection of page 12 to 15 */  /* 写保护第12~15页 */
-#define FLASH_WRProt_Pages16to19       ((uint32_t)0x00000010) /*!< STM32 Low and Medium density devices: Write protection of page 16 to 19 */  /* 写保护第16~19页 */
-#define FLASH_WRProt_Pages20to23       ((uint32_t)0x00000020) /*!< STM32 Low and Medium density devices: Write protection of page 20 to 23 */  /* 写保护第20~23页 */
-#define FLASH_WRProt_Pages24to27       ((uint32_t)0x00000040) /*!< STM32 Low and Medium density devices: Write protection of page 24 to 27 */  /* 写保护第24~27页 */
-#define FLASH_WRProt_Pages28to31       ((uint32_t)0x00000080) /*!< STM32 Low and Medium density devices: Write protection of page 28 to 31 */  /* 写保护第28~31页 */
+#define FLASH_WRProt_Pages0to3         ((uint32_t)0x00000001) /* 写保护第0~3页 */ /*!< STM32 Low and Medium density devices: Write protection of page 0 to 3 */
+#define FLASH_WRProt_Pages4to7         ((uint32_t)0x00000002) /* 写保护第4~7页 */ /*!< STM32 Low and Medium density devices: Write protection of page 4 to 7 */
+#define FLASH_WRProt_Pages8to11        ((uint32_t)0x00000004) /* 写保护第8~11页 */ /*!< STM32 Low and Medium density devices: Write protection of page 8 to 11 */
+#define FLASH_WRProt_Pages12to15       ((uint32_t)0x00000008) /* 写保护第12~15页 */ /*!< STM32 Low and Medium density devices: Write protection of page 12 to 15 */
+#define FLASH_WRProt_Pages16to19       ((uint32_t)0x00000010) /* 写保护第16~19页 */ /*!< STM32 Low and Medium density devices: Write protection of page 16 to 19 */
+#define FLASH_WRProt_Pages20to23       ((uint32_t)0x00000020) /* 写保护第20~23页 */ /*!< STM32 Low and Medium density devices: Write protection of page 20 to 23 */
+#define FLASH_WRProt_Pages24to27       ((uint32_t)0x00000040) /* 写保护第24~27页 */ /*!< STM32 Low and Medium density devices: Write protection of page 24 to 27 */
+#define FLASH_WRProt_Pages28to31       ((uint32_t)0x00000080) /* 写保护第28~31页 */ /*!< STM32 Low and Medium density devices: Write protection of page 28 to 31 */
 
 /* Values to be used with STM32 Medium-density devices */
-#define FLASH_WRProt_Pages32to35       ((uint32_t)0x00000100) /*!< STM32 Medium-density devices: Write protection of page 32 to 35 */  /* 写保护第32~35页 */
-#define FLASH_WRProt_Pages36to39       ((uint32_t)0x00000200) /*!< STM32 Medium-density devices: Write protection of page 36 to 39 */  /* 写保护第36~39页 */
-#define FLASH_WRProt_Pages40to43       ((uint32_t)0x00000400) /*!< STM32 Medium-density devices: Write protection of page 40 to 43 */  /* 写保护第40~43页 */
-#define FLASH_WRProt_Pages44to47       ((uint32_t)0x00000800) /*!< STM32 Medium-density devices: Write protection of page 44 to 47 */  /* 写保护第44~47页 */
-#define FLASH_WRProt_Pages48to51       ((uint32_t)0x00001000) /*!< STM32 Medium-density devices: Write protection of page 48 to 51 */  /* 写保护第48~51页 */
-#define FLASH_WRProt_Pages52to55       ((uint32_t)0x00002000) /*!< STM32 Medium-density devices: Write protection of page 52 to 55 */  /* 写保护第52~55页 */
-#define FLASH_WRProt_Pages56to59       ((uint32_t)0x00004000) /*!< STM32 Medium-density devices: Write protection of page 56 to 59 */  /* 写保护第56~59页 */
-#define FLASH_WRProt_Pages60to63       ((uint32_t)0x00008000) /*!< STM32 Medium-density devices: Write protection of page 60 to 63 */  /* 写保护第60~63页 */
-#define FLASH_WRProt_Pages64to67       ((uint32_t)0x00010000) /*!< STM32 Medium-density devices: Write protection of page 64 to 67 */  /* 写保护第64~67页 */
-#define FLASH_WRProt_Pages68to71       ((uint32_t)0x00020000) /*!< STM32 Medium-density devices: Write protection of page 68 to 71 */  /* 写保护第68~71页 */
-#define FLASH_WRProt_Pages72to75       ((uint32_t)0x00040000) /*!< STM32 Medium-density devices: Write protection of page 72 to 75 */  /* 写保护第72~75页 */
-#define FLASH_WRProt_Pages76to79       ((uint32_t)0x00080000) /*!< STM32 Medium-density devices: Write protection of page 76 to 79 */  /* 写保护第76~79页 */
-#define FLASH_WRProt_Pages80to83       ((uint32_t)0x00100000) /*!< STM32 Medium-density devices: Write protection of page 80 to 83 */  /* 写保护第80~83页 */
-#define FLASH_WRProt_Pages84to87       ((uint32_t)0x00200000) /*!< STM32 Medium-density devices: Write protection of page 84 to 87 */  /* 写保护第84~87页 */
-#define FLASH_WRProt_Pages88to91       ((uint32_t)0x00400000) /*!< STM32 Medium-density devices: Write protection of page 88 to 91 */  /* 写保护第88~91页 */
-#define FLASH_WRProt_Pages92to95       ((uint32_t)0x00800000) /*!< STM32 Medium-density devices: Write protection of page 92 to 95 */  /* 写保护第92~95页 */
-#define FLASH_WRProt_Pages96to99       ((uint32_t)0x01000000) /*!< STM32 Medium-density devices: Write protection of page 96 to 99 */  /* 写保护第96~99页 */
-#define FLASH_WRProt_Pages100to103     ((uint32_t)0x02000000) /*!< STM32 Medium-density devices: Write protection of page 100 to 103 */  /* 写保护第100~103页 */
-#define FLASH_WRProt_Pages104to107     ((uint32_t)0x04000000) /*!< STM32 Medium-density devices: Write protection of page 104 to 107 */  /* 写保护第104~107页 */
-#define FLASH_WRProt_Pages108to111     ((uint32_t)0x08000000) /*!< STM32 Medium-density devices: Write protection of page 108 to 111 */  /* 写保护第108~111页 */
-#define FLASH_WRProt_Pages112to115     ((uint32_t)0x10000000) /*!< STM32 Medium-density devices: Write protection of page 112 to 115 */  /* 写保护第112~115页 */
-#define FLASH_WRProt_Pages116to119     ((uint32_t)0x20000000) /*!< STM32 Medium-density devices: Write protection of page 115 to 119 */  /* 写保护第116~119页 */
-#define FLASH_WRProt_Pages120to123     ((uint32_t)0x40000000) /*!< STM32 Medium-density devices: Write protection of page 120 to 123 */  /* 写保护第120~123页 */
-#define FLASH_WRProt_Pages124to127     ((uint32_t)0x80000000) /*!< STM32 Medium-density devices: Write protection of page 124 to 127 */  /* 写保护第124~127页 */
+#define FLASH_WRProt_Pages32to35       ((uint32_t)0x00000100) /* 写保护第32~35页 */ /*!< STM32 Medium-density devices: Write protection of page 32 to 35 */
+#define FLASH_WRProt_Pages36to39       ((uint32_t)0x00000200) /* 写保护第36~39页 */ /*!< STM32 Medium-density devices: Write protection of page 36 to 39 */
+#define FLASH_WRProt_Pages40to43       ((uint32_t)0x00000400) /* 写保护第40~43页 */ /*!< STM32 Medium-density devices: Write protection of page 40 to 43 */
+#define FLASH_WRProt_Pages44to47       ((uint32_t)0x00000800) /* 写保护第44~47页 */ /*!< STM32 Medium-density devices: Write protection of page 44 to 47 */
+#define FLASH_WRProt_Pages48to51       ((uint32_t)0x00001000) /* 写保护第48~51页 */ /*!< STM32 Medium-density devices: Write protection of page 48 to 51 */
+#define FLASH_WRProt_Pages52to55       ((uint32_t)0x00002000) /* 写保护第52~55页 */ /*!< STM32 Medium-density devices: Write protection of page 52 to 55 */
+#define FLASH_WRProt_Pages56to59       ((uint32_t)0x00004000) /* 写保护第56~59页 */ /*!< STM32 Medium-density devices: Write protection of page 56 to 59 */
+#define FLASH_WRProt_Pages60to63       ((uint32_t)0x00008000) /* 写保护第60~63页 */ /*!< STM32 Medium-density devices: Write protection of page 60 to 63 */
+#define FLASH_WRProt_Pages64to67       ((uint32_t)0x00010000) /* 写保护第64~67页 */ /*!< STM32 Medium-density devices: Write protection of page 64 to 67 */
+#define FLASH_WRProt_Pages68to71       ((uint32_t)0x00020000) /* 写保护第68~71页 */ /*!< STM32 Medium-density devices: Write protection of page 68 to 71 */
+#define FLASH_WRProt_Pages72to75       ((uint32_t)0x00040000) /* 写保护第72~75页 */ /*!< STM32 Medium-density devices: Write protection of page 72 to 75 */
+#define FLASH_WRProt_Pages76to79       ((uint32_t)0x00080000) /* 写保护第76~79页 */ /*!< STM32 Medium-density devices: Write protection of page 76 to 79 */
+#define FLASH_WRProt_Pages80to83       ((uint32_t)0x00100000) /* 写保护第80~83页 */ /*!< STM32 Medium-density devices: Write protection of page 80 to 83 */
+#define FLASH_WRProt_Pages84to87       ((uint32_t)0x00200000) /* 写保护第84~87页 */ /*!< STM32 Medium-density devices: Write protection of page 84 to 87 */
+#define FLASH_WRProt_Pages88to91       ((uint32_t)0x00400000) /* 写保护第88~91页 */ /*!< STM32 Medium-density devices: Write protection of page 88 to 91 */
+#define FLASH_WRProt_Pages92to95       ((uint32_t)0x00800000) /* 写保护第92~95页 */ /*!< STM32 Medium-density devices: Write protection of page 92 to 95 */
+#define FLASH_WRProt_Pages96to99       ((uint32_t)0x01000000) /* 写保护第96~99页 */ /*!< STM32 Medium-density devices: Write protection of page 96 to 99 */
+#define FLASH_WRProt_Pages100to103     ((uint32_t)0x02000000) /* 写保护第100~103页 */ /*!< STM32 Medium-density devices: Write protection of page 100 to 103 */
+#define FLASH_WRProt_Pages104to107     ((uint32_t)0x04000000) /* 写保护第104~107页 */ /*!< STM32 Medium-density devices: Write protection of page 104 to 107 */
+#define FLASH_WRProt_Pages108to111     ((uint32_t)0x08000000) /* 写保护第108~111页 */ /*!< STM32 Medium-density devices: Write protection of page 108 to 111 */
+#define FLASH_WRProt_Pages112to115     ((uint32_t)0x10000000) /* 写保护第112~115页 */ /*!< STM32 Medium-density devices: Write protection of page 112 to 115 */
+#define FLASH_WRProt_Pages116to119     ((uint32_t)0x20000000) /* 写保护第116~119页 */ /*!< STM32 Medium-density devices: Write protection of page 115 to 119 */
+#define FLASH_WRProt_Pages120to123     ((uint32_t)0x40000000) /* 写保护第120~123页 */ /*!< STM32 Medium-density devices: Write protection of page 120 to 123 */
+#define FLASH_WRProt_Pages124to127     ((uint32_t)0x80000000) /* 写保护第124~127页 */ /*!< STM32 Medium-density devices: Write protection of page 124 to 127 */
 
 /* Values to be used with STM32 High-density and STM32F10X Connectivity line devices */
+/* 写保护第0~1页 */
 #define FLASH_WRProt_Pages0to1         ((uint32_t)0x00000001) /*!< STM32 High-density, XL-density and Connectivity line devices:
-                                                                   Write protection of page 0 to 1 */  /* 写保护第0~1页 */
+                                                                   Write protection of page 0 to 1 */
+/* 写保护第2~3页 */
 #define FLASH_WRProt_Pages2to3         ((uint32_t)0x00000002) /*!< STM32 High-density, XL-density and Connectivity line devices:
-                                                                   Write protection of page 2 to 3 */  /* 写保护第2~3页 */
+                                                                   Write protection of page 2 to 3 */
+/* 写保护第4~5页 */
 #define FLASH_WRProt_Pages4to5         ((uint32_t)0x00000004) /*!< STM32 High-density, XL-density and Connectivity line devices:
-                                                                   Write protection of page 4 to 5 */  /* 写保护第4~5页 */
+                                                                   Write protection of page 4 to 5 */
+/* 写保护第6~7页 */
 #define FLASH_WRProt_Pages6to7         ((uint32_t)0x00000008) /*!< STM32 High-density, XL-density and Connectivity line devices:
-                                                                   Write protection of page 6 to 7 */  /* 写保护第6~7页 */
+                                                                   Write protection of page 6 to 7 */
+/* 写保护第8~9页 */
 #define FLASH_WRProt_Pages8to9         ((uint32_t)0x00000010) /*!< STM32 High-density, XL-density and Connectivity line devices:
-                                                                   Write protection of page 8 to 9 */  /* 写保护第8~9页 */
+                                                                   Write protection of page 8 to 9 */
+/* 写保护第10~11页 */
 #define FLASH_WRProt_Pages10to11       ((uint32_t)0x00000020) /*!< STM32 High-density, XL-density and Connectivity line devices:
-                                                                   Write protection of page 10 to 11 */  /* 写保护第10~11页 */
+                                                                   Write protection of page 10 to 11 */
+/* 写保护第12~13页 */
 #define FLASH_WRProt_Pages12to13       ((uint32_t)0x00000040) /*!< STM32 High-density, XL-density and Connectivity line devices:
-                                                                   Write protection of page 12 to 13 */  /* 写保护第12~13页 */
+                                                                   Write protection of page 12 to 13 */
+/* 写保护第14~15页 */
 #define FLASH_WRProt_Pages14to15       ((uint32_t)0x00000080) /*!< STM32 High-density, XL-density and Connectivity line devices:
-                                                                   Write protection of page 14 to 15 */  /* 写保护第14~15页 */
+                                                                   Write protection of page 14 to 15 */
+/* 写保护第16~17页 */
 #define FLASH_WRProt_Pages16to17       ((uint32_t)0x00000100) /*!< STM32 High-density, XL-density and Connectivity line devices:
-                                                                   Write protection of page 16 to 17 */  /* 写保护第16~17页 */
+                                                                   Write protection of page 16 to 17 */
+/* 写保护第18~19页 */
 #define FLASH_WRProt_Pages18to19       ((uint32_t)0x00000200) /*!< STM32 High-density, XL-density and Connectivity line devices:
-                                                                   Write protection of page 18 to 19 */  /* 写保护第18~19页 */
+                                                                   Write protection of page 18 to 19 */
+/* 写保护第20~21页 */
 #define FLASH_WRProt_Pages20to21       ((uint32_t)0x00000400) /*!< STM32 High-density, XL-density and Connectivity line devices:
-                                                                   Write protection of page 20 to 21 */  /* 写保护第20~21页 */
+                                                                   Write protection of page 20 to 21 */
+/* 写保护第22~23页 */
 #define FLASH_WRProt_Pages22to23       ((uint32_t)0x00000800) /*!< STM32 High-density, XL-density and Connectivity line devices:
-                                                                   Write protection of page 22 to 23 */  /* 写保护第22~23页 */
+                                                                   Write protection of page 22 to 23 */
+/* 写保护第24~25页 */
 #define FLASH_WRProt_Pages24to25       ((uint32_t)0x00001000) /*!< STM32 High-density, XL-density and Connectivity line devices:
-                                                                   Write protection of page 24 to 25 */  /* 写保护第24~25页 */
+                                                                   Write protection of page 24 to 25 */
+/* 写保护第26~27页 */
 #define FLASH_WRProt_Pages26to27       ((uint32_t)0x00002000) /*!< STM32 High-density, XL-density and Connectivity line devices:
-                                                                   Write protection of page 26 to 27 */  /* 写保护第26~27页 */
+                                                                   Write protection of page 26 to 27 */
+/* 写保护第28~29页 */
 #define FLASH_WRProt_Pages28to29       ((uint32_t)0x00004000) /*!< STM32 High-density, XL-density and Connectivity line devices:
-                                                                   Write protection of page 28 to 29 */  /* 写保护第28~29页 */
+                                                                   Write protection of page 28 to 29 */
+/* 写保护第30~31页 */
 #define FLASH_WRProt_Pages30to31       ((uint32_t)0x00008000) /*!< STM32 High-density, XL-density and Connectivity line devices:
-                                                                   Write protection of page 30 to 31 */  /* 写保护第30~31页 */
+                                                                   Write protection of page 30 to 31 */
+/* 写保护第32~33页 */
 #define FLASH_WRProt_Pages32to33       ((uint32_t)0x00010000) /*!< STM32 High-density, XL-density and Connectivity line devices:
-                                                                   Write protection of page 32 to 33 */  /* 写保护第32~33页 */
+                                                                   Write protection of page 32 to 33 */
+/* 写保护第34~35页 */
 #define FLASH_WRProt_Pages34to35       ((uint32_t)0x00020000) /*!< STM32 High-density, XL-density and Connectivity line devices:
-                                                                   Write protection of page 34 to 35 */  /* 写保护第34~35页 */
+                                                                   Write protection of page 34 to 35 */
+/* 写保护第36~37页 */
 #define FLASH_WRProt_Pages36to37       ((uint32_t)0x00040000) /*!< STM32 High-density, XL-density and Connectivity line devices:
-                                                                   Write protection of page 36 to 37 */  /* 写保护第36~37页 */
+                                                                   Write protection of page 36 to 37 */
+/* 写保护第38~39页 */
 #define FLASH_WRProt_Pages38to39       ((uint32_t)0x00080000) /*!< STM32 High-density, XL-density and Connectivity line devices:
-                                                                   Write protection of page 38 to 39 */  /* 写保护第38~39页 */
+                                                                   Write protection of page 38 to 39 */
+/* 写保护第40~41页 */
 #define FLASH_WRProt_Pages40to41       ((uint32_t)0x00100000) /*!< STM32 High-density, XL-density and Connectivity line devices:
-                                                                   Write protection of page 40 to 41 */  /* 写保护第40~41页 */
+                                                                   Write protection of page 40 to 41 */
+/* 写保护第42~43页 */
 #define FLASH_WRProt_Pages42to43       ((uint32_t)0x00200000) /*!< STM32 High-density, XL-density and Connectivity line devices:
-                                                                   Write protection of page 42 to 43 */  /* 写保护第42~43页 */
+                                                                   Write protection of page 42 to 43 */
+/* 写保护第44~45页 */
 #define FLASH_WRProt_Pages44to45       ((uint32_t)0x00400000) /*!< STM32 High-density, XL-density and Connectivity line devices:
-                                                                   Write protection of page 44 to 45 */  /* 写保护第44~45页 */
+                                                                   Write protection of page 44 to 45 */
+/* 写保护第46~47页 */
 #define FLASH_WRProt_Pages46to47       ((uint32_t)0x00800000) /*!< STM32 High-density, XL-density and Connectivity line devices:
-                                                                   Write protection of page 46 to 47 */  /* 写保护第46~47页 */
+                                                                   Write protection of page 46 to 47 */
+/* 写保护第48~49页 */
 #define FLASH_WRProt_Pages48to49       ((uint32_t)0x01000000) /*!< STM32 High-density, XL-density and Connectivity line devices:
-                                                                   Write protection of page 48 to 49 */  /* 写保护第48~49页 */
+                                                                   Write protection of page 48 to 49 */
+/* 写保护第50~51页 */
 #define FLASH_WRProt_Pages50to51       ((uint32_t)0x02000000) /*!< STM32 High-density, XL-density and Connectivity line devices:
-                                                                   Write protection of page 50 to 51 */  /* 写保护第50~51页 */
+                                                                   Write protection of page 50 to 51 */
+/* 写保护第52~53页 */
 #define FLASH_WRProt_Pages52to53       ((uint32_t)0x04000000) /*!< STM32 High-density, XL-density and Connectivity line devices:
-                                                                   Write protection of page 52 to 53 */  /* 写保护第52~53页 */
+                                                                   Write protection of page 52 to 53 */
+/* 写保护第54~55页 */
 #define FLASH_WRProt_Pages54to55       ((uint32_t)0x08000000) /*!< STM32 High-density, XL-density and Connectivity line devices:
-                                                                   Write protection of page 54 to 55 */  /* 写保护第54~55页 */
+                                                                   Write protection of page 54 to 55 */
+/* 写保护第56~57页 */
 #define FLASH_WRProt_Pages56to57       ((uint32_t)0x10000000) /*!< STM32 High-density, XL-density and Connectivity line devices:
-                                                                   Write protection of page 56 to 57 */  /* 写保护第56~57页 */
+                                                                   Write protection of page 56 to 57 */
+/* 写保护第58~59页 */
 #define FLASH_WRProt_Pages58to59       ((uint32_t)0x20000000) /*!< STM32 High-density, XL-density and Connectivity line devices:
-                                                                   Write protection of page 58 to 59 */  /* 写保护第58~59页 */
+                                                                   Write protection of page 58 to 59 */
+/* 写保护第60~61页 */
 #define FLASH_WRProt_Pages60to61       ((uint32_t)0x40000000) /*!< STM32 High-density, XL-density and Connectivity line devices:
-                                                                   Write protection of page 60 to 61 */  /* 写保护第60~61页 */
-#define FLASH_WRProt_Pages62to127      ((uint32_t)0x80000000) /*!< STM32 Connectivity line devices: Write protection of page 62 to 127 */  /* 写保护第62~127页 */
-#define FLASH_WRProt_Pages62to255      ((uint32_t)0x80000000) /*!< STM32 Medium-density devices: Write protection of page 62 to 255 */  /* 写保护第62~255页 */
-#define FLASH_WRProt_Pages62to511      ((uint32_t)0x80000000) /*!< STM32 XL-density devices: Write protection of page 62 to 511 */  /* 写保护第62~511页 */
+                                                                   Write protection of page 60 to 61 */
+#define FLASH_WRProt_Pages62to127      ((uint32_t)0x80000000) /* 写保护第62~127页 */ /*!< STM32 Connectivity line devices: Write protection of page 62 to 127 */
+#define FLASH_WRProt_Pages62to255      ((uint32_t)0x80000000) /* 写保护第62~255页 */ /*!< STM32 Medium-density devices: Write protection of page 62 to 255 */
+#define FLASH_WRProt_Pages62to511      ((uint32_t)0x80000000) /* 写保护第62~511页 */ /*!< STM32 XL-density devices: Write protection of page 62 to 511 */
 
-#define FLASH_WRProt_AllPages          ((uint32_t)0xFFFFFFFF) /*!< Write protection of all Pages */  /* 写保护所有页 */
+#define FLASH_WRProt_AllPages          ((uint32_t)0xFFFFFFFF) /* 写保护所有页 */ /*!< Write protection of all Pages */
 
 #define IS_FLASH_WRPROT_PAGE(PAGE) (((PAGE) != 0x00000000))
 
@@ -225,8 +256,8 @@ typedef enum
   * @{
   */
 
-#define OB_IWDG_SW                     ((uint16_t)0x0001)  /*!< Software IWDG selected */  /* 选择软件IWDG */
-#define OB_IWDG_HW                     ((uint16_t)0x0000)  /*!< Hardware IWDG selected */  /* 选择硬件IWDG */
+#define OB_IWDG_SW                     ((uint16_t)0x0001) /* 选择软件IWDG */ /*!< Software IWDG selected */
+#define OB_IWDG_HW                     ((uint16_t)0x0000) /* 选择硬件IWDG */ /*!< Hardware IWDG selected */
 #define IS_OB_IWDG_SOURCE(SOURCE) (((SOURCE) == OB_IWDG_SW) || ((SOURCE) == OB_IWDG_HW))
 
 /**
@@ -237,8 +268,8 @@ typedef enum
   * @{
   */
 
-#define OB_STOP_NoRST                  ((uint16_t)0x0002) /*!< No reset generated when entering in STOP */  /* 进入STOP不产生复位 */
-#define OB_STOP_RST                    ((uint16_t)0x0000) /*!< Reset generated when entering in STOP */  /* 进入STOP产生复位 */
+#define OB_STOP_NoRST                  ((uint16_t)0x0002) /* 进入STOP不产生复位 */ /*!< No reset generated when entering in STOP */
+#define OB_STOP_RST                    ((uint16_t)0x0000) /* 进入STOP产生复位 */ /*!< Reset generated when entering in STOP */
 #define IS_OB_STOP_SOURCE(SOURCE) (((SOURCE) == OB_STOP_NoRST) || ((SOURCE) == OB_STOP_RST))
 
 /**
@@ -249,8 +280,8 @@ typedef enum
   * @{
   */
 
-#define OB_STDBY_NoRST                 ((uint16_t)0x0004) /*!< No reset generated when entering in STANDBY */  /* 进入STANDBY不产生复位 */
-#define OB_STDBY_RST                   ((uint16_t)0x0000) /*!< Reset generated when entering in STANDBY */  /* 进入STANDBY产生复位 */
+#define OB_STDBY_NoRST                 ((uint16_t)0x0004) /* 进入STANDBY不产生复位 */ /*!< No reset generated when entering in STANDBY */
+#define OB_STDBY_RST                   ((uint16_t)0x0000) /* 进入STANDBY产生复位 */ /*!< Reset generated when entering in STANDBY */
 #define IS_OB_STDBY_SOURCE(SOURCE) (((SOURCE) == OB_STDBY_NoRST) || ((SOURCE) == OB_STDBY_RST))
 
 #ifdef STM32F10X_XL
@@ -260,11 +291,13 @@ typedef enum
 /** @defgroup FLASH_Boot
   * @{
   */
+/* 从存储块1启动(默认) */
 #define FLASH_BOOT_Bank1  ((uint16_t)0x0000) /*!< At startup, if boot pins are set in boot from user Flash position
-                                                  and this parameter is selected the device will boot from Bank1(Default) */  /* 从存储块1启动(默认) */
+                                                  and this parameter is selected the device will boot from Bank1(Default) */
+/* 从存储块2启动 */
 #define FLASH_BOOT_Bank2  ((uint16_t)0x0001) /*!< At startup, if boot pins are set in boot from user Flash position
                                                   and this parameter is selected the device will boot from Bank 2 or Bank 1,
-                                                  depending on the activation of the bank */  /* 从存储块2启动 */
+                                                  depending on the activation of the bank */
 #define IS_FLASH_BOOT(BOOT) (((BOOT) == FLASH_BOOT_Bank1) || ((BOOT) == FLASH_BOOT_Bank2))
 #endif
 /**
@@ -274,20 +307,20 @@ typedef enum
   * @{
   */
 #ifdef STM32F10X_XL
-#define FLASH_IT_BANK2_ERROR                 ((uint32_t)0x80000400)  /*!< FPEC BANK2 error interrupt source */  /* 存储块2错误中断源 */
-#define FLASH_IT_BANK2_EOP                   ((uint32_t)0x80001000)  /*!< End of FLASH BANK2 Operation Interrupt source */  /* 存储块2操作结束中断源 */
+#define FLASH_IT_BANK2_ERROR                 ((uint32_t)0x80000400) /* 存储块2错误中断源 */ /*!< FPEC BANK2 error interrupt source */
+#define FLASH_IT_BANK2_EOP                   ((uint32_t)0x80001000) /* 存储块2操作结束中断源 */ /*!< End of FLASH BANK2 Operation Interrupt source */
 
-#define FLASH_IT_BANK1_ERROR                 FLASH_IT_ERROR          /*!< FPEC BANK1 error interrupt source */  /* 存储块1错误中断源 */
-#define FLASH_IT_BANK1_EOP                   FLASH_IT_EOP            /*!< End of FLASH BANK1 Operation Interrupt source */  /* 存储块1操作结束中断源 */
+#define FLASH_IT_BANK1_ERROR                 FLASH_IT_ERROR /* 存储块1错误中断源 */ /*!< FPEC BANK1 error interrupt source */
+#define FLASH_IT_BANK1_EOP                   FLASH_IT_EOP /* 存储块1操作结束中断源 */ /*!< End of FLASH BANK1 Operation Interrupt source */
 
-#define FLASH_IT_ERROR                 ((uint32_t)0x00000400)  /*!< FPEC BANK1 error interrupt source */  /* 存储块1错误中断源 */
-#define FLASH_IT_EOP                   ((uint32_t)0x00001000)  /*!< End of FLASH BANK1 Operation Interrupt source */  /* 存储块1操作结束中断源 */
+#define FLASH_IT_ERROR                 ((uint32_t)0x00000400) /* 存储块1错误中断源 */ /*!< FPEC BANK1 error interrupt source */
+#define FLASH_IT_EOP                   ((uint32_t)0x00001000) /* 存储块1操作结束中断源 */ /*!< End of FLASH BANK1 Operation Interrupt source */
 #define IS_FLASH_IT(IT) ((((IT) & (uint32_t)0x7FFFEBFF) == 0x00000000) && (((IT) != 0x00000000)))
 #else
-#define FLASH_IT_ERROR                 ((uint32_t)0x00000400)  /*!< FPEC error interrupt source */  /* FPEC错误中断源 */
-#define FLASH_IT_EOP                   ((uint32_t)0x00001000)  /*!< End of FLASH Operation Interrupt source */  /* FLASH操作结束中断源 */
-#define FLASH_IT_BANK1_ERROR           FLASH_IT_ERROR          /*!< FPEC BANK1 error interrupt source */  /* 存储块1错误中断源 */
-#define FLASH_IT_BANK1_EOP             FLASH_IT_EOP            /*!< End of FLASH BANK1 Operation Interrupt source */  /* 存储块1操作结束中断源 */
+#define FLASH_IT_ERROR                 ((uint32_t)0x00000400) /* FPEC错误中断源 */ /*!< FPEC error interrupt source */
+#define FLASH_IT_EOP                   ((uint32_t)0x00001000) /* FLASH操作结束中断源 */ /*!< End of FLASH Operation Interrupt source */
+#define FLASH_IT_BANK1_ERROR           FLASH_IT_ERROR /* 存储块1错误中断源 */ /*!< FPEC BANK1 error interrupt source */
+#define FLASH_IT_BANK1_EOP             FLASH_IT_EOP /* 存储块1操作结束中断源 */ /*!< End of FLASH BANK1 Operation Interrupt source */
 
 #define IS_FLASH_IT(IT) ((((IT) & (uint32_t)0xFFFFEBFF) == 0x00000000) && (((IT) != 0x00000000)))
 #endif
@@ -300,21 +333,21 @@ typedef enum
   * @{
   */
 #ifdef STM32F10X_XL
-#define FLASH_FLAG_BANK2_BSY                 ((uint32_t)0x80000001)  /*!< FLASH BANK2 Busy flag */  /* 存储块2忙标志 */
-#define FLASH_FLAG_BANK2_EOP                 ((uint32_t)0x80000020)  /*!< FLASH BANK2 End of Operation flag */  /* 存储块2操作结束标志 */
-#define FLASH_FLAG_BANK2_PGERR               ((uint32_t)0x80000004)  /*!< FLASH BANK2 Program error flag */  /* 存储块2编程错误标志 */
-#define FLASH_FLAG_BANK2_WRPRTERR            ((uint32_t)0x80000010)  /*!< FLASH BANK2 Write protected error flag */  /* 存储块2写保护错误标志 */
+#define FLASH_FLAG_BANK2_BSY                 ((uint32_t)0x80000001) /* 存储块2忙标志 */ /*!< FLASH BANK2 Busy flag */
+#define FLASH_FLAG_BANK2_EOP                 ((uint32_t)0x80000020) /* 存储块2操作结束标志 */ /*!< FLASH BANK2 End of Operation flag */
+#define FLASH_FLAG_BANK2_PGERR               ((uint32_t)0x80000004) /* 存储块2编程错误标志 */ /*!< FLASH BANK2 Program error flag */
+#define FLASH_FLAG_BANK2_WRPRTERR            ((uint32_t)0x80000010) /* 存储块2写保护错误标志 */ /*!< FLASH BANK2 Write protected error flag */
 
-#define FLASH_FLAG_BANK1_BSY                 FLASH_FLAG_BSY       /*!< FLASH BANK1 Busy flag*/  /* 存储块1忙标志 */
-#define FLASH_FLAG_BANK1_EOP                 FLASH_FLAG_EOP       /*!< FLASH BANK1 End of Operation flag */  /* 存储块1操作结束标志 */
-#define FLASH_FLAG_BANK1_PGERR               FLASH_FLAG_PGERR     /*!< FLASH BANK1 Program error flag */  /* 存储块1编程错误标志 */
-#define FLASH_FLAG_BANK1_WRPRTERR            FLASH_FLAG_WRPRTERR  /*!< FLASH BANK1 Write protected error flag */  /* 存储块1写保护错误标志 */
+#define FLASH_FLAG_BANK1_BSY                 FLASH_FLAG_BSY /* 存储块1忙标志 */ /*!< FLASH BANK1 Busy flag*/
+#define FLASH_FLAG_BANK1_EOP                 FLASH_FLAG_EOP /* 存储块1操作结束标志 */ /*!< FLASH BANK1 End of Operation flag */
+#define FLASH_FLAG_BANK1_PGERR               FLASH_FLAG_PGERR /* 存储块1编程错误标志 */ /*!< FLASH BANK1 Program error flag */
+#define FLASH_FLAG_BANK1_WRPRTERR            FLASH_FLAG_WRPRTERR /* 存储块1写保护错误标志 */ /*!< FLASH BANK1 Write protected error flag */
 
-#define FLASH_FLAG_BSY                 ((uint32_t)0x00000001)  /*!< FLASH Busy flag */  /* FLASH忙标志 */
-#define FLASH_FLAG_EOP                 ((uint32_t)0x00000020)  /*!< FLASH End of Operation flag */  /* FLASH操作结束标志 */
-#define FLASH_FLAG_PGERR               ((uint32_t)0x00000004)  /*!< FLASH Program error flag */  /* FLASH编程错误标志 */
-#define FLASH_FLAG_WRPRTERR            ((uint32_t)0x00000010)  /*!< FLASH Write protected error flag */  /* FLASH写保护错误标志 */
-#define FLASH_FLAG_OPTERR              ((uint32_t)0x00000001)  /*!< FLASH Option Byte error flag */  /* FLASH选项字节错误标志 */
+#define FLASH_FLAG_BSY                 ((uint32_t)0x00000001) /* FLASH忙标志 */ /*!< FLASH Busy flag */
+#define FLASH_FLAG_EOP                 ((uint32_t)0x00000020) /* FLASH操作结束标志 */ /*!< FLASH End of Operation flag */
+#define FLASH_FLAG_PGERR               ((uint32_t)0x00000004) /* FLASH编程错误标志 */ /*!< FLASH Program error flag */
+#define FLASH_FLAG_WRPRTERR            ((uint32_t)0x00000010) /* FLASH写保护错误标志 */ /*!< FLASH Write protected error flag */
+#define FLASH_FLAG_OPTERR              ((uint32_t)0x00000001) /* FLASH选项字节错误标志 */ /*!< FLASH Option Byte error flag */
  
 #define IS_FLASH_CLEAR_FLAG(FLAG) ((((FLAG) & (uint32_t)0x7FFFFFCA) == 0x00000000) && ((FLAG) != 0x00000000))
 #define IS_FLASH_GET_FLAG(FLAG)  (((FLAG) == FLASH_FLAG_BSY) || ((FLAG) == FLASH_FLAG_EOP) || \
@@ -325,16 +358,16 @@ typedef enum
                                   ((FLAG) == FLASH_FLAG_BANK2_BSY) || ((FLAG) == FLASH_FLAG_BANK2_EOP) || \
                                   ((FLAG) == FLASH_FLAG_BANK2_PGERR) || ((FLAG) == FLASH_FLAG_BANK2_WRPRTERR))
 #else
-#define FLASH_FLAG_BSY                 ((uint32_t)0x00000001)  /*!< FLASH Busy flag */  /* FLASH忙标志 */
-#define FLASH_FLAG_EOP                 ((uint32_t)0x00000020)  /*!< FLASH End of Operation flag */  /* FLASH操作结束标志 */
-#define FLASH_FLAG_PGERR               ((uint32_t)0x00000004)  /*!< FLASH Program error flag */  /* FLASH编程错误标志 */
-#define FLASH_FLAG_WRPRTERR            ((uint32_t)0x00000010)  /*!< FLASH Write protected error flag */  /* FLASH写保护错误标志 */
-#define FLASH_FLAG_OPTERR              ((uint32_t)0x00000001)  /*!< FLASH Option Byte error flag */  /* FLASH选项字节错误标志 */
+#define FLASH_FLAG_BSY                 ((uint32_t)0x00000001) /* FLASH忙标志 */ /*!< FLASH Busy flag */
+#define FLASH_FLAG_EOP                 ((uint32_t)0x00000020) /* FLASH操作结束标志 */ /*!< FLASH End of Operation flag */
+#define FLASH_FLAG_PGERR               ((uint32_t)0x00000004) /* FLASH编程错误标志 */ /*!< FLASH Program error flag */
+#define FLASH_FLAG_WRPRTERR            ((uint32_t)0x00000010) /* FLASH写保护错误标志 */ /*!< FLASH Write protected error flag */
+#define FLASH_FLAG_OPTERR              ((uint32_t)0x00000001) /* FLASH选项字节错误标志 */ /*!< FLASH Option Byte error flag */
 
-#define FLASH_FLAG_BANK1_BSY                 FLASH_FLAG_BSY       /*!< FLASH BANK1 Busy flag*/  /* 存储块1忙标志 */
-#define FLASH_FLAG_BANK1_EOP                 FLASH_FLAG_EOP       /*!< FLASH BANK1 End of Operation flag */  /* 存储块1操作结束标志 */
-#define FLASH_FLAG_BANK1_PGERR               FLASH_FLAG_PGERR     /*!< FLASH BANK1 Program error flag */  /* 存储块1编程错误标志 */
-#define FLASH_FLAG_BANK1_WRPRTERR            FLASH_FLAG_WRPRTERR  /*!< FLASH BANK1 Write protected error flag */  /* 存储块1写保护错误标志 */
+#define FLASH_FLAG_BANK1_BSY                 FLASH_FLAG_BSY /* 存储块1忙标志 */ /*!< FLASH BANK1 Busy flag*/
+#define FLASH_FLAG_BANK1_EOP                 FLASH_FLAG_EOP /* 存储块1操作结束标志 */ /*!< FLASH BANK1 End of Operation flag */
+#define FLASH_FLAG_BANK1_PGERR               FLASH_FLAG_PGERR /* 存储块1编程错误标志 */ /*!< FLASH BANK1 Program error flag */
+#define FLASH_FLAG_BANK1_WRPRTERR            FLASH_FLAG_WRPRTERR /* 存储块1写保护错误标志 */ /*!< FLASH BANK1 Write protected error flag */
  
 #define IS_FLASH_CLEAR_FLAG(FLAG) ((((FLAG) & (uint32_t)0xFFFFFFCA) == 0x00000000) && ((FLAG) != 0x00000000))
 #define IS_FLASH_GET_FLAG(FLAG)  (((FLAG) == FLASH_FLAG_BSY) || ((FLAG) == FLASH_FLAG_EOP) || \

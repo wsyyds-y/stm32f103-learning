@@ -44,49 +44,49 @@
   * @{
   */
 
-#define CR1_UE_Set                ((uint16_t)0x2000)  /*!< USART Enable Mask */  /* USART使能掩码 */
-#define CR1_UE_Reset              ((uint16_t)0xDFFF)  /*!< USART Disable Mask */  /* USART关闭掩码 */
+#define CR1_UE_Set                ((uint16_t)0x2000) /* USART使能掩码 */ /*!< USART Enable Mask */
+#define CR1_UE_Reset              ((uint16_t)0xDFFF) /* USART关闭掩码 */ /*!< USART Disable Mask */
 
-#define CR1_WAKE_Mask             ((uint16_t)0xF7FF)  /*!< USART WakeUp Method Mask */  /* 唤醒方式掩码 */
+#define CR1_WAKE_Mask             ((uint16_t)0xF7FF) /* 唤醒方式掩码 */ /*!< USART WakeUp Method Mask */
 
-#define CR1_RWU_Set               ((uint16_t)0x0002)  /*!< USART mute mode Enable Mask */  /* 静默模式使能掩码 */
-#define CR1_RWU_Reset             ((uint16_t)0xFFFD)  /*!< USART mute mode Enable Mask */  /* 静默模式关闭掩码 */
-#define CR1_SBK_Set               ((uint16_t)0x0001)  /*!< USART Break Character send Mask */  /* 发送断开字符掩码 */
-#define CR1_CLEAR_Mask            ((uint16_t)0xE9F3)  /*!< USART CR1 Mask */  /* CR1配置清除掩码 */
-#define CR2_Address_Mask          ((uint16_t)0xFFF0)  /*!< USART address Mask */  /* 节点地址掩码 */
+#define CR1_RWU_Set               ((uint16_t)0x0002) /* 静默模式使能掩码 */ /*!< USART mute mode Enable Mask */
+#define CR1_RWU_Reset             ((uint16_t)0xFFFD) /* 静默模式关闭掩码 */ /*!< USART mute mode Enable Mask */
+#define CR1_SBK_Set               ((uint16_t)0x0001) /* 发送断开字符掩码 */ /*!< USART Break Character send Mask */
+#define CR1_CLEAR_Mask            ((uint16_t)0xE9F3) /* CR1配置清除掩码 */ /*!< USART CR1 Mask */
+#define CR2_Address_Mask          ((uint16_t)0xFFF0) /* 节点地址掩码 */ /*!< USART address Mask */
 
-#define CR2_LINEN_Set              ((uint16_t)0x4000)  /*!< USART LIN Enable Mask */  /* LIN模式使能掩码 */
-#define CR2_LINEN_Reset            ((uint16_t)0xBFFF)  /*!< USART LIN Disable Mask */  /* LIN模式关闭掩码 */
+#define CR2_LINEN_Set              ((uint16_t)0x4000) /* LIN模式使能掩码 */ /*!< USART LIN Enable Mask */
+#define CR2_LINEN_Reset            ((uint16_t)0xBFFF) /* LIN模式关闭掩码 */ /*!< USART LIN Disable Mask */
 
-#define CR2_LBDL_Mask             ((uint16_t)0xFFDF)  /*!< USART LIN Break detection Mask */  /* LIN断开检测长度掩码 */
-#define CR2_STOP_CLEAR_Mask       ((uint16_t)0xCFFF)  /*!< USART CR2 STOP Bits Mask */  /* 停止位清除掩码 */
-#define CR2_CLOCK_CLEAR_Mask      ((uint16_t)0xF0FF)  /*!< USART CR2 Clock Mask */  /* 同步时钟清除掩码 */
+#define CR2_LBDL_Mask             ((uint16_t)0xFFDF) /* LIN断开检测长度掩码 */ /*!< USART LIN Break detection Mask */
+#define CR2_STOP_CLEAR_Mask       ((uint16_t)0xCFFF) /* 停止位清除掩码 */ /*!< USART CR2 STOP Bits Mask */
+#define CR2_CLOCK_CLEAR_Mask      ((uint16_t)0xF0FF) /* 同步时钟清除掩码 */ /*!< USART CR2 Clock Mask */
 
-#define CR3_SCEN_Set              ((uint16_t)0x0020)  /*!< USART SC Enable Mask */  /* SmartCard模式使能掩码 */
-#define CR3_SCEN_Reset            ((uint16_t)0xFFDF)  /*!< USART SC Disable Mask */  /* SmartCard模式关闭掩码 */
+#define CR3_SCEN_Set              ((uint16_t)0x0020) /* SmartCard模式使能掩码 */ /*!< USART SC Enable Mask */
+#define CR3_SCEN_Reset            ((uint16_t)0xFFDF) /* SmartCard模式关闭掩码 */ /*!< USART SC Disable Mask */
 
-#define CR3_NACK_Set              ((uint16_t)0x0010)  /*!< USART SC NACK Enable Mask */  /* SmartCard NACK使能掩码 */
-#define CR3_NACK_Reset            ((uint16_t)0xFFEF)  /*!< USART SC NACK Disable Mask */  /* SmartCard NACK关闭掩码 */
+#define CR3_NACK_Set              ((uint16_t)0x0010) /* SmartCard NACK使能掩码 */ /*!< USART SC NACK Enable Mask */
+#define CR3_NACK_Reset            ((uint16_t)0xFFEF) /* SmartCard NACK关闭掩码 */ /*!< USART SC NACK Disable Mask */
 
-#define CR3_HDSEL_Set             ((uint16_t)0x0008)  /*!< USART Half-Duplex Enable Mask */  /* 半双工使能掩码 */
-#define CR3_HDSEL_Reset           ((uint16_t)0xFFF7)  /*!< USART Half-Duplex Disable Mask */  /* 半双工关闭掩码 */
+#define CR3_HDSEL_Set             ((uint16_t)0x0008) /* 半双工使能掩码 */ /*!< USART Half-Duplex Enable Mask */
+#define CR3_HDSEL_Reset           ((uint16_t)0xFFF7) /* 半双工关闭掩码 */ /*!< USART Half-Duplex Disable Mask */
 
-#define CR3_IRLP_Mask             ((uint16_t)0xFFFB)  /*!< USART IrDA LowPower mode Mask */  /* IrDA低功耗模式掩码 */
-#define CR3_CLEAR_Mask            ((uint16_t)0xFCFF)  /*!< USART CR3 Mask */  /* CR3配置清除掩码 */
+#define CR3_IRLP_Mask             ((uint16_t)0xFFFB) /* IrDA低功耗模式掩码 */ /*!< USART IrDA LowPower mode Mask */
+#define CR3_CLEAR_Mask            ((uint16_t)0xFCFF) /* CR3配置清除掩码 */ /*!< USART CR3 Mask */
 
-#define CR3_IREN_Set              ((uint16_t)0x0002)  /*!< USART IrDA Enable Mask */  /* IrDA使能掩码 */
-#define CR3_IREN_Reset            ((uint16_t)0xFFFD)  /*!< USART IrDA Disable Mask */  /* IrDA关闭掩码 */
-#define GTPR_LSB_Mask             ((uint16_t)0x00FF)  /*!< Guard Time Register LSB Mask */  /* 保护时间寄存器低字节掩码 */
-#define GTPR_MSB_Mask             ((uint16_t)0xFF00)  /*!< Guard Time Register MSB Mask */  /* 保护时间寄存器高字节掩码 */
-#define IT_Mask                   ((uint16_t)0x001F)  /*!< USART Interrupt Mask */  /* 中断号掩码 */
+#define CR3_IREN_Set              ((uint16_t)0x0002) /* IrDA使能掩码 */ /*!< USART IrDA Enable Mask */
+#define CR3_IREN_Reset            ((uint16_t)0xFFFD) /* IrDA关闭掩码 */ /*!< USART IrDA Disable Mask */
+#define GTPR_LSB_Mask             ((uint16_t)0x00FF) /* 保护时间寄存器低字节掩码 */ /*!< Guard Time Register LSB Mask */
+#define GTPR_MSB_Mask             ((uint16_t)0xFF00) /* 保护时间寄存器高字节掩码 */ /*!< Guard Time Register MSB Mask */
+#define IT_Mask                   ((uint16_t)0x001F) /* 中断号掩码 */ /*!< USART Interrupt Mask */
 
 /* USART OverSampling-8 Mask */
-#define CR1_OVER8_Set             ((u16)0x8000)  /* USART OVER8 mode Enable Mask */  /* 8倍过采样使能掩码 */
-#define CR1_OVER8_Reset           ((u16)0x7FFF)  /* USART OVER8 mode Disable Mask */  /* 8倍过采样关闭掩码 */
+#define CR1_OVER8_Set             ((u16)0x8000) /* 8倍过采样使能掩码 */ /* USART OVER8 mode Enable Mask */
+#define CR1_OVER8_Reset           ((u16)0x7FFF) /* 8倍过采样关闭掩码 */ /* USART OVER8 mode Disable Mask */
 
 /* USART One Bit Sampling Mask */
-#define CR3_ONEBITE_Set           ((u16)0x0800)  /* USART ONEBITE mode Enable Mask */  /* 单比特采样使能掩码 */
-#define CR3_ONEBITE_Reset         ((u16)0xF7FF)  /* USART ONEBITE mode Disable Mask */  /* 单比特采样关闭掩码 */
+#define CR3_ONEBITE_Set           ((u16)0x0800) /* 单比特采样使能掩码 */ /* USART ONEBITE mode Enable Mask */
+#define CR3_ONEBITE_Reset         ((u16)0xF7FF) /* 单比特采样关闭掩码 */ /* USART ONEBITE mode Disable Mask */
 
 /**
   * @}

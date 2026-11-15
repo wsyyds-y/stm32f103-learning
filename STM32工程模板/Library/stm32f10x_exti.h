@@ -75,21 +75,21 @@ typedef enum
 
 typedef struct
 {
+  /* 指定要配置的EXTI线 */
   uint32_t EXTI_Line;               /*!< Specifies the EXTI lines to be enabled or disabled.
                                          This parameter can be any combination of @ref EXTI_Lines */
-  /* 指定要配置的EXTI线 */
    
+  /* 指定EXTI线的工作模式(中断或事件) */
   EXTIMode_TypeDef EXTI_Mode;       /*!< Specifies the mode for the EXTI lines.
                                          This parameter can be a value of @ref EXTIMode_TypeDef */
-  /* 指定EXTI线的工作模式(中断或事件) */
 
+  /* 指定EXTI线触发信号的边沿 */
   EXTITrigger_TypeDef EXTI_Trigger; /*!< Specifies the trigger signal active edge for the EXTI lines.
                                          This parameter can be a value of @ref EXTITrigger_TypeDef */
-  /* 指定EXTI线触发信号的边沿 */
 
+  /* 指定EXTI线的使能状态 */
   FunctionalState EXTI_LineCmd;     /*!< Specifies the new state of the selected EXTI lines.
                                          This parameter can be set either to ENABLE or DISABLE */ 
-  /* 指定EXTI线的使能状态 */
 }EXTI_InitTypeDef;
 
 /**
@@ -104,27 +104,28 @@ typedef struct
   * @{
   */
 
-#define EXTI_Line0       ((uint32_t)0x00001)  /*!< External interrupt line 0 */  /* 外部中断线0 */
-#define EXTI_Line1       ((uint32_t)0x00002)  /*!< External interrupt line 1 */  /* 外部中断线1 */
-#define EXTI_Line2       ((uint32_t)0x00004)  /*!< External interrupt line 2 */  /* 外部中断线2 */
-#define EXTI_Line3       ((uint32_t)0x00008)  /*!< External interrupt line 3 */  /* 外部中断线3 */
-#define EXTI_Line4       ((uint32_t)0x00010)  /*!< External interrupt line 4 */  /* 外部中断线4 */
-#define EXTI_Line5       ((uint32_t)0x00020)  /*!< External interrupt line 5 */  /* 外部中断线5 */
-#define EXTI_Line6       ((uint32_t)0x00040)  /*!< External interrupt line 6 */  /* 外部中断线6 */
-#define EXTI_Line7       ((uint32_t)0x00080)  /*!< External interrupt line 7 */  /* 外部中断线7 */
-#define EXTI_Line8       ((uint32_t)0x00100)  /*!< External interrupt line 8 */  /* 外部中断线8 */
-#define EXTI_Line9       ((uint32_t)0x00200)  /*!< External interrupt line 9 */  /* 外部中断线9 */
-#define EXTI_Line10      ((uint32_t)0x00400)  /*!< External interrupt line 10 */  /* 外部中断线10 */
-#define EXTI_Line11      ((uint32_t)0x00800)  /*!< External interrupt line 11 */  /* 外部中断线11 */
-#define EXTI_Line12      ((uint32_t)0x01000)  /*!< External interrupt line 12 */  /* 外部中断线12 */
-#define EXTI_Line13      ((uint32_t)0x02000)  /*!< External interrupt line 13 */  /* 外部中断线13 */
-#define EXTI_Line14      ((uint32_t)0x04000)  /*!< External interrupt line 14 */  /* 外部中断线14 */
-#define EXTI_Line15      ((uint32_t)0x08000)  /*!< External interrupt line 15 */  /* 外部中断线15 */
-#define EXTI_Line16      ((uint32_t)0x10000)  /*!< External interrupt line 16 Connected to the PVD Output */  /* 连接PVD输出的外部中断线16 */
-#define EXTI_Line17      ((uint32_t)0x20000)  /*!< External interrupt line 17 Connected to the RTC Alarm event */  /* 连接RTC闹钟事件的外部中断线17 */
+#define EXTI_Line0       ((uint32_t)0x00001) /* 外部中断线0 */ /*!< External interrupt line 0 */
+#define EXTI_Line1       ((uint32_t)0x00002) /* 外部中断线1 */ /*!< External interrupt line 1 */
+#define EXTI_Line2       ((uint32_t)0x00004) /* 外部中断线2 */ /*!< External interrupt line 2 */
+#define EXTI_Line3       ((uint32_t)0x00008) /* 外部中断线3 */ /*!< External interrupt line 3 */
+#define EXTI_Line4       ((uint32_t)0x00010) /* 外部中断线4 */ /*!< External interrupt line 4 */
+#define EXTI_Line5       ((uint32_t)0x00020) /* 外部中断线5 */ /*!< External interrupt line 5 */
+#define EXTI_Line6       ((uint32_t)0x00040) /* 外部中断线6 */ /*!< External interrupt line 6 */
+#define EXTI_Line7       ((uint32_t)0x00080) /* 外部中断线7 */ /*!< External interrupt line 7 */
+#define EXTI_Line8       ((uint32_t)0x00100) /* 外部中断线8 */ /*!< External interrupt line 8 */
+#define EXTI_Line9       ((uint32_t)0x00200) /* 外部中断线9 */ /*!< External interrupt line 9 */
+#define EXTI_Line10      ((uint32_t)0x00400) /* 外部中断线10 */ /*!< External interrupt line 10 */
+#define EXTI_Line11      ((uint32_t)0x00800) /* 外部中断线11 */ /*!< External interrupt line 11 */
+#define EXTI_Line12      ((uint32_t)0x01000) /* 外部中断线12 */ /*!< External interrupt line 12 */
+#define EXTI_Line13      ((uint32_t)0x02000) /* 外部中断线13 */ /*!< External interrupt line 13 */
+#define EXTI_Line14      ((uint32_t)0x04000) /* 外部中断线14 */ /*!< External interrupt line 14 */
+#define EXTI_Line15      ((uint32_t)0x08000) /* 外部中断线15 */ /*!< External interrupt line 15 */
+#define EXTI_Line16      ((uint32_t)0x10000) /* 连接PVD输出的外部中断线16 */ /*!< External interrupt line 16 Connected to the PVD Output */
+#define EXTI_Line17      ((uint32_t)0x20000) /* 连接RTC闹钟事件的外部中断线17 */ /*!< External interrupt line 17 Connected to the RTC Alarm event */
+/* 连接USB唤醒事件的外部中断线18 */
 #define EXTI_Line18      ((uint32_t)0x40000)  /*!< External interrupt line 18 Connected to the USB Device/USB OTG FS
-                                                   Wakeup from suspend event */  /* 连接USB唤醒事件的外部中断线18 */                                    
-#define EXTI_Line19      ((uint32_t)0x80000)  /*!< External interrupt line 19 Connected to the Ethernet Wakeup event */  /* 连接以太网唤醒事件的外部中断线19 */
+                                                   Wakeup from suspend event */
+#define EXTI_Line19      ((uint32_t)0x80000) /* 连接以太网唤醒事件的外部中断线19 */ /*!< External interrupt line 19 Connected to the Ethernet Wakeup event */
                                           
 #define IS_EXTI_LINE(LINE) ((((LINE) & (uint32_t)0xFFF00000) == 0x00) && ((LINE) != (uint16_t)0x00))
 #define IS_GET_EXTI_LINE(LINE) (((LINE) == EXTI_Line0) || ((LINE) == EXTI_Line1) || \

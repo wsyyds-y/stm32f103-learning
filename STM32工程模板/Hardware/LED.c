@@ -24,8 +24,8 @@ void LED1_ON(void)
 	
 }
 
-void LED1_TURN(void)//翻转信号
-
+//翻转信号
+void LED1_TURN(void)
 {
 		if (GPIO_ReadOutputDataBit(GPIOA,GPIO_Pin_1) == 0)
 		{
@@ -60,8 +60,8 @@ void LED2_OFF(void)
 	
 }
 
-void LED2_TURN(void)//翻转信号
-
+//翻转信号
+void LED2_TURN(void)
 {
 		if (GPIO_ReadOutputDataBit(GPIOA,GPIO_Pin_2) == 0)
 		{

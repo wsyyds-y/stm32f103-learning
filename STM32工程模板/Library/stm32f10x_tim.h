@@ -50,24 +50,24 @@
 
 typedef struct
 {
+  /* 预分频器值，0x0000~0xFFFF */
   uint16_t TIM_Prescaler;         /*!< Specifies the prescaler value used to divide the TIM clock.
                                    This parameter can be a number between 0x0000 and 0xFFFF */
-  /* 待载入比较寄存器(CCR)的脉冲值 */
-  /* 预分频器值，0x0000~0xFFFF */
 
+  /* 计数模式，向上/向下/中央对齐 */
   uint16_t TIM_CounterMode;       /*!< Specifies the counter mode.
                                        This parameter can be a value of @ref TIM_Counter_Mode */
-  /* 计数模式，向上/向下/中央对齐 */
 
+  /* 自动重装载值(ARR)，0x0000~0xFFFF */
   uint16_t TIM_Period;            /*!< Specifies the period value to be loaded into the active
                                        Auto-Reload Register at the next update event.
                                        This parameter must be a number between 0x0000 and 0xFFFF.  */
-  /* 自动重装载值(ARR)，0x0000~0xFFFF */ 
 
+  /* 时钟分频系数(CKD) */
   uint16_t TIM_ClockDivision;     /*!< Specifies the clock division.
                                       This parameter can be a value of @ref TIM_Clock_Division_CKD */
-  /* 时钟分频系数(CKD) */
 
+  /* 重复计数器，仅TIM1/TIM8有效 */
   uint8_t TIM_RepetitionCounter;  /*!< Specifies the repetition counter value. Each time the RCR downcounter
                                        reaches zero, an update event is generated and counting restarts
                                        from the RCR value (N).
@@ -76,7 +76,6 @@ typedef struct
                                           - the number of half PWM period in center-aligned mode
                                        This parameter must be a number between 0x00 and 0xFF. 
                                        @note This parameter is valid only for TIM1 and TIM8. */
-  /* 重复计数器，仅TIM1/TIM8有效 */
 } TIM_TimeBaseInitTypeDef;       
 
 /** 
@@ -85,40 +84,41 @@ typedef struct
 
 typedef struct
 {
+  /* 输出比较模式 */
   uint16_t TIM_OCMode;        /*!< Specifies the TIM mode.
                                    This parameter can be a value of @ref TIM_Output_Compare_and_PWM_modes */
-  /* 输出比较模式 */
 
+  /* 输出比较使能状态 */
   uint16_t TIM_OutputState;   /*!< Specifies the TIM Output Compare state.
                                    This parameter can be a value of @ref TIM_Output_Compare_state */
-  /* 输出比较使能状态 */
 
+  /* 互补输出比较使能状态，仅TIM1/TIM8 */
   uint16_t TIM_OutputNState;  /*!< Specifies the TIM complementary Output Compare state.
                                    This parameter can be a value of @ref TIM_Output_Compare_N_state
                                    @note This parameter is valid only for TIM1 and TIM8. */
-  /* 互补输出比较使能状态，仅TIM1/TIM8 */
 
+  /* 待载入比较寄存器(CCR)的脉冲值 */
   uint16_t TIM_Pulse;         /*!< Specifies the pulse value to be loaded into the Capture Compare Register. 
                                    This parameter can be a number between 0x0000 and 0xFFFF */
 
+  /* 输出极性 */
   uint16_t TIM_OCPolarity;    /*!< Specifies the output polarity.
                                    This parameter can be a value of @ref TIM_Output_Compare_Polarity */
-  /* 输出极性 */
 
+  /* 互补输出极性，仅TIM1/TIM8 */
   uint16_t TIM_OCNPolarity;   /*!< Specifies the complementary output polarity.
                                    This parameter can be a value of @ref TIM_Output_Compare_N_Polarity
                                    @note This parameter is valid only for TIM1 and TIM8. */
-  /* 互补输出极性，仅TIM1/TIM8 */
 
+  /* 空闲态时OCx输出电平，仅TIM1/TIM8 */
   uint16_t TIM_OCIdleState;   /*!< Specifies the TIM Output Compare pin state during Idle state.
                                    This parameter can be a value of @ref TIM_Output_Compare_Idle_State
                                    @note This parameter is valid only for TIM1 and TIM8. */
-  /* 空闲态时OCx输出电平，仅TIM1/TIM8 */
 
+  /* 空闲态时OCxN输出电平，仅TIM1/TIM8 */
   uint16_t TIM_OCNIdleState;  /*!< Specifies the TIM Output Compare pin state during Idle state.
                                    This parameter can be a value of @ref TIM_Output_Compare_N_Idle_State
                                    @note This parameter is valid only for TIM1 and TIM8. */
-  /* 空闲态时OCxN输出电平，仅TIM1/TIM8 */
 } TIM_OCInitTypeDef;
 
 /** 
@@ -128,25 +128,25 @@ typedef struct
 typedef struct
 {
 
+  /* 输入捕获通道(TIM_Channel_x) */
   uint16_t TIM_Channel;      /*!< Specifies the TIM channel.
                                   This parameter can be a value of @ref TIM_Channel */
-  /* 输入捕获通道(TIM_Channel_x) */
 
+  /* 输入触发极性（上升/下降/双边沿） */
   uint16_t TIM_ICPolarity;   /*!< Specifies the active edge of the input signal.
                                   This parameter can be a value of @ref TIM_Input_Capture_Polarity */
-  /* 输入触发极性（上升/下降/双边沿） */
 
+  /* 输入捕获映射关系（直接/间接/TRC） */
   uint16_t TIM_ICSelection;  /*!< Specifies the input.
                                   This parameter can be a value of @ref TIM_Input_Capture_Selection */
-  /* 输入捕获映射关系（直接/间接/TRC） */
 
+  /* 输入捕获预分频 */
   uint16_t TIM_ICPrescaler;  /*!< Specifies the Input Capture Prescaler.
                                   This parameter can be a value of @ref TIM_Input_Capture_Prescaler */
-  /* 输入捕获预分频 */
 
+  /* 输入捕获滤波长度，0x0~0xF */
   uint16_t TIM_ICFilter;     /*!< Specifies the input capture filter.
                                   This parameter can be a number between 0x0 and 0xF */
-  /* 输入捕获滤波长度，0x0~0xF */
 } TIM_ICInitTypeDef;
 
 /** 
@@ -157,34 +157,34 @@ typedef struct
 typedef struct
 {
 
+  /* 运行模式下关闭状态选择 */
   uint16_t TIM_OSSRState;        /*!< Specifies the Off-State selection used in Run mode.
                                       This parameter can be a value of @ref OSSR_Off_State_Selection_for_Run_mode_state */
-  /* 运行模式下关闭状态选择 */
 
+  /* 空闲模式下关闭状态选择 */
   uint16_t TIM_OSSIState;        /*!< Specifies the Off-State used in Idle state.
                                       This parameter can be a value of @ref OSSI_Off_State_Selection_for_Idle_mode_state */
-  /* 空闲模式下关闭状态选择 */
 
+  /* 锁定等级 */
   uint16_t TIM_LOCKLevel;        /*!< Specifies the LOCK level parameters.
                                       This parameter can be a value of @ref Lock_level */
-  /* 锁定等级 */ 
 
+  /* 死区时间，0x00~0xFF */
   uint16_t TIM_DeadTime;         /*!< Specifies the delay time between the switching-off and the
                                       switching-on of the outputs.
                                       This parameter can be a number between 0x00 and 0xFF  */
-  /* 死区时间，0x00~0xFF */
 
+  /* 刹车输入使能 */
   uint16_t TIM_Break;            /*!< Specifies whether the TIM Break input is enabled or not. 
                                       This parameter can be a value of @ref Break_Input_enable_disable */
-  /* 刹车输入使能 */
 
+  /* 刹车输入极性 */
   uint16_t TIM_BreakPolarity;    /*!< Specifies the TIM Break Input pin polarity.
                                       This parameter can be a value of @ref Break_Polarity */
-  /* 刹车输入极性 */
 
+  /* 自动输出使能 */
   uint16_t TIM_AutomaticOutput;  /*!< Specifies whether the TIM Automatic Output feature is enabled or not. 
                                       This parameter can be a value of @ref TIM_AOE_Bit_Set_Reset */
-  /* 自动输出使能 */
 } TIM_BDTRInitTypeDef;
 
 /** @defgroup TIM_Exported_constants 
@@ -591,11 +591,13 @@ typedef struct
   * @{
   */
 
+/* 直接映射：TIx连接到对应ICx */
 #define TIM_ICSelection_DirectTI           ((uint16_t)0x0001) /*!< TIM Input 1, 2, 3 or 4 is selected to be 
-                                                                   connected to IC1, IC2, IC3 or IC4, respectively */  /* 直接映射：TIx连接到对应ICx */
+                                                                   connected to IC1, IC2, IC3 or IC4, respectively */
+/* 间接映射：TIx交叉连接到ICx */
 #define TIM_ICSelection_IndirectTI         ((uint16_t)0x0002) /*!< TIM Input 1, 2, 3 or 4 is selected to be
-                                                                   connected to IC2, IC1, IC4 or IC3, respectively. */  /* 间接映射：TIx交叉连接到ICx */
-#define TIM_ICSelection_TRC                ((uint16_t)0x0003) /*!< TIM Input 1, 2, 3 or 4 is selected to be connected to TRC. */  /* 连接到触发输入TRC */
+                                                                   connected to IC2, IC1, IC4 or IC3, respectively. */
+#define TIM_ICSelection_TRC                ((uint16_t)0x0003) /* 连接到触发输入TRC */ /*!< TIM Input 1, 2, 3 or 4 is selected to be connected to TRC. */
 #define IS_TIM_IC_SELECTION(SELECTION) (((SELECTION) == TIM_ICSelection_DirectTI) || \
                                         ((SELECTION) == TIM_ICSelection_IndirectTI) || \
                                         ((SELECTION) == TIM_ICSelection_TRC))  /* 校验输入捕获映射 */
@@ -607,10 +609,10 @@ typedef struct
   * @{
   */
 
-#define TIM_ICPSC_DIV1                     ((uint16_t)0x0000) /*!< Capture performed each time an edge is detected on the capture input. */  /* 每次捕获事件均触发 */
-#define TIM_ICPSC_DIV2                     ((uint16_t)0x0004) /*!< Capture performed once every 2 events. */  /* 每2个事件捕获一次 */
-#define TIM_ICPSC_DIV4                     ((uint16_t)0x0008) /*!< Capture performed once every 4 events. */  /* 每4个事件捕获一次 */
-#define TIM_ICPSC_DIV8                     ((uint16_t)0x000C) /*!< Capture performed once every 8 events. */  /* 每8个事件捕获一次 */
+#define TIM_ICPSC_DIV1                     ((uint16_t)0x0000) /* 每次捕获事件均触发 */ /*!< Capture performed each time an edge is detected on the capture input. */
+#define TIM_ICPSC_DIV2                     ((uint16_t)0x0004) /* 每2个事件捕获一次 */ /*!< Capture performed once every 2 events. */
+#define TIM_ICPSC_DIV4                     ((uint16_t)0x0008) /* 每4个事件捕获一次 */ /*!< Capture performed once every 4 events. */
+#define TIM_ICPSC_DIV8                     ((uint16_t)0x000C) /* 每8个事件捕获一次 */ /*!< Capture performed once every 8 events. */
 #define IS_TIM_IC_PRESCALER(PRESCALER) (((PRESCALER) == TIM_ICPSC_DIV1) || \
                                         ((PRESCALER) == TIM_ICPSC_DIV2) || \
                                         ((PRESCALER) == TIM_ICPSC_DIV4) || \
@@ -882,10 +884,11 @@ typedef struct
   * @{
   */
 
+/* 更新源：全局更新 */
 #define TIM_UpdateSource_Global            ((uint16_t)0x0000) /*!< Source of update is the counter overflow/underflow
                                                                    or the setting of UG bit, or an update generation
-                                                                   through the slave mode controller. */  /* 更新源：全局更新 */
-#define TIM_UpdateSource_Regular           ((uint16_t)0x0001) /*!< Source of update is counter overflow/underflow. */  /* 更新源：仅计数器溢出/下溢 */
+                                                                   through the slave mode controller. */
+#define TIM_UpdateSource_Regular           ((uint16_t)0x0001) /* 更新源：仅计数器溢出/下溢 */ /*!< Source of update is counter overflow/underflow. */
 #define IS_TIM_UPDATE_SOURCE(SOURCE) (((SOURCE) == TIM_UpdateSource_Global) || \
                                       ((SOURCE) == TIM_UpdateSource_Regular))  /* 校验更新源 */
 /**

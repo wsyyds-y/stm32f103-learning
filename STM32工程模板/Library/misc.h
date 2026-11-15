@@ -138,16 +138,21 @@ typedef struct
   * @{
   */
 
+/* 抢占0位，子优先级4位 */
 #define NVIC_PriorityGroup_0         ((uint32_t)0x700) /*!< 0 bits for pre-emption priority
-                                                            4 bits for subpriority */  /* 抢占0位，子优先级4位 */
+                                                            4 bits for subpriority */
+/* 抢占1位，子优先级3位 */
 #define NVIC_PriorityGroup_1         ((uint32_t)0x600) /*!< 1 bits for pre-emption priority
-                                                            3 bits for subpriority */  /* 抢占1位，子优先级3位 */
+                                                            3 bits for subpriority */
+/* 抢占2位，子优先级2位 */
 #define NVIC_PriorityGroup_2         ((uint32_t)0x500) /*!< 2 bits for pre-emption priority
-                                                            2 bits for subpriority */  /* 抢占2位，子优先级2位 */
+                                                            2 bits for subpriority */
+/* 抢占3位，子优先级1位 */
 #define NVIC_PriorityGroup_3         ((uint32_t)0x400) /*!< 3 bits for pre-emption priority
-                                                            1 bits for subpriority */  /* 抢占3位，子优先级1位 */
+                                                            1 bits for subpriority */
+/* 抢占4位，子优先级0位 */
 #define NVIC_PriorityGroup_4         ((uint32_t)0x300) /*!< 4 bits for pre-emption priority
-                                                            0 bits for subpriority */  /* 抢占4位，子优先级0位 */
+                                                            0 bits for subpriority */
 
 #define IS_NVIC_PRIORITY_GROUP(GROUP) (((GROUP) == NVIC_PriorityGroup_0) || \
                                        ((GROUP) == NVIC_PriorityGroup_1) || \

@@ -17,8 +17,8 @@ void LightSensor_Init(void)
 	
 	 
 }
+//读取13端口的电平
 uint8_t LightSensot_Get(void)
-	//读取13端口的电平
 {
 	return GPIO_ReadInputDataBit(GPIOB,GPIO_Pin_13);
 }

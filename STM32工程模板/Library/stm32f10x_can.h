@@ -52,62 +52,62 @@
 
 typedef struct
 {
+  /* 一个时间单元的长度(1~1024) */
   uint16_t CAN_Prescaler;   /*!< Specifies the length of a time quantum. 
                                  It ranges from 1 to 1024. */
-  /* 一个时间单元的长度(1~1024) */
   
+  /* CAN工作模式 */
   uint8_t CAN_Mode;         /*!< Specifies the CAN operating mode.
                                  This parameter can be a value of 
                                 @ref CAN_operating_mode */
-  /* CAN工作模式 */
 
+  /* 重新同步跳变宽度 */
   uint8_t CAN_SJW;          /*!< Specifies the maximum number of time quanta 
                                  the CAN hardware is allowed to lengthen or 
                                  shorten a bit to perform resynchronization.
                                  This parameter can be a value of 
                                  @ref CAN_synchronisation_jump_width */
-  /* 重新同步跳变宽度 */
 
+  /* 位段1的时间单元数 */
   uint8_t CAN_BS1;          /*!< Specifies the number of time quanta in Bit 
                                  Segment 1. This parameter can be a value of 
                                  @ref CAN_time_quantum_in_bit_segment_1 */
-  /* 位段1的时间单元数 */
 
+  /* 位段2的时间单元数 */
   uint8_t CAN_BS2;          /*!< Specifies the number of time quanta in Bit 
                                  Segment 2.
                                  This parameter can be a value of 
                                  @ref CAN_time_quantum_in_bit_segment_2 */
-  /* 位段2的时间单元数 */
   
+  /* 时间触发通信模式 */
   FunctionalState CAN_TTCM; /*!< Enable or disable the time triggered 
                                  communication mode. This parameter can be set 
                                  either to ENABLE or DISABLE. */
-  /* 时间触发通信模式 */
   
+  /* 自动离线管理 */
   FunctionalState CAN_ABOM;  /*!< Enable or disable the automatic bus-off 
                                   management. This parameter can be set either 
                                   to ENABLE or DISABLE. */
-  /* 自动离线管理 */
 
+  /* 自动唤醒模式 */
   FunctionalState CAN_AWUM;  /*!< Enable or disable the automatic wake-up mode. 
                                   This parameter can be set either to ENABLE or 
                                   DISABLE. */
-  /* 自动唤醒模式 */
 
+  /* 禁止自动重传 */
   FunctionalState CAN_NART;  /*!< Enable or disable the no-automatic 
                                   retransmission mode. This parameter can be 
                                   set either to ENABLE or DISABLE. */
-  /* 禁止自动重传 */
 
+  /* 接收FIFO锁定模式 */
   FunctionalState CAN_RFLM;  /*!< Enable or disable the Receive FIFO Locked mode.
                                   This parameter can be set either to ENABLE 
                                   or DISABLE. */
-  /* 接收FIFO锁定模式 */
 
+  /* 发送FIFO优先级 */
   FunctionalState CAN_TXFP;  /*!< Enable or disable the transmit FIFO priority.
                                   This parameter can be set either to ENABLE 
                                   or DISABLE. */
-  /* 发送FIFO优先级 */
 } CAN_InitTypeDef;
 
 /** 
@@ -116,45 +116,45 @@ typedef struct
 
 typedef struct
 {
+  /* 过滤器标识符高16位 */
   uint16_t CAN_FilterIdHigh;         /*!< Specifies the filter identification number (MSBs for a 32-bit
                                               configuration, first one for a 16-bit configuration).
                                               This parameter can be a value between 0x0000 and 0xFFFF */
-  /* 过滤器标识符高16位 */
 
+  /* 过滤器标识符低16位 */
   uint16_t CAN_FilterIdLow;          /*!< Specifies the filter identification number (LSBs for a 32-bit
                                               configuration, second one for a 16-bit configuration).
                                               This parameter can be a value between 0x0000 and 0xFFFF */
-  /* 过滤器标识符低16位 */
 
+  /* 过滤器掩码高16位 */
   uint16_t CAN_FilterMaskIdHigh;     /*!< Specifies the filter mask number or identification number,
                                               according to the mode (MSBs for a 32-bit configuration,
                                               first one for a 16-bit configuration).
                                               This parameter can be a value between 0x0000 and 0xFFFF */
-  /* 过滤器掩码高16位 */
 
+  /* 过滤器掩码低16位 */
   uint16_t CAN_FilterMaskIdLow;      /*!< Specifies the filter mask number or identification number,
                                               according to the mode (LSBs for a 32-bit configuration,
                                               second one for a 16-bit configuration).
                                               This parameter can be a value between 0x0000 and 0xFFFF */
-  /* 过滤器掩码低16位 */
 
+  /* 过滤器关联的FIFO(0或1) */
   uint16_t CAN_FilterFIFOAssignment; /*!< Specifies the FIFO (0 or 1) which will be assigned to the filter.
                                               This parameter can be a value of @ref CAN_filter_FIFO */
-  /* 过滤器关联的FIFO(0或1) */
   
-  uint8_t CAN_FilterNumber;          /*!< Specifies the filter which will be initialized. It ranges from 0 to 13. */  /* 滤波器编号(0~13) */
+  uint8_t CAN_FilterNumber; /* 滤波器编号(0~13) */ /*!< Specifies the filter which will be initialized. It ranges from 0 to 13. */
 
+  /* 过滤器模式 */
   uint8_t CAN_FilterMode;            /*!< Specifies the filter mode to be initialized.
                                               This parameter can be a value of @ref CAN_filter_mode */
-  /* 过滤器模式 */
 
+  /* 过滤器位宽(16位或32位) */
   uint8_t CAN_FilterScale;           /*!< Specifies the filter scale.
                                               This parameter can be a value of @ref CAN_filter_scale */
-  /* 过滤器位宽(16位或32位) */
 
+  /* 使能或关闭过滤器 */
   FunctionalState CAN_FilterActivation; /*!< Enable or disable the filter.
                                               This parameter can be set either to ENABLE or DISABLE. */
-  /* 使能或关闭过滤器 */
 } CAN_FilterInitTypeDef;
 
 /** 
@@ -163,32 +163,32 @@ typedef struct
 
 typedef struct
 {
+  /* 标准标识符 */
   uint32_t StdId;  /*!< Specifies the standard identifier.
                         This parameter can be a value between 0 to 0x7FF. */
-  /* 标准标识符 */
 
+  /* 扩展标识符 */
   uint32_t ExtId;  /*!< Specifies the extended identifier.
                         This parameter can be a value between 0 to 0x1FFFFFFF. */
-  /* 扩展标识符 */
 
+  /* 标识符类型 */
   uint8_t IDE;     /*!< Specifies the type of identifier for the message that 
                         will be transmitted. This parameter can be a value 
                         of @ref CAN_identifier_type */
-  /* 标识符类型 */
 
+  /* 帧类型(数据帧或远程帧) */
   uint8_t RTR;     /*!< Specifies the type of frame for the message that will 
                         be transmitted. This parameter can be a value of 
                         @ref CAN_remote_transmission_request */
-  /* 帧类型(数据帧或远程帧) */
 
+  /* 数据长度(0~8字节) */
   uint8_t DLC;     /*!< Specifies the length of the frame that will be 
                         transmitted. This parameter can be a value between 
                         0 to 8 */
-  /* 数据长度(0~8字节) */
 
+  /* 待发送的数据 */
   uint8_t Data[8]; /*!< Contains the data to be transmitted. It ranges from 0 
                         to 0xFF. */
-  /* 待发送的数据 */
 } CanTxMsg;
 
 /** 
@@ -197,36 +197,36 @@ typedef struct
 
 typedef struct
 {
+  /* 标准标识符 */
   uint32_t StdId;  /*!< Specifies the standard identifier.
                         This parameter can be a value between 0 to 0x7FF. */
-  /* 标准标识符 */
 
+  /* 扩展标识符 */
   uint32_t ExtId;  /*!< Specifies the extended identifier.
                         This parameter can be a value between 0 to 0x1FFFFFFF. */
-  /* 扩展标识符 */
 
+  /* 标识符类型 */
   uint8_t IDE;     /*!< Specifies the type of identifier for the message that 
                         will be received. This parameter can be a value of 
                         @ref CAN_identifier_type */
-  /* 标识符类型 */
 
+  /* 帧类型(数据帧或远程帧) */
   uint8_t RTR;     /*!< Specifies the type of frame for the received message.
                         This parameter can be a value of 
                         @ref CAN_remote_transmission_request */
-  /* 帧类型(数据帧或远程帧) */
 
+  /* 数据长度(0~8字节) */
   uint8_t DLC;     /*!< Specifies the length of the frame that will be received.
                         This parameter can be a value between 0 to 8 */
-  /* 数据长度(0~8字节) */
 
+  /* 接收到的数据 */
   uint8_t Data[8]; /*!< Contains the data to be received. It ranges from 0 to 
                         0xFF. */
-  /* 接收到的数据 */
 
+  /* 消息通过的过滤器索引 */
   uint8_t FMI;     /*!< Specifies the index of the filter the message stored in 
                         the mailbox passes through. This parameter can be a 
                         value between 0 to 0xFF */
-  /* 消息通过的过滤器索引 */
 } CanRxMsg;
 
 /**
@@ -241,8 +241,8 @@ typedef struct
   * @{
   */
 
-#define CAN_InitStatus_Failed              ((uint8_t)0x00) /*!< CAN initialization failed */  /* CAN初始化失败 */
-#define CAN_InitStatus_Success             ((uint8_t)0x01) /*!< CAN initialization OK */  /* CAN初始化成功 */
+#define CAN_InitStatus_Failed              ((uint8_t)0x00) /* CAN初始化失败 */ /*!< CAN initialization failed */
+#define CAN_InitStatus_Success             ((uint8_t)0x01) /* CAN初始化成功 */ /*!< CAN initialization OK */
 
 /**
   * @}
@@ -252,10 +252,10 @@ typedef struct
   * @{
   */
 
-#define CAN_Mode_Normal             ((uint8_t)0x00)  /*!< normal mode */  /* 正常模式 */
-#define CAN_Mode_LoopBack           ((uint8_t)0x01)  /*!< loopback mode */  /* 回环模式 */
-#define CAN_Mode_Silent             ((uint8_t)0x02)  /*!< silent mode */  /* 静默模式 */
-#define CAN_Mode_Silent_LoopBack    ((uint8_t)0x03)  /*!< loopback combined with silent mode */  /* 回环与静默组合模式 */
+#define CAN_Mode_Normal             ((uint8_t)0x00) /* 正常模式 */ /*!< normal mode */
+#define CAN_Mode_LoopBack           ((uint8_t)0x01) /* 回环模式 */ /*!< loopback mode */
+#define CAN_Mode_Silent             ((uint8_t)0x02) /* 静默模式 */ /*!< silent mode */
+#define CAN_Mode_Silent_LoopBack    ((uint8_t)0x03) /* 回环与静默组合模式 */ /*!< loopback combined with silent mode */
 
 #define IS_CAN_MODE(MODE) (((MODE) == CAN_Mode_Normal) || \
                            ((MODE) == CAN_Mode_LoopBack)|| \
@@ -270,9 +270,9 @@ typedef struct
   * @defgroup CAN_Operating_Mode 
   * @{
   */  
-#define CAN_OperatingMode_Initialization  ((uint8_t)0x00) /*!< Initialization mode */  /* 初始化模式 */
-#define CAN_OperatingMode_Normal          ((uint8_t)0x01) /*!< Normal mode */  /* 正常模式 */
-#define CAN_OperatingMode_Sleep           ((uint8_t)0x02) /*!< sleep mode */  /* 睡眠模式 */
+#define CAN_OperatingMode_Initialization  ((uint8_t)0x00) /* 初始化模式 */ /*!< Initialization mode */
+#define CAN_OperatingMode_Normal          ((uint8_t)0x01) /* 正常模式 */ /*!< Normal mode */
+#define CAN_OperatingMode_Sleep           ((uint8_t)0x02) /* 睡眠模式 */ /*!< sleep mode */
 
 
 #define IS_CAN_OPERATING_MODE(MODE) (((MODE) == CAN_OperatingMode_Initialization) ||\
@@ -287,8 +287,8 @@ typedef struct
   * @{
   */  
 
-#define CAN_ModeStatus_Failed    ((uint8_t)0x00)                /*!< CAN entering the specific mode failed */  /* 进入指定模式失败 */
-#define CAN_ModeStatus_Success   ((uint8_t)!CAN_ModeStatus_Failed)   /*!< CAN entering the specific mode Succeed */  /* 进入指定模式成功 */
+#define CAN_ModeStatus_Failed    ((uint8_t)0x00) /* 进入指定模式失败 */ /*!< CAN entering the specific mode failed */
+#define CAN_ModeStatus_Success   ((uint8_t)!CAN_ModeStatus_Failed) /* 进入指定模式成功 */ /*!< CAN entering the specific mode Succeed */
 
 
 /**
@@ -299,10 +299,10 @@ typedef struct
   * @{
   */
 
-#define CAN_SJW_1tq                 ((uint8_t)0x00)  /*!< 1 time quantum */  /* 1个时间单元 */
-#define CAN_SJW_2tq                 ((uint8_t)0x01)  /*!< 2 time quantum */  /* 2个时间单元 */
-#define CAN_SJW_3tq                 ((uint8_t)0x02)  /*!< 3 time quantum */  /* 3个时间单元 */
-#define CAN_SJW_4tq                 ((uint8_t)0x03)  /*!< 4 time quantum */  /* 4个时间单元 */
+#define CAN_SJW_1tq                 ((uint8_t)0x00) /* 1个时间单元 */ /*!< 1 time quantum */
+#define CAN_SJW_2tq                 ((uint8_t)0x01) /* 2个时间单元 */ /*!< 2 time quantum */
+#define CAN_SJW_3tq                 ((uint8_t)0x02) /* 3个时间单元 */ /*!< 3 time quantum */
+#define CAN_SJW_4tq                 ((uint8_t)0x03) /* 4个时间单元 */ /*!< 4 time quantum */
 
 #define IS_CAN_SJW(SJW) (((SJW) == CAN_SJW_1tq) || ((SJW) == CAN_SJW_2tq)|| \
                          ((SJW) == CAN_SJW_3tq) || ((SJW) == CAN_SJW_4tq))
@@ -314,22 +314,22 @@ typedef struct
   * @{
   */
 
-#define CAN_BS1_1tq                 ((uint8_t)0x00)  /*!< 1 time quantum */  /* 1个时间单元 */
-#define CAN_BS1_2tq                 ((uint8_t)0x01)  /*!< 2 time quantum */  /* 2个时间单元 */
-#define CAN_BS1_3tq                 ((uint8_t)0x02)  /*!< 3 time quantum */  /* 3个时间单元 */
-#define CAN_BS1_4tq                 ((uint8_t)0x03)  /*!< 4 time quantum */  /* 4个时间单元 */
-#define CAN_BS1_5tq                 ((uint8_t)0x04)  /*!< 5 time quantum */  /* 5个时间单元 */
-#define CAN_BS1_6tq                 ((uint8_t)0x05)  /*!< 6 time quantum */  /* 6个时间单元 */
-#define CAN_BS1_7tq                 ((uint8_t)0x06)  /*!< 7 time quantum */  /* 7个时间单元 */
-#define CAN_BS1_8tq                 ((uint8_t)0x07)  /*!< 8 time quantum */  /* 8个时间单元 */
-#define CAN_BS1_9tq                 ((uint8_t)0x08)  /*!< 9 time quantum */  /* 9个时间单元 */
-#define CAN_BS1_10tq                ((uint8_t)0x09)  /*!< 10 time quantum */  /* 10个时间单元 */
-#define CAN_BS1_11tq                ((uint8_t)0x0A)  /*!< 11 time quantum */  /* 11个时间单元 */
-#define CAN_BS1_12tq                ((uint8_t)0x0B)  /*!< 12 time quantum */  /* 12个时间单元 */
-#define CAN_BS1_13tq                ((uint8_t)0x0C)  /*!< 13 time quantum */  /* 13个时间单元 */
-#define CAN_BS1_14tq                ((uint8_t)0x0D)  /*!< 14 time quantum */  /* 14个时间单元 */
-#define CAN_BS1_15tq                ((uint8_t)0x0E)  /*!< 15 time quantum */  /* 15个时间单元 */
-#define CAN_BS1_16tq                ((uint8_t)0x0F)  /*!< 16 time quantum */  /* 16个时间单元 */
+#define CAN_BS1_1tq                 ((uint8_t)0x00) /* 1个时间单元 */ /*!< 1 time quantum */
+#define CAN_BS1_2tq                 ((uint8_t)0x01) /* 2个时间单元 */ /*!< 2 time quantum */
+#define CAN_BS1_3tq                 ((uint8_t)0x02) /* 3个时间单元 */ /*!< 3 time quantum */
+#define CAN_BS1_4tq                 ((uint8_t)0x03) /* 4个时间单元 */ /*!< 4 time quantum */
+#define CAN_BS1_5tq                 ((uint8_t)0x04) /* 5个时间单元 */ /*!< 5 time quantum */
+#define CAN_BS1_6tq                 ((uint8_t)0x05) /* 6个时间单元 */ /*!< 6 time quantum */
+#define CAN_BS1_7tq                 ((uint8_t)0x06) /* 7个时间单元 */ /*!< 7 time quantum */
+#define CAN_BS1_8tq                 ((uint8_t)0x07) /* 8个时间单元 */ /*!< 8 time quantum */
+#define CAN_BS1_9tq                 ((uint8_t)0x08) /* 9个时间单元 */ /*!< 9 time quantum */
+#define CAN_BS1_10tq                ((uint8_t)0x09) /* 10个时间单元 */ /*!< 10 time quantum */
+#define CAN_BS1_11tq                ((uint8_t)0x0A) /* 11个时间单元 */ /*!< 11 time quantum */
+#define CAN_BS1_12tq                ((uint8_t)0x0B) /* 12个时间单元 */ /*!< 12 time quantum */
+#define CAN_BS1_13tq                ((uint8_t)0x0C) /* 13个时间单元 */ /*!< 13 time quantum */
+#define CAN_BS1_14tq                ((uint8_t)0x0D) /* 14个时间单元 */ /*!< 14 time quantum */
+#define CAN_BS1_15tq                ((uint8_t)0x0E) /* 15个时间单元 */ /*!< 15 time quantum */
+#define CAN_BS1_16tq                ((uint8_t)0x0F) /* 16个时间单元 */ /*!< 16 time quantum */
 
 #define IS_CAN_BS1(BS1) ((BS1) <= CAN_BS1_16tq)
 /**
@@ -340,14 +340,14 @@ typedef struct
   * @{
   */
 
-#define CAN_BS2_1tq                 ((uint8_t)0x00)  /*!< 1 time quantum */  /* 1个时间单元 */
-#define CAN_BS2_2tq                 ((uint8_t)0x01)  /*!< 2 time quantum */  /* 2个时间单元 */
-#define CAN_BS2_3tq                 ((uint8_t)0x02)  /*!< 3 time quantum */  /* 3个时间单元 */
-#define CAN_BS2_4tq                 ((uint8_t)0x03)  /*!< 4 time quantum */  /* 4个时间单元 */
-#define CAN_BS2_5tq                 ((uint8_t)0x04)  /*!< 5 time quantum */  /* 5个时间单元 */
-#define CAN_BS2_6tq                 ((uint8_t)0x05)  /*!< 6 time quantum */  /* 6个时间单元 */
-#define CAN_BS2_7tq                 ((uint8_t)0x06)  /*!< 7 time quantum */  /* 7个时间单元 */
-#define CAN_BS2_8tq                 ((uint8_t)0x07)  /*!< 8 time quantum */  /* 8个时间单元 */
+#define CAN_BS2_1tq                 ((uint8_t)0x00) /* 1个时间单元 */ /*!< 1 time quantum */
+#define CAN_BS2_2tq                 ((uint8_t)0x01) /* 2个时间单元 */ /*!< 2 time quantum */
+#define CAN_BS2_3tq                 ((uint8_t)0x02) /* 3个时间单元 */ /*!< 3 time quantum */
+#define CAN_BS2_4tq                 ((uint8_t)0x03) /* 4个时间单元 */ /*!< 4 time quantum */
+#define CAN_BS2_5tq                 ((uint8_t)0x04) /* 5个时间单元 */ /*!< 5 time quantum */
+#define CAN_BS2_6tq                 ((uint8_t)0x05) /* 6个时间单元 */ /*!< 6 time quantum */
+#define CAN_BS2_7tq                 ((uint8_t)0x06) /* 7个时间单元 */ /*!< 7 time quantum */
+#define CAN_BS2_8tq                 ((uint8_t)0x07) /* 8个时间单元 */ /*!< 8 time quantum */
 
 #define IS_CAN_BS2(BS2) ((BS2) <= CAN_BS2_8tq)
 
@@ -381,8 +381,8 @@ typedef struct
   * @{
   */
 
-#define CAN_FilterMode_IdMask       ((uint8_t)0x00)  /*!< identifier/mask mode */  /* 标识符/掩码模式 */
-#define CAN_FilterMode_IdList       ((uint8_t)0x01)  /*!< identifier list mode */  /* 标识符列表模式 */
+#define CAN_FilterMode_IdMask       ((uint8_t)0x00) /* 标识符/掩码模式 */ /*!< identifier/mask mode */
+#define CAN_FilterMode_IdList       ((uint8_t)0x01) /* 标识符列表模式 */ /*!< identifier list mode */
 
 #define IS_CAN_FILTER_MODE(MODE) (((MODE) == CAN_FilterMode_IdMask) || \
                                   ((MODE) == CAN_FilterMode_IdList))
@@ -394,8 +394,8 @@ typedef struct
   * @{
   */
 
-#define CAN_FilterScale_16bit       ((uint8_t)0x00) /*!< Two 16-bit filters */  /* 两个16位过滤器 */
-#define CAN_FilterScale_32bit       ((uint8_t)0x01) /*!< One 32-bit filter */  /* 一个32位过滤器 */
+#define CAN_FilterScale_16bit       ((uint8_t)0x00) /* 两个16位过滤器 */ /*!< Two 16-bit filters */
+#define CAN_FilterScale_32bit       ((uint8_t)0x01) /* 一个32位过滤器 */ /*!< One 32-bit filter */
 
 #define IS_CAN_FILTER_SCALE(SCALE) (((SCALE) == CAN_FilterScale_16bit) || \
                                     ((SCALE) == CAN_FilterScale_32bit))
@@ -408,8 +408,8 @@ typedef struct
   * @{
   */
 
-#define CAN_Filter_FIFO0             ((uint8_t)0x00)  /*!< Filter FIFO 0 assignment for filter x */  /* 滤波器关联FIFO0 */
-#define CAN_Filter_FIFO1             ((uint8_t)0x01)  /*!< Filter FIFO 1 assignment for filter x */  /* 滤波器关联FIFO1 */
+#define CAN_Filter_FIFO0             ((uint8_t)0x00) /* 滤波器关联FIFO0 */ /*!< Filter FIFO 0 assignment for filter x */
+#define CAN_Filter_FIFO1             ((uint8_t)0x01) /* 滤波器关联FIFO1 */ /*!< Filter FIFO 1 assignment for filter x */
 #define IS_CAN_FILTER_FIFO(FIFO) (((FIFO) == CAN_FilterFIFO0) || \
                                   ((FIFO) == CAN_FilterFIFO1))
 /**
@@ -441,8 +441,8 @@ typedef struct
   * @{
   */
 
-#define CAN_Id_Standard             ((uint32_t)0x00000000)  /*!< Standard Id */  /* 标准标识符 */
-#define CAN_Id_Extended             ((uint32_t)0x00000004)  /*!< Extended Id */  /* 扩展标识符 */
+#define CAN_Id_Standard             ((uint32_t)0x00000000) /* 标准标识符 */ /*!< Standard Id */
+#define CAN_Id_Extended             ((uint32_t)0x00000004) /* 扩展标识符 */ /*!< Extended Id */
 #define IS_CAN_IDTYPE(IDTYPE) (((IDTYPE) == CAN_Id_Standard) || \
                                ((IDTYPE) == CAN_Id_Extended))
 /**
@@ -453,8 +453,8 @@ typedef struct
   * @{
   */
 
-#define CAN_RTR_Data                ((uint32_t)0x00000000)  /*!< Data frame */  /* 数据帧 */
-#define CAN_RTR_Remote              ((uint32_t)0x00000002)  /*!< Remote frame */  /* 远程帧 */
+#define CAN_RTR_Data                ((uint32_t)0x00000000) /* 数据帧 */ /*!< Data frame */
+#define CAN_RTR_Remote              ((uint32_t)0x00000002) /* 远程帧 */ /*!< Remote frame */
 #define IS_CAN_RTR(RTR) (((RTR) == CAN_RTR_Data) || ((RTR) == CAN_RTR_Remote))
 
 /**
@@ -465,10 +465,10 @@ typedef struct
   * @{
   */
 
-#define CAN_TxStatus_Failed         ((uint8_t)0x00)/*!< CAN transmission failed */  /* 发送失败 */
-#define CAN_TxStatus_Ok             ((uint8_t)0x01) /*!< CAN transmission succeeded */  /* 发送成功 */
-#define CAN_TxStatus_Pending        ((uint8_t)0x02) /*!< CAN transmission pending */  /* 发送挂起 */
-#define CAN_TxStatus_NoMailBox      ((uint8_t)0x04) /*!< CAN cell did not provide an empty mailbox */  /* 无空邮箱 */
+#define CAN_TxStatus_Failed         ((uint8_t)0x00) /* 发送失败 */ /*!< CAN transmission failed */
+#define CAN_TxStatus_Ok             ((uint8_t)0x01) /* 发送成功 */ /*!< CAN transmission succeeded */
+#define CAN_TxStatus_Pending        ((uint8_t)0x02) /* 发送挂起 */ /*!< CAN transmission pending */
+#define CAN_TxStatus_NoMailBox      ((uint8_t)0x04) /* 无空邮箱 */ /*!< CAN cell did not provide an empty mailbox */
 
 /**
   * @}
@@ -478,8 +478,8 @@ typedef struct
   * @{
   */
 
-#define CAN_FIFO0                 ((uint8_t)0x00) /*!< CAN FIFO 0 used to receive */  /* 接收FIFO0 */
-#define CAN_FIFO1                 ((uint8_t)0x01) /*!< CAN FIFO 1 used to receive */  /* 接收FIFO1 */
+#define CAN_FIFO0                 ((uint8_t)0x00) /* 接收FIFO0 */ /*!< CAN FIFO 0 used to receive */
+#define CAN_FIFO1                 ((uint8_t)0x01) /* 接收FIFO1 */ /*!< CAN FIFO 1 used to receive */
 
 #define IS_CAN_FIFO(FIFO) (((FIFO) == CAN_FIFO0) || ((FIFO) == CAN_FIFO1))
 
@@ -491,8 +491,8 @@ typedef struct
   * @{
   */
 
-#define CAN_Sleep_Failed     ((uint8_t)0x00) /*!< CAN did not enter the sleep mode */  /* 未进入睡眠模式 */
-#define CAN_Sleep_Ok         ((uint8_t)0x01) /*!< CAN entered the sleep mode */  /* 已进入睡眠模式 */
+#define CAN_Sleep_Failed     ((uint8_t)0x00) /* 未进入睡眠模式 */ /*!< CAN did not enter the sleep mode */
+#define CAN_Sleep_Ok         ((uint8_t)0x01) /* 已进入睡眠模式 */ /*!< CAN entered the sleep mode */
 
 /**
   * @}
@@ -502,8 +502,8 @@ typedef struct
   * @{
   */
 
-#define CAN_WakeUp_Failed        ((uint8_t)0x00) /*!< CAN did not leave the sleep mode */  /* 未退出睡眠模式 */
-#define CAN_WakeUp_Ok            ((uint8_t)0x01) /*!< CAN leaved the sleep mode */  /* 已退出睡眠模式 */
+#define CAN_WakeUp_Failed        ((uint8_t)0x00) /* 未退出睡眠模式 */ /*!< CAN did not leave the sleep mode */
+#define CAN_WakeUp_Ok            ((uint8_t)0x01) /* 已退出睡眠模式 */ /*!< CAN leaved the sleep mode */
 
 /**
   * @}
@@ -514,14 +514,14 @@ typedef struct
   * @{
   */  
                                                                 
-#define CAN_ErrorCode_NoErr           ((uint8_t)0x00) /*!< No Error */  /* 无错误 */ 
-#define	CAN_ErrorCode_StuffErr        ((uint8_t)0x10) /*!< Stuff Error */  /* 填充错误 */ 
-#define	CAN_ErrorCode_FormErr         ((uint8_t)0x20) /*!< Form Error */  /* 格式错误 */ 
-#define	CAN_ErrorCode_ACKErr          ((uint8_t)0x30) /*!< Acknowledgment Error */  /* 应答错误 */ 
-#define	CAN_ErrorCode_BitRecessiveErr ((uint8_t)0x40) /*!< Bit Recessive Error */  /* 位隐性错误 */ 
-#define	CAN_ErrorCode_BitDominantErr  ((uint8_t)0x50) /*!< Bit Dominant Error */  /* 位显性错误 */ 
-#define	CAN_ErrorCode_CRCErr          ((uint8_t)0x60) /*!< CRC Error  */  /* CRC错误 */ 
-#define	CAN_ErrorCode_SoftwareSetErr  ((uint8_t)0x70) /*!< Software Set Error */  /* 软件设置错误 */ 
+#define CAN_ErrorCode_NoErr           ((uint8_t)0x00) /* 无错误 */ /*!< No Error */
+#define	CAN_ErrorCode_StuffErr        ((uint8_t)0x10) /* 填充错误 */ /*!< Stuff Error */
+#define	CAN_ErrorCode_FormErr         ((uint8_t)0x20) /* 格式错误 */ /*!< Form Error */
+#define	CAN_ErrorCode_ACKErr          ((uint8_t)0x30) /* 应答错误 */ /*!< Acknowledgment Error */
+#define	CAN_ErrorCode_BitRecessiveErr ((uint8_t)0x40) /* 位隐性错误 */ /*!< Bit Recessive Error */
+#define	CAN_ErrorCode_BitDominantErr  ((uint8_t)0x50) /* 位显性错误 */ /*!< Bit Dominant Error */
+#define	CAN_ErrorCode_CRCErr          ((uint8_t)0x60) /* CRC错误 */ /*!< CRC Error  */
+#define	CAN_ErrorCode_SoftwareSetErr  ((uint8_t)0x70) /* 软件设置错误 */ /*!< Software Set Error */
 
 
 /**
@@ -536,29 +536,29 @@ typedef struct
 /* If the flag is 0x1XXXXXXX, it means that it can only be used with CAN_GetFlagStatus() function.  */
 
 /* Transmit Flags */
-#define CAN_FLAG_RQCP0             ((uint32_t)0x38000001) /*!< Request MailBox0 Flag */  /* 邮箱0请求完成标志 */
-#define CAN_FLAG_RQCP1             ((uint32_t)0x38000100) /*!< Request MailBox1 Flag */  /* 邮箱1请求完成标志 */
-#define CAN_FLAG_RQCP2             ((uint32_t)0x38010000) /*!< Request MailBox2 Flag */  /* 邮箱2请求完成标志 */
+#define CAN_FLAG_RQCP0             ((uint32_t)0x38000001) /* 邮箱0请求完成标志 */ /*!< Request MailBox0 Flag */
+#define CAN_FLAG_RQCP1             ((uint32_t)0x38000100) /* 邮箱1请求完成标志 */ /*!< Request MailBox1 Flag */
+#define CAN_FLAG_RQCP2             ((uint32_t)0x38010000) /* 邮箱2请求完成标志 */ /*!< Request MailBox2 Flag */
 
 /* Receive Flags */
-#define CAN_FLAG_FMP0              ((uint32_t)0x12000003) /*!< FIFO 0 Message Pending Flag */  /* FIFO0报文挂起标志 */
-#define CAN_FLAG_FF0               ((uint32_t)0x32000008) /*!< FIFO 0 Full Flag            */  /* FIFO0满标志 */
-#define CAN_FLAG_FOV0              ((uint32_t)0x32000010) /*!< FIFO 0 Overrun Flag         */  /* FIFO0溢出标志 */
-#define CAN_FLAG_FMP1              ((uint32_t)0x14000003) /*!< FIFO 1 Message Pending Flag */  /* FIFO1报文挂起标志 */
-#define CAN_FLAG_FF1               ((uint32_t)0x34000008) /*!< FIFO 1 Full Flag            */  /* FIFO1满标志 */
-#define CAN_FLAG_FOV1              ((uint32_t)0x34000010) /*!< FIFO 1 Overrun Flag         */  /* FIFO1溢出标志 */
+#define CAN_FLAG_FMP0              ((uint32_t)0x12000003) /* FIFO0报文挂起标志 */ /*!< FIFO 0 Message Pending Flag */
+#define CAN_FLAG_FF0               ((uint32_t)0x32000008) /* FIFO0满标志 */ /*!< FIFO 0 Full Flag            */
+#define CAN_FLAG_FOV0              ((uint32_t)0x32000010) /* FIFO0溢出标志 */ /*!< FIFO 0 Overrun Flag         */
+#define CAN_FLAG_FMP1              ((uint32_t)0x14000003) /* FIFO1报文挂起标志 */ /*!< FIFO 1 Message Pending Flag */
+#define CAN_FLAG_FF1               ((uint32_t)0x34000008) /* FIFO1满标志 */ /*!< FIFO 1 Full Flag            */
+#define CAN_FLAG_FOV1              ((uint32_t)0x34000010) /* FIFO1溢出标志 */ /*!< FIFO 1 Overrun Flag         */
 
 /* Operating Mode Flags */
-#define CAN_FLAG_WKU               ((uint32_t)0x31000008) /*!< Wake up Flag */  /* 唤醒标志 */
-#define CAN_FLAG_SLAK              ((uint32_t)0x31000012) /*!< Sleep acknowledge Flag */  /* 睡眠应答标志 */
+#define CAN_FLAG_WKU               ((uint32_t)0x31000008) /* 唤醒标志 */ /*!< Wake up Flag */
+#define CAN_FLAG_SLAK              ((uint32_t)0x31000012) /* 睡眠应答标志 */ /*!< Sleep acknowledge Flag */
 /* Note: When SLAK intterupt is disabled (SLKIE=0), no polling on SLAKI is possible. 
          In this case the SLAK bit can be polled.*/
 
 /* Error Flags */
-#define CAN_FLAG_EWG               ((uint32_t)0x10F00001) /*!< Error Warning Flag   */  /* 错误警告标志 */
-#define CAN_FLAG_EPV               ((uint32_t)0x10F00002) /*!< Error Passive Flag   */  /* 错误被动标志 */
-#define CAN_FLAG_BOF               ((uint32_t)0x10F00004) /*!< Bus-Off Flag         */  /* 总线关闭标志 */
-#define CAN_FLAG_LEC               ((uint32_t)0x30F00070) /*!< Last error code Flag */  /* 最后错误代码标志 */
+#define CAN_FLAG_EWG               ((uint32_t)0x10F00001) /* 错误警告标志 */ /*!< Error Warning Flag   */
+#define CAN_FLAG_EPV               ((uint32_t)0x10F00002) /* 错误被动标志 */ /*!< Error Passive Flag   */
+#define CAN_FLAG_BOF               ((uint32_t)0x10F00004) /* 总线关闭标志 */ /*!< Bus-Off Flag         */
+#define CAN_FLAG_LEC               ((uint32_t)0x30F00070) /* 最后错误代码标志 */ /*!< Last error code Flag */
 
 #define IS_CAN_GET_FLAG(FLAG) (((FLAG) == CAN_FLAG_LEC)  || ((FLAG) == CAN_FLAG_BOF)   || \
                                ((FLAG) == CAN_FLAG_EPV)  || ((FLAG) == CAN_FLAG_EWG)   || \
@@ -585,26 +585,26 @@ typedef struct
 
 
   
-#define CAN_IT_TME                  ((uint32_t)0x00000001) /*!< Transmit mailbox empty Interrupt*/  /* 发送邮箱空中断 */
+#define CAN_IT_TME                  ((uint32_t)0x00000001) /* 发送邮箱空中断 */ /*!< Transmit mailbox empty Interrupt*/
 
 /* Receive Interrupts */
-#define CAN_IT_FMP0                 ((uint32_t)0x00000002) /*!< FIFO 0 message pending Interrupt*/  /* FIFO0报文挂起中断 */
-#define CAN_IT_FF0                  ((uint32_t)0x00000004) /*!< FIFO 0 full Interrupt*/  /* FIFO0满中断 */
-#define CAN_IT_FOV0                 ((uint32_t)0x00000008) /*!< FIFO 0 overrun Interrupt*/  /* FIFO0溢出中断 */
-#define CAN_IT_FMP1                 ((uint32_t)0x00000010) /*!< FIFO 1 message pending Interrupt*/  /* FIFO1报文挂起中断 */
-#define CAN_IT_FF1                  ((uint32_t)0x00000020) /*!< FIFO 1 full Interrupt*/  /* FIFO1满中断 */
-#define CAN_IT_FOV1                 ((uint32_t)0x00000040) /*!< FIFO 1 overrun Interrupt*/  /* FIFO1溢出中断 */
+#define CAN_IT_FMP0                 ((uint32_t)0x00000002) /* FIFO0报文挂起中断 */ /*!< FIFO 0 message pending Interrupt*/
+#define CAN_IT_FF0                  ((uint32_t)0x00000004) /* FIFO0满中断 */ /*!< FIFO 0 full Interrupt*/
+#define CAN_IT_FOV0                 ((uint32_t)0x00000008) /* FIFO0溢出中断 */ /*!< FIFO 0 overrun Interrupt*/
+#define CAN_IT_FMP1                 ((uint32_t)0x00000010) /* FIFO1报文挂起中断 */ /*!< FIFO 1 message pending Interrupt*/
+#define CAN_IT_FF1                  ((uint32_t)0x00000020) /* FIFO1满中断 */ /*!< FIFO 1 full Interrupt*/
+#define CAN_IT_FOV1                 ((uint32_t)0x00000040) /* FIFO1溢出中断 */ /*!< FIFO 1 overrun Interrupt*/
 
 /* Operating Mode Interrupts */
-#define CAN_IT_WKU                  ((uint32_t)0x00010000) /*!< Wake-up Interrupt*/  /* 唤醒中断 */
-#define CAN_IT_SLK                  ((uint32_t)0x00020000) /*!< Sleep acknowledge Interrupt*/  /* 睡眠应答中断 */
+#define CAN_IT_WKU                  ((uint32_t)0x00010000) /* 唤醒中断 */ /*!< Wake-up Interrupt*/
+#define CAN_IT_SLK                  ((uint32_t)0x00020000) /* 睡眠应答中断 */ /*!< Sleep acknowledge Interrupt*/
 
 /* Error Interrupts */
-#define CAN_IT_EWG                  ((uint32_t)0x00000100) /*!< Error warning Interrupt*/  /* 错误警告中断 */
-#define CAN_IT_EPV                  ((uint32_t)0x00000200) /*!< Error passive Interrupt*/  /* 错误被动中断 */
-#define CAN_IT_BOF                  ((uint32_t)0x00000400) /*!< Bus-off Interrupt*/  /* 总线关闭中断 */
-#define CAN_IT_LEC                  ((uint32_t)0x00000800) /*!< Last error code Interrupt*/  /* 最后错误代码中断 */
-#define CAN_IT_ERR                  ((uint32_t)0x00008000) /*!< Error Interrupt*/  /* 错误中断 */
+#define CAN_IT_EWG                  ((uint32_t)0x00000100) /* 错误警告中断 */ /*!< Error warning Interrupt*/
+#define CAN_IT_EPV                  ((uint32_t)0x00000200) /* 错误被动中断 */ /*!< Error passive Interrupt*/
+#define CAN_IT_BOF                  ((uint32_t)0x00000400) /* 总线关闭中断 */ /*!< Bus-off Interrupt*/
+#define CAN_IT_LEC                  ((uint32_t)0x00000800) /* 最后错误代码中断 */ /*!< Last error code Interrupt*/
+#define CAN_IT_ERR                  ((uint32_t)0x00008000) /* 错误中断 */ /*!< Error Interrupt*/
 
 /* Flags named as Interrupts : kept only for FW compatibility */
 #define CAN_IT_RQCP0   CAN_IT_TME  /* 兼容旧名,同CAN_IT_TME */

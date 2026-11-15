@@ -45,11 +45,11 @@
 
 typedef struct
 {
-  uint32_t SYSCLK_Frequency;  /*!< returns SYSCLK clock frequency expressed in Hz */  /* 系统时钟SYSCLK频率(Hz) */
-  uint32_t HCLK_Frequency;    /*!< returns HCLK clock frequency expressed in Hz */  /* AHB总线时钟HCLK频率(Hz) */
-  uint32_t PCLK1_Frequency;   /*!< returns PCLK1 clock frequency expressed in Hz */  /* APB1总线时钟PCLK1频率(Hz) */
-  uint32_t PCLK2_Frequency;   /*!< returns PCLK2 clock frequency expressed in Hz */  /* APB2总线时钟PCLK2频率(Hz) */
-  uint32_t ADCCLK_Frequency;  /*!< returns ADCCLK clock frequency expressed in Hz */  /* ADC时钟ADCCLK频率(Hz) */
+  uint32_t SYSCLK_Frequency; /* 系统时钟SYSCLK频率(Hz) */ /*!< returns SYSCLK clock frequency expressed in Hz */
+  uint32_t HCLK_Frequency; /* AHB总线时钟HCLK频率(Hz) */ /*!< returns HCLK clock frequency expressed in Hz */
+  uint32_t PCLK1_Frequency; /* APB1总线时钟PCLK1频率(Hz) */ /*!< returns PCLK1 clock frequency expressed in Hz */
+  uint32_t PCLK2_Frequency; /* APB2总线时钟PCLK2频率(Hz) */ /*!< returns PCLK2 clock frequency expressed in Hz */
+  uint32_t ADCCLK_Frequency; /* ADC时钟ADCCLK频率(Hz) */ /*!< returns ADCCLK clock frequency expressed in Hz */
 }RCC_ClocksTypeDef;
 
 /**
