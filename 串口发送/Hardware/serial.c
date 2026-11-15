@@ -1,5 +1,5 @@
 #include "stm32f10x.h"
-
+#include "stdio.h"
 
 void serial_init (void)
 {
@@ -32,6 +32,7 @@ void serial_init (void)
 
 void serial_send (uint8_t *data, uint16_t size)
 {
+    
     for (uint16_t i = 0; i < size; i++)
     {
         while (USART_GetFlagStatus(USART1, USART_FLAG_TXE) == RESET); // 等待发送缓冲区为空
@@ -40,6 +41,13 @@ void serial_send (uint8_t *data, uint16_t size)
     }
 }
 
+int fputc(int ch,FILE *f)
+{
+    while (USART_GetFlagStatus(USART1, USART_FLAG_TXE) == RESET); // 等待发送缓冲区为空
+    USART_SendData(USART1, (uint8_t) ch); // 发送数据
+    while (USART_GetFlagStatus(USART1, USART_FLAG_TXE) == RESET); // 等待发送缓冲区为空
+    return ch;
+}
 
 
 
