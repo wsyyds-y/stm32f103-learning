@@ -1,0 +1,23 @@
+# ---------- Keil MDK 构建产物 ----------
+Objects/
+Listings/
+DebugConfig/
+*.uvguix.*
+*.build_log.htm
+
+# ---------- 编译中间文件 ----------
+*.o
+*.d
+*.crf
+*.dep
+*.lnp
+*.axf
+*.hex
+*.bin
+*.map
+*.lst
+*.iex
+*.sct
+
+# ---------- VS Code 自动生成（内容是本机绝对路径，因人而异） ----------
+.vscode/c_cpp_properties.json

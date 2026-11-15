@@ -1,0 +1,27 @@
+{
+  "files.encoding": "utf8",
+  "files.autoGuessEncoding": true,
+  "files.associations": {
+    "*.h": "c",
+    "*.s": "arm"
+  },
+  "editor.tabSize": 4,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+  "search.exclude": {
+    "**/Objects": true,
+    "**/Listings": true,
+    "**/DebugConfig": true,
+    "**/*.uvguix.*": true
+  },
+  "files.exclude": {
+    "**/Objects": true,
+    "**/Listings": true,
+    "**/DebugConfig": true,
+    "**/*.uvguix.*": true
+  },
+  "files.watcherExclude": {
+    "**/Objects/**": true,
+    "**/Listings/**": true
+  }
+}
