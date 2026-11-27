@@ -30,10 +30,14 @@
 #define NTC_DO_CLK              RCC_APB2Periph_GPIOB
 #define NTC_DO_ACTIVE_LOW       1       /* 1=DO 为低时表示超温（LM393 常见），0=反相 */
 
-/* 分压与 NTC 参数：默认 10k 上拉 + 10k NTC(B=3950)，NTC 在下臂 */
+/* 分压与 NTC 参数：NTC(10k, B=3950) 在下臂，上臂串联电阻按实物标定。
+ * 标定依据：本板实测 AO = 2.1V，室温约 20℃ 时 NTC ≈ 12.1kΩ，
+ *           反推 Rs = Rt×(3.3-V)/V ≈ 6.9kΩ（不是常见的 10k，所以默认模型会读成 13℃）。
+ * 如果你的室温实测不是 20℃，按 Rs = Rt×(3.3-V)/V 重算：
+ *   25℃ → Rt=10kΩ → Rs≈5.7kΩ；18℃ → Rt=12.9kΩ → Rs≈7.4kΩ。 */
 #define NTC_VREF                3.3f    /* ADC 参考电压 = 板子 3.3V */
 #define NTC_ADC_MAX             4095.0f /* 12 位 ADC 满量程 */
-#define NTC_R_SERIES            10000.0f/* 与 NTC 串联的固定电阻 */
+#define NTC_R_SERIES            6900.0f /* 与 NTC 串联的固定电阻（本板实测标定，见下方说明） */
 #define NTC_R0                  10000.0f/* NTC 在 25℃ 时的阻值 */
 #define NTC_T0_K                298.15f /* 25℃ 对应的开尔文温度 */
 #define NTC_B                   3950.0f /* NTC 的 B 值（常见 3435 / 3950） */
