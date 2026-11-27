@@ -1,5 +1,6 @@
 #include "stm32f10x.h"
 #include <stdio.h>
+#include <string.h>
 #include "Delay.h"
 #include "OLED.h"
 #include "NTC.h"
@@ -10,13 +11,44 @@
   * @file    main.c
   * @brief   NTC 温度模块（AO + DO）实时显示 + 心跳指示
   *
-  * 心跳：PC13（多数最小系统板的板载 LED）和 PB12 每 500ms 翻转一次。
-  * 它的作用是排除“程序到底跑没跑”——LED 会闪就说明固件在运行，
-  * 此时若 OLED 还是旧画面，问题就只在显示这一路，与 ADC/中断无关。
+  * 显示：TEMP:25.3°C / DO:NORMAL / AO:1650mV / ADC:2048
+  * 单位用“°C”（摄氏度）。OLED 自带字库只有 ASCII，没有 '°'，
+  * 所以度符号由本文件里的 OLED_ShowDegree() 直接画 8x16 点阵补上，
+  * 不修改已验证的 OLED 驱动文件。
   *
-  * 注意：OLED 驱动用的是 AD单通道 里已在实物上验证过的版本（仅 ASCII）。
+  * 心跳：PC13（多数最小系统板的板载 LED）和 PB12 每 500ms 翻转一次，
+  * 用来确认主循环确实在跑。
   ******************************************************************************
   */
+
+/* OLED 驱动里没有在头文件里声明的底层函数，这里按原型引用（不改驱动文件本身） */
+extern void OLED_SetCursor(uint8_t Y, uint8_t X);
+extern void OLED_WriteData(uint8_t Data);
+
+/* “度”符号的 8x16 点阵：上面 4x4 的小圆圈，下面留空。
+ * 每字节是一列 8 个像素，最低位在最上面一行。 */
+static const uint8_t OLED_DegreeGlyph[8] =
+{
+    0x06, 0x09, 0x09, 0x06, 0x00, 0x00, 0x00, 0x00
+};
+
+/* 在指定行列画一个“°”（占 1 列，和 8x16 字符同高）。
+ * Line 行号 1~4，Column 列号 1~16。 */
+static void OLED_ShowDegree(uint8_t Line, uint8_t Column)
+{
+    uint8_t i;
+
+    OLED_SetCursor((Line - 1) * 2, (Column - 1) * 8);      /* 上半部分 */
+    for (i = 0; i < 8; i++)
+    {
+        OLED_WriteData(OLED_DegreeGlyph[i]);
+    }
+    OLED_SetCursor((Line - 1) * 2 + 1, (Column - 1) * 8);  /* 下半部分清空 */
+    for (i = 0; i < 8; i++)
+    {
+        OLED_WriteData(0x00);
+    }
+}
 
 /* 心跳引脚初始化：PC13 + PB12 推挽输出，上电先输出高电平。 */
 static void Heartbeat_Init(void)
@@ -56,13 +88,13 @@ static void Heartbeat_Toggle(void)
     }
 }
 
-/* 把 0.1℃ 的整数格式化成 "25.3C   " 这样的字符串（尾部补空格覆盖旧内容）。
- * buf 至少 12 字节；负数会带 '-'（如 -55 -> "-5.5C"）。 */
+/* 把 0.1℃ 的整数格式化成 "25.3" 这样的字符串（不带单位）。
+ * buf 至少 12 字节；负数会带 '-'（如 -55 -> "-5.5"）。 */
 static void FormatTemp(char *buf, int16_t temp_x10)
 {
     int16_t abs_val = (temp_x10 < 0) ? (int16_t)(-temp_x10) : temp_x10;
 
-    sprintf(buf, "%s%d.%dC   ", (temp_x10 < 0) ? "-" : "", abs_val / 10, abs_val % 10);
+    sprintf(buf, "%s%d.%d", (temp_x10 < 0) ? "-" : "", abs_val / 10, abs_val % 10);
 }
 
 int main(void)
@@ -73,12 +105,12 @@ int main(void)
     int16_t temp_x10;
     uint8_t alarm;
     uint8_t i;
+    uint8_t len;
     char buf_temp[16];
     char buf_ao[12];
     char buf_adc[8];
 
-    /* 上电先闪一下心跳（也给 OLED 留出上电稳定的时间），再点屏写标签。
-     * 即使后面 ADC/串口哪里卡住，四行标签也应该能停在屏幕上。 */
+    /* 上电先闪一下心跳（也给 OLED 留出上电稳定的时间），再点屏写标签。 */
     Heartbeat_Init();
     Heartbeat_Toggle();
     Delay_ms(250);
@@ -109,8 +141,13 @@ int main(void)
         alarm = NTC_IsAlarm();
         mv = (uint16_t)((uint32_t)adc * 3300 / 4095);   /* 换算成毫伏，避免显示浮点 */
 
+        /* 温度行：先清空数值区，再画数字 + 度符号 + C */
         FormatTemp(buf_temp, temp_x10);
-        OLED_ShowString(1, 6, buf_temp);                /* "TEMP:" 占 1~5 列 */
+        OLED_ShowString(1, 6, "        ");              /* 8 个空格覆盖旧内容 */
+        OLED_ShowString(1, 6, buf_temp);
+        len = (uint8_t)strlen(buf_temp);
+        OLED_ShowDegree(1, 6 + len);                    /* 25.3° */
+        OLED_ShowChar(1, 6 + len + 1, 'C');             /* 25.3°C */
 
         if (alarm)
         {
@@ -126,7 +163,7 @@ int main(void)
         sprintf(buf_adc, "%4u    ", adc);
         OLED_ShowString(4, 5, buf_adc);
 
-        printf("T=%s AO=%umV ADC=%u DO=%s\r\n",
+        printf("T=%sC AO=%umV ADC=%u DO=%s\r\n",
                buf_temp, mv, adc, alarm ? "ALARM" : "NORMAL");
 
         Heartbeat_Toggle();
