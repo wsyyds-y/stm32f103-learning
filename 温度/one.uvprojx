@@ -790,14 +790,14 @@
               <FilePath>.\Hardware\Servo.h</FilePath>
             </File>
             <File>
-              <FileName>DS18B20.c</FileName>
+              <FileName>NTC.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Hardware\DS18B20.c</FilePath>
+              <FilePath>.\Hardware\NTC.c</FilePath>
             </File>
             <File>
-              <FileName>DS18B20.h</FileName>
+              <FileName>NTC.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Hardware\DS18B20.h</FilePath>
+              <FilePath>.\Hardware\NTC.h</FilePath>
             </File>
             <File>
               <FileName>Serial.c</FileName>
