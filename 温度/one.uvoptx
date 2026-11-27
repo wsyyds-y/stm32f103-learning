@@ -1207,8 +1207,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\Hardware\DS18B20.c</PathWithFileName>
-      <FilenameWithoutPath>DS18B20.c</FilenameWithoutPath>
+      <PathWithFileName>.\Hardware\NTC.c</PathWithFileName>
+      <FilenameWithoutPath>NTC.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1219,8 +1219,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\Hardware\DS18B20.h</PathWithFileName>
-      <FilenameWithoutPath>DS18B20.h</FilenameWithoutPath>
+      <PathWithFileName>.\Hardware\NTC.h</PathWithFileName>
+      <FilenameWithoutPath>NTC.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

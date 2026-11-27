@@ -15,9 +15,6 @@
   *   Line   行号，从 1 开始，范围 1~4
   *   Column 列号，从 1 开始，范围 1~16
   * 注意：位置参数都是从 1 开始，不是从 0
-  *
-  * 中英文尺寸不同：英文/数字是 8x16 点阵（占 1 列），汉字是 16x16 点阵（占 2 列 x 2 行）。
-  * 所以显示汉字时 Column 最大到 15，且一个汉字会压住它下面那一行的一部分。
   ******************************************************************************
   */
 
@@ -40,22 +37,6 @@ void OLED_ShowChar(uint8_t Line, uint8_t Column, char Char);
  * String 要显示的字符串，必须以 '\0' 结尾，只支持 ASCII 可见字符
  * 例：OLED_ShowString(1, 1, "Num:"); */
 void OLED_ShowString(uint8_t Line, uint8_t Column, char *String);
-
-/* 显示一个汉字（16x16 点阵，占 2 列 x 2 行，即右下两行的空间）。
- * Line   行位置 1~4
- * Column 列位置 1~15（汉字宽 16 像素，第 16 列放不下）
- * Index  字库序号 1~OLED_CHINESE_FONT_NUM，序号见 OLED_ChineseFont.h 里每个字后的注释
- * 例：OLED_ShowChinese(1, 1, 1);  // 显示字库里的第 1 个字
- * 注意：汉字只能显示字库里已收录的字，换字要用 tools/oled-font-gen.py 重新生成字库 */
-void OLED_ShowChinese(uint8_t Line, uint8_t Column, uint8_t Index);
-
-/* 显示中英文混排的字符串（ASCII 占 1 列，汉字占 2 列，自动往后排）。
- * Line   起始行位置 1~4
- * Column 起始列位置 1~16，超出右边界的部分自动截断
- * String 要显示的字符串，必须以 '\0' 结尾，源文件必须保存为 UTF-8 编码
- * 例：OLED_ShowChineseString(1, 1, "温度:25C");
- * 注意：字库里没有的汉字会显示成 '?'，说明需要重新生成字库把它加进去 */
-void OLED_ShowChineseString(uint8_t Line, uint8_t Column, char *String);
 
 /* 显示无符号十进制整数（高位补 0，不省略前导零）。
  * Line   起始行位置 1~4

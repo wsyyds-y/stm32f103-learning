@@ -8,7 +8,10 @@
 /**
   ******************************************************************************
   * @file    main.c
-  * @brief   NTC 温度模块（AO + DO）实时显示：OLED 显示温度/报警/电压，串口同步打印
+  * @brief   NTC 温度模块（AO + DO）实时显示
+  *
+  * 注意：本工程的 OLED 驱动用的是 AD单通道 里已在实物上验证过的版本，
+  *       只支持 ASCII，因此界面文字全部用英文，不再依赖中文点阵字库。
   ******************************************************************************
   */
 
@@ -33,16 +36,18 @@ int main(void)
     char buf_ao[12];
     char buf_adc[8];
 
-    /* 上电先初始化：NTC 模块（ADC + DO）、OLED、串口 */
-    NTC_Init();
+    /* 先初始化 OLED 并立刻写死标签：即使后面 ADC/串口哪里卡住，
+     * 屏幕也应该能看到这四行标签，便于判断是显示问题还是采样问题。 */
     OLED_Init();
     OLED_Clear();
-    Serial_Init();
-
-    OLED_ShowChineseString(1, 1, "温度:");
+    OLED_ShowString(1, 1, "TEMP:");
     OLED_ShowString(2, 1, "DO:");
     OLED_ShowString(3, 1, "AO:");
     OLED_ShowString(4, 1, "ADC:");
+
+    Serial_Init();
+    NTC_Init();
+
     printf("NTC module demo start\r\n");
 
     while (1)    /* 主循环：每 500ms 采一次 AO 并刷新显示 */
@@ -60,7 +65,7 @@ int main(void)
         mv = (uint16_t)((uint32_t)adc * 3300 / 4095);   /* 换算成毫伏，避免显示浮点 */
 
         FormatTemp(buf_temp, temp_x10);
-        OLED_ShowString(1, 6, buf_temp);                /* “温度:”占 1~5 列 */
+        OLED_ShowString(1, 6, buf_temp);                /* "TEMP:" 占 1~5 列 */
 
         if (alarm)
         {
