@@ -44,6 +44,7 @@ void NTC_Init(void)
 {
     GPIO_InitTypeDef GPIO_InitStructure;
     ADC_InitTypeDef ADC_InitStructure;
+    uint32_t wait;
 
     RCC_APB2PeriphClockCmd(NTC_GPIO_CLK | NTC_DO_CLK | RCC_APB2Periph_ADC1, ENABLE);
     RCC_ADCCLKConfig(RCC_PCLK2_Div6);       /* ADC 时钟 72/6 = 12MHz，不超过 14MHz */
@@ -69,17 +70,25 @@ void NTC_Init(void)
 
     ADC_Cmd(NTC_ADC, ENABLE);
 
-    ADC_ResetCalibration(NTC_ADC);          /* 上电先校准，否则码值有固定偏差 */
-    while (ADC_GetResetCalibrationStatus(NTC_ADC));
+    /* 上电先校准，否则码值有固定偏差。
+     * 等待循环都加了超时计数：万一 ADC 时钟没配对，也不会把整个程序卡死在这里。 */
+    ADC_ResetCalibration(NTC_ADC);
+    wait = 0;
+    while (ADC_GetResetCalibrationStatus(NTC_ADC) && (++wait < 200000));
+
     ADC_StartCalibration(NTC_ADC);
-    while (ADC_GetCalibrationStatus(NTC_ADC));
+    wait = 0;
+    while (ADC_GetCalibrationStatus(NTC_ADC) && (++wait < 200000));
 }
 
-/* 单次转换：软件触发 -> 等 EOC -> 读 DR -> 清标志。 */
+/* 单次转换：软件触发 -> 等 EOC -> 读 DR。
+ * 同样带超时，转换一直不结束就返回当前寄存器值（宁可显示偏一点，也不卡死主循环）。 */
 uint16_t NTC_ReadAdc(void)
 {
+    uint32_t wait = 0;
+
     ADC_SoftwareStartConvCmd(NTC_ADC, ENABLE);
-    while (ADC_GetFlagStatus(NTC_ADC, ADC_FLAG_EOC) == RESET);
+    while ((ADC_GetFlagStatus(NTC_ADC, ADC_FLAG_EOC) == RESET) && (++wait < 200000));
     return ADC_GetConversionValue(NTC_ADC);
 }
 

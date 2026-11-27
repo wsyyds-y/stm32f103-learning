@@ -95,8 +95,6 @@ int main(void)
     Serial_Init();
     NTC_Init();
 
-    printf("NTC module demo start\r\n");
-
     while (1)    /* 主循环：每 500ms 采一次 AO 并刷新显示 */
     {
         /* 连续采 8 次取平均，压低 ADC 噪声（单次采样末位常有 ±2 的跳动） */
