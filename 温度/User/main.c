@@ -8,12 +8,53 @@
 /**
   ******************************************************************************
   * @file    main.c
-  * @brief   NTC 温度模块（AO + DO）实时显示
+  * @brief   NTC 温度模块（AO + DO）实时显示 + 心跳指示
   *
-  * 注意：本工程的 OLED 驱动用的是 AD单通道 里已在实物上验证过的版本，
-  *       只支持 ASCII，因此界面文字全部用英文，不再依赖中文点阵字库。
+  * 心跳：PC13（多数最小系统板的板载 LED）和 PB12 每 500ms 翻转一次。
+  * 它的作用是排除“程序到底跑没跑”——LED 会闪就说明固件在运行，
+  * 此时若 OLED 还是旧画面，问题就只在显示这一路，与 ADC/中断无关。
+  *
+  * 注意：OLED 驱动用的是 AD单通道 里已在实物上验证过的版本（仅 ASCII）。
   ******************************************************************************
   */
+
+/* 心跳引脚初始化：PC13 + PB12 推挽输出，上电先输出高电平。 */
+static void Heartbeat_Init(void)
+{
+    GPIO_InitTypeDef GPIO_InitStructure;
+
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC | RCC_APB2Periph_GPIOB, ENABLE);
+
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13;
+    GPIO_Init(GPIOC, &GPIO_InitStructure);
+
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_12;
+    GPIO_Init(GPIOB, &GPIO_InitStructure);
+
+    GPIO_SetBits(GPIOC, GPIO_Pin_13);
+    GPIO_SetBits(GPIOB, GPIO_Pin_12);
+}
+
+/* 两个心跳脚一起翻转（PC13 板载 LED 是低电平点亮，翻转即可看到闪烁）。 */
+static void Heartbeat_Toggle(void)
+{
+    static uint8_t level = 0;
+
+    level = !level;
+    if (level)
+    {
+        GPIO_ResetBits(GPIOC, GPIO_Pin_13);
+        GPIO_ResetBits(GPIOB, GPIO_Pin_12);
+    }
+    else
+    {
+        GPIO_SetBits(GPIOC, GPIO_Pin_13);
+        GPIO_SetBits(GPIOB, GPIO_Pin_12);
+    }
+}
 
 /* 把 0.1℃ 的整数格式化成 "25.3C   " 这样的字符串（尾部补空格覆盖旧内容）。
  * buf 至少 12 字节；负数会带 '-'（如 -55 -> "-5.5C"）。 */
@@ -36,8 +77,14 @@ int main(void)
     char buf_ao[12];
     char buf_adc[8];
 
-    /* 先初始化 OLED 并立刻写死标签：即使后面 ADC/串口哪里卡住，
-     * 屏幕也应该能看到这四行标签，便于判断是显示问题还是采样问题。 */
+    /* 上电先闪一下心跳（也给 OLED 留出上电稳定的时间），再点屏写标签。
+     * 即使后面 ADC/串口哪里卡住，四行标签也应该能停在屏幕上。 */
+    Heartbeat_Init();
+    Heartbeat_Toggle();
+    Delay_ms(250);
+    Heartbeat_Toggle();
+    Delay_ms(250);
+
     OLED_Init();
     OLED_Clear();
     OLED_ShowString(1, 1, "TEMP:");
@@ -84,6 +131,7 @@ int main(void)
         printf("T=%s AO=%umV ADC=%u DO=%s\r\n",
                buf_temp, mv, adc, alarm ? "ALARM" : "NORMAL");
 
+        Heartbeat_Toggle();
         Delay_ms(500);
     }
 }
