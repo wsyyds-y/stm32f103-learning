@@ -12,12 +12,15 @@
   * @brief   NTC 温度模块（AO + DO）实时显示 + 心跳指示
   *
   * 显示：TEMP:25.3°C / DO:NORMAL / AO:1650mV / ADC:2048
-  * 单位用“°C”（摄氏度）。OLED 自带字库只有 ASCII，没有 '°'，
-  * 所以度符号由本文件里的 OLED_ShowDegree() 直接画 8x16 点阵补上，
-  * 不修改已验证的 OLED 驱动文件。
+  *   OLED 字库只有 ASCII，没有 '°'，所以度符号由本文件的 OLED_ShowDegree()
+  *   直接画 8x16 点阵补上，不修改已验证的 OLED 驱动文件。
   *
-  * 心跳：PC13（多数最小系统板的板载 LED）和 PB12 每 500ms 翻转一次，
-  * 用来确认主循环确实在跑。
+  * 串口：只用 sprintf 拼字符串 + Serial_SendString 发送，**不再调用 printf**。
+  *   printf 在没开 MicroLIB 时会走半主机（semihosting）卡死，而 Keil 打开着工程时
+  *   会把它自己内存里的工程选项写回 .uvprojx，之前设的 MicroLIB 就是这样被改回去的。
+  *   去掉 printf 后，开不开 MicroLIB 都能正常运行。
+  *
+  * 心跳：PC13（多数最小系统板的板载 LED）和 PB12 每 500ms 翻转一次。
   ******************************************************************************
   */
 
@@ -109,6 +112,7 @@ int main(void)
     char buf_temp[16];
     char buf_ao[12];
     char buf_adc[8];
+    char line[48];
 
     /* 上电先闪一下心跳（也给 OLED 留出上电稳定的时间），再点屏写标签。 */
     Heartbeat_Init();
@@ -163,8 +167,10 @@ int main(void)
         sprintf(buf_adc, "%4u    ", adc);
         OLED_ShowString(4, 5, buf_adc);
 
-        printf("T=%sC AO=%umV ADC=%u DO=%s\r\n",
-               buf_temp, mv, adc, alarm ? "ALARM" : "NORMAL");
+        /* 串口输出：sprintf 拼好整行再发，不经过 printf，不依赖 MicroLIB */
+        sprintf(line, "T=%sC AO=%umV ADC=%u DO=%s\r\n",
+                buf_temp, mv, adc, alarm ? "ALARM" : "NORMAL");
+        Serial_SendString(line);
 
         Heartbeat_Toggle();
         Delay_ms(500);
