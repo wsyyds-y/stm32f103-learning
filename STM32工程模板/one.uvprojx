@@ -715,6 +715,11 @@
               <FilePath>.\Hardware\OLED_Font.h</FilePath>
             </File>
             <File>
+              <FileName>OLED_ChineseFont.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\OLED_ChineseFont.h</FilePath>
+            </File>
+            <File>
               <FileName>Count.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Hardware\Count.c</FilePath>

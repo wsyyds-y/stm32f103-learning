@@ -26,6 +26,29 @@
 | `Start/` | 启动文件（`startup_stm32f10x_md.s`）、内核文件、`system_stm32f10x.c` |
 | `Library/` | STM32F10x 标准外设库（SPL） |
 
+## OLED 中文显示
+
+`Hardware/OLED` 除了原来的英文字符/数字，还支持 **16×16 汉字**（字库在 `Hardware/OLED_ChineseFont.h`，共 67 个常用字，约 2.1 KB Flash）：
+
+```c
+OLED_Init();
+OLED_ShowString(1, 1, "OLED Test");            // 英文 8x16，一行 16 列
+OLED_ShowChinese(2, 1, 1);                     // 按字库序号显示第 1 个字
+OLED_ShowChineseString(3, 1, "温度:25C");      // 中英混排，汉字占 2 列 x 2 行
+OLED_ShowChineseString(4, 1, "电压:3.3V");
+```
+
+要点：
+
+- 汉字 **宽 16 像素、高 16 像素**，占 2 列 × 2 行屏幕空间，所以 `Column` 最大 15；
+- `OLED_ShowChineseString` 的源文件必须存成 **UTF-8**（本工程已统一 UTF-8，Keil 编译不会转换编码）；
+- 字库没有的汉字会显示成 `?`，先确认字库收录了，没有就重新生成：
+
+  ```bash
+  py312 E:\DeepSeek\tools\oled-font-gen.py --text "你要显示的字" --out Hardware\OLED_ChineseFont.h
+  # 也可以 --file 你的UTF-8文本.txt 一次把整段话里的字都收进去，--preview out.png 可肉眼检查字形
+  ```
+
 ## 说明
 
 - 模板**不含 `.git`**，复制后的新工程不会继承任何仓库历史；
