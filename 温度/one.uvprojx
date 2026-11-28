@@ -785,14 +785,14 @@
               <FilePath>.\Hardware\Servo.h</FilePath>
             </File>
             <File>
-              <FileName>ChipTemp.c</FileName>
+              <FileName>NTC.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Hardware\ChipTemp.c</FilePath>
+              <FilePath>.\Hardware\NTC.c</FilePath>
             </File>
             <File>
-              <FileName>ChipTemp.h</FileName>
+              <FileName>NTC.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Hardware\ChipTemp.h</FilePath>
+              <FilePath>.\Hardware\NTC.h</FilePath>
             </File>
             <File>
               <FileName>Serial.c</FileName>
